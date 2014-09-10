@@ -30,7 +30,7 @@ import com.example.android.swiperefreshlayoutbasic.R;
  * the user is to triggering something (e.g. how far they need to pull down to
  * trigger a refresh).
  */
-final class CustomSwipeRefreshHeadview{
+final class CustomSwipeRefreshHeadview extends ViewGroup{
 
 	// Default progress animation colors are grays.
 	private final static int COLOR1 = 0xB3000000;
@@ -64,7 +64,7 @@ final class CustomSwipeRefreshHeadview{
 	private int mColor2;
 	private int mColor3;
 	private int mColor4;
-	private View mParent;
+	//private View mParent;
 
 	private ViewGroup mHeadLayout;
 
@@ -72,21 +72,31 @@ final class CustomSwipeRefreshHeadview{
 
 
 
-	public CustomSwipeRefreshHeadview(View parent) {
-		Log.i("lxy","CustomSwipeRefreshHeadview(View parent)");
-		mParent = parent;
-		mColor1 = COLOR1;
-		mColor2 = COLOR2;
-		mColor3 = COLOR3;
-		mColor4 = COLOR4;
 
 
-		setDefaultHeadLayout();
-	}
+    public CustomSwipeRefreshHeadview(Context context) {
+        super(context);
+        Log.i("lxy","CustomSwipeRefreshHeadview(View parent)");
+        mColor1 = COLOR1;
+        mColor2 = COLOR2;
+        mColor3 = COLOR3;
+        mColor4 = COLOR4;
 
-	public void setDefaultHeadLayout()
+
+        setDefaultHeadLayout();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Log.v("lxy","onLayout");
+        mHeadLayout.layout(l,t,r,b);
+    }
+
+
+
+    public void setDefaultHeadLayout()
 	{
-		setHeadLayout(new CustomHeadViewLayout(mParent.getContext()));
+		setHeadLayout(new CustomHeadViewLayout(getContext()));
 	}
 
 	public void setRefreshState(int state)
@@ -101,6 +111,7 @@ final class CustomSwipeRefreshHeadview{
 	{
 		mHeadLayout = layout;
 		mHeadLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        addView(mHeadLayout);
 		return this;
 	}
 
@@ -122,40 +133,9 @@ final class CustomSwipeRefreshHeadview{
 		mColor4 = color4;
 	}
 
-	/**
-	 * Update the progress the user has made toward triggering the swipe
-	 * gesture. and use this value to update the percentage of the trigger that
-	 * is shown.
-	 */
-	void setTriggerPercentage(float triggerPercentage) {
-		mTriggerPercentage = triggerPercentage;
-		mStartTime = 0;
-		ViewCompat.postInvalidateOnAnimation(mParent);
-	}
 
-	/**
-	 * Start showing the progress animation.
-	 */
-	void start() {
-		if (!mRunning) {
-			mTriggerPercentage = 0;
-			mStartTime = AnimationUtils.currentAnimationTimeMillis();
-			mRunning = true;
-			mParent.postInvalidate();
-		}
-	}
 
-	/**
-	 * Stop showing the progress animation.
-	 */
-	void stop() {
-		if (mRunning) {
-			mTriggerPercentage = 0;
-			mFinishTime = AnimationUtils.currentAnimationTimeMillis();
-			mRunning = false;
-			mParent.postInvalidate();
-		}
-	}
+
 
 	/**
 	 * @return Return whether the progress animation is currently running.
@@ -164,8 +144,12 @@ final class CustomSwipeRefreshHeadview{
 		return mRunning || mFinishTime > 0;
 	}
 
-	void draw(Canvas canvas) {
-		Log.i("lxy","headview.draw()");
+
+
+    @Override
+    protected void onDraw(Canvas canvas)
+    {
+		Log.i("lxy","headview.onDraw()");
 		final int width = mBounds.width();
 		final int height = mBounds.height();
 		final int cx = width / 2;
@@ -263,17 +247,19 @@ final class CustomSwipeRefreshHeadview{
 		//Log.i("lxy","mBounds.bottom = " + mBounds.bottom + ",mHeadLayout.getHeight() = " + mHeadLayout.getHeight());
 		if(changeHeightOnly)
 		{
-			mParent.postInvalidate();
+		    postInvalidate();
 			return;
 		}
 
 		if (mBounds.bottom > 180) {
+            Log.i("lxy","change to STATE_READY");
 			setRefreshState(STATE_READY);
 		} else {
+            Log.i("lxy","change to STATE_NORMAL");
 			setRefreshState(STATE_NORMAL);
 		}
 
-		mParent.postInvalidate();
+		postInvalidate();
 	}
 
 
@@ -306,7 +292,7 @@ final class CustomSwipeRefreshHeadview{
 
 		private Animation mRotateUpAnim;
 		private Animation mRotateDownAnim;
-		private final int ROTATE_ANIM_DURATION = 300;
+		private final int ROTATE_ANIM_DURATION = 180;
 
 		private int mState = -1;
 
@@ -319,35 +305,13 @@ final class CustomSwipeRefreshHeadview{
 			setWillNotDraw(false);
 			setupLayout();
 		}
-/*
-		public CustomHeadViewLayout setImageView(ImageView imageView)
-		{
-			mImageView = imageView;
-			mImageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-			return this;
-		}
-
-		public CustomHeadViewLayout setSubTextView(TextView textView)
-		{
-			mSubTextView = textView;
-			mSubTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-			return this;
-		}
-
-		public CustomHeadViewLayout setMainTextView(TextView textView)
-		{
-			mMainTextView = textView;
-			mMainTextView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-			return this;
-		}
-		*/
 
 
 
 		public void setupLayout()
 		{
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-			mContainer = (LinearLayout) LayoutInflater.from(mParent.getContext()).inflate(R.layout.etao_default_swiperefresh_layout, null);
+			mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.etao_default_swiperefresh_layout, null);
 			addView(mContainer, lp);
 			setGravity(Gravity.BOTTOM);
 			mImageView = (ImageView) findViewById(R.id.xlistview_header_arrow);
@@ -370,8 +334,9 @@ final class CustomSwipeRefreshHeadview{
 				public void applyTransformation(float interpolatedTime, Transformation t) {
 					//ViewCompat.postInvalidateOnAnimation(mParent);
 					Log.i("lxy","applyTransformation : interpolatedTime = " + interpolatedTime);
+                    CustomHeadViewLayout.this.postInvalidate();
 					super.applyTransformation(interpolatedTime,t);
-					mParent.invalidate();
+                   // CustomHeadViewLayout.this.postInvalidate();
 				}
 			};
 			Animation.AnimationListener mRotateUpAnimListener = new Animation.AnimationListener() {
@@ -398,9 +363,8 @@ final class CustomSwipeRefreshHeadview{
 			mRotateDownAnim =  new RotateAnimation(-180.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f) {
 				@Override
 				public void applyTransformation(float interpolatedTime, Transformation t) {
-					ViewCompat.postInvalidateOnAnimation(mParent);
 					super.applyTransformation(interpolatedTime,t);
-					mParent.invalidate();
+                    CustomHeadViewLayout.this.postInvalidate();
 				}
 			};
 			//new RotateAnimation(-180.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
