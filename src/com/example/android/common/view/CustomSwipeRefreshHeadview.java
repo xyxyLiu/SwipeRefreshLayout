@@ -1,15 +1,11 @@
 package com.example.android.common.view;
 
-
-
-
 /**
  * Created by tony.lxy on 2014/9/9.
  */
 import android.content.Context;
 import android.graphics.*;
-import android.support.v4.view.ViewCompat;
-import android.text.Layout;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +19,9 @@ import android.widget.TextView;
 import com.example.android.common.logger.Log;
 import com.example.android.swiperefreshlayoutbasic.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Custom progress bar that shows a cycle of colors as widening circles that
  * overdraw each other. When finished, the bar is cleared from the inside out as
@@ -30,7 +29,7 @@ import com.example.android.swiperefreshlayoutbasic.R;
  * the user is to triggering something (e.g. how far they need to pull down to
  * trigger a refresh).
  */
-final class CustomSwipeRefreshHeadview extends ViewGroup{
+final class CustomSwipeRefreshHeadview extends ViewGroup {
 
 	// Default progress animation colors are grays.
 	private final static int COLOR1 = 0xB3000000;
@@ -70,51 +69,64 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 
 	private Rect mBounds = new Rect();
 
+	public CustomSwipeRefreshHeadview(Context context) {
+		super(context);
+		Log.i("lxy", "CustomSwipeRefreshHeadview(View parent)");
+		mColor1 = COLOR1;
+		mColor2 = COLOR2;
+		mColor3 = COLOR3;
+		mColor4 = COLOR4;
 
+		setDefaultHeadLayout();
+	}
 
+	public CustomSwipeRefreshHeadview(Context context, ViewGroup layout) {
+		super(context);
+		Log.i("lxy", "CustomSwipeRefreshHeadview(View parent)");
+		mColor1 = COLOR1;
+		mColor2 = COLOR2;
+		mColor3 = COLOR3;
+		mColor4 = COLOR4;
 
+		setHeadLayout(layout);
 
-    public CustomSwipeRefreshHeadview(Context context) {
-        super(context);
-        Log.i("lxy","CustomSwipeRefreshHeadview(View parent)");
-        mColor1 = COLOR1;
-        mColor2 = COLOR2;
-        mColor3 = COLOR3;
-        mColor4 = COLOR4;
+	}
 
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		Log.v("lxy", "CustomSwipeRefreshHeadview.onLayout");
+		// Never called here
+		//mHeadLayout.layout(l,t,r,b);
+	}
 
-        setDefaultHeadLayout();
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.v("lxy","onLayout");
-        mHeadLayout.layout(l,t,r,b);
-    }
-
-
-
-    public void setDefaultHeadLayout()
-	{
+	public void setDefaultHeadLayout() {
 		setHeadLayout(new CustomHeadViewLayout(getContext()));
 	}
 
-	public void setRefreshState(int state)
-	{
-		if(mHeadLayout instanceof EtaoSwipeRefreshHeadLayout)
-		{
+	public void setRefreshState(int state) {
+		if (mHeadLayout instanceof EtaoSwipeRefreshHeadLayout) {
 			((EtaoSwipeRefreshHeadLayout) mHeadLayout).setState(state);
 		}
 	}
 
-	public CustomSwipeRefreshHeadview setHeadLayout(ViewGroup layout)
-	{
-		mHeadLayout = layout;
-		mHeadLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        addView(mHeadLayout);
-		return this;
+	public void tryToUpdateLastUpdateTime() {
+		if (mHeadLayout instanceof EtaoSwipeRefreshHeadLayout) {
+			((EtaoSwipeRefreshHeadLayout) mHeadLayout).updateData();
+		}
 	}
 
+	public CustomSwipeRefreshHeadview setHeadLayout(ViewGroup layout) {
+
+		if(!(layout instanceof EtaoSwipeRefreshHeadLayout)) {
+			throw new IllegalStateException(
+					"ViewGroup must implements EtaoSwipeRefreshHeadLayout interface!");
+		}
+
+		mHeadLayout = layout;
+		mHeadLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+		addView(mHeadLayout);
+		return this;
+	}
 
 	/**
 	 * Set the four colors used in the progress animation. The first color will
@@ -133,10 +145,6 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 		mColor4 = color4;
 	}
 
-
-
-
-
 	/**
 	 * @return Return whether the progress animation is currently running.
 	 */
@@ -144,125 +152,58 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 		return mRunning || mFinishTime > 0;
 	}
 
-
-
-    @Override
-    protected void onDraw(Canvas canvas)
-    {
-		Log.i("lxy","headview.onDraw()");
+	@Override
+	protected void onDraw(Canvas canvas) {
+		//Log.i("lxy","headview.onDraw()");
 		final int width = mBounds.width();
 		final int height = mBounds.height();
-		final int cx = width / 2;
-		final int cy = height / 2;
-		boolean drawTriggerWhileFinishing = false;
+
 		int restoreCount = canvas.save();
 		canvas.clipRect(mBounds);
 
-		// for test
-		//Paint paint = new Paint();
-		//paint.setColor(Color.RED);
-		//canvas.drawRect(new Rect(10,10,100,100),paint);
+		Rect mainTextRect = new Rect();
+		mainTextRect.set(0, 0, width, height);
 
-		//if(mMainTextView == null) {
-			canvas.save();
+		mHeadLayout.setBackgroundColor(Color.TRANSPARENT);
 
+		//Measure the view at the exact dimensions (otherwise the view won't center correctly)
+		int widthSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.width(), View.MeasureSpec.EXACTLY);
+		int heightSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.height(), View.MeasureSpec.EXACTLY);
+		mHeadLayout.measure(widthSpec, heightSpec);
+		//Lay the view out at the rect width and height
+		mHeadLayout.layout(0, 0, mainTextRect.width(), mainTextRect.height());
+		canvas.translate(mainTextRect.left, mainTextRect.top);
+		mHeadLayout.draw(canvas);
 
-			//Set a Rect for the 200 x 200 px center of a 400 x 400 px area
-			Rect mainTextRect = new Rect();
-			mainTextRect.set(0, 0, width, height);
-
-
-
-			//Make a new view and lay it out at the desired Rect dimensions
-			//mMainTextView.setText("NOP");
-			//mMainTextView.setBackgroundColor(Color.TRANSPARENT);
-			//mMainTextView.setGravity(Gravity.CENTER);
-			mHeadLayout.setBackgroundColor(Color.TRANSPARENT);
-
-			//Measure the view at the exact dimensions (otherwise the text won't center correctly)
-			int widthSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.width(), View.MeasureSpec.EXACTLY);
-			int heightSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.height(), View.MeasureSpec.EXACTLY);
-			//mMainTextView.measure(widthSpec, heightSpec);
-			mHeadLayout.measure(widthSpec, heightSpec);
-			//Lay the view out at the rect width and height
-			//mMainTextView.layout(0, 0, mainTextRect.width(), mainTextRect.height());
-			mHeadLayout.layout(0, 0, mainTextRect.width(), mainTextRect.height());
-
-			//Log.i("lxy","widthSpec = " + widthSpec + ",heightSpec = " + heightSpec + ",mainTextRect.width() = " + mainTextRect.width() + ",mainTextRect.height() = " + mainTextRect.height());
-			//Translate the Canvas into position and draw it
-			//canvas.save();
-			canvas.translate(mainTextRect.left, mainTextRect.top);
-			//mMainTextView.draw(canvas);
-
-
-			mHeadLayout.draw(canvas);
-
-
-
-
-
-			//Log.v("lxy", "mMainTextView.width = " + mMainTextView.getWidth() + ",mMainTextView.height = " + mMainTextView.getHeight());
-			canvas.restore();
-		//}
-
-
-
+		//Log.v("lxy", "mMainTextView.width = " + mMainTextView.getWidth() + ",mMainTextView.height = " + mMainTextView.getHeight());
 		canvas.restoreToCount(restoreCount);
 	}
 
-
-
-
-
-
-	private void drawTrigger(Canvas canvas, int cx, int cy) {
-		mPaint.setColor(mColor1);
-		canvas.drawCircle(cx, cy, cx * mTriggerPercentage, mPaint);
-	}
-
-	/**
-	 * Draws a circle centered in the view.
-	 *
-	 * @param canvas the canvas to draw on
-	 * @param cx     the center x coordinate
-	 * @param cy     the center y coordinate
-	 * @param color  the color to draw
-	 * @param pct    the percentage of the view that the circle should cover
-	 */
-	private void drawCircle(Canvas canvas, float cx, float cy, int color, float pct) {
-		mPaint.setColor(color);
-		canvas.save();
-		canvas.translate(cx, cy);
-		float radiusScale = INTERPOLATOR.getInterpolation(pct);
-		canvas.scale(radiusScale, radiusScale);
-		canvas.drawCircle(0, 0, cx, mPaint);
-		canvas.restore();
-	}
-
-
-	public void updateHeight(int height, boolean changeHeightOnly)
-	{
+	public void updateHeight(int height, int distanceToTriggerSync, boolean changeHeightOnly) {
 
 		mBounds.bottom = height;
-		//Log.i("lxy","mBounds.bottom = " + mBounds.bottom + ",mHeadLayout.getHeight() = " + mHeadLayout.getHeight());
-		if(changeHeightOnly)
-		{
-		    postInvalidate();
+		//Log.i("lxy","mBounds.bottom = " + mBounds.bottom);
+		if (changeHeightOnly) {
+			invalidateView();
 			return;
 		}
 
-		if (mBounds.bottom > 180) {
-            Log.i("lxy","change to STATE_READY");
+		if (mBounds.bottom > distanceToTriggerSync) {
+			//Log.i("lxy","change to STATE_READY");
 			setRefreshState(STATE_READY);
 		} else {
-            Log.i("lxy","change to STATE_NORMAL");
+			//Log.i("lxy","change to STATE_NORMAL");
 			setRefreshState(STATE_NORMAL);
 		}
 
-		postInvalidate();
+		invalidateView();
 	}
 
+	private void invalidateView() {
+		if (getParent() != null && getParent() instanceof View)
+			((View) getParent()).postInvalidate();
 
+	}
 
 	/**
 	 * Set the drawing bounds of this SwipeProgressBar.
@@ -274,14 +215,15 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 		mBounds.bottom = bottom;
 	}
 
-
-	public interface EtaoSwipeRefreshHeadLayout{
+	public interface EtaoSwipeRefreshHeadLayout {
 		void setState(int state);
+
+		void updateData();
+
+		String fetchData();
 	}
 
-
-
-	class CustomHeadViewLayout extends LinearLayout implements EtaoSwipeRefreshHeadLayout{
+	class CustomHeadViewLayout extends LinearLayout implements EtaoSwipeRefreshHeadLayout {
 
 		private LinearLayout mContainer;
 
@@ -296,21 +238,15 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 
 		private int mState = -1;
 
-
-
-
-
 		public CustomHeadViewLayout(Context context) {
 			super(context);
 			setWillNotDraw(false);
 			setupLayout();
 		}
 
-
-
-		public void setupLayout()
-		{
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		public void setupLayout() {
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+					ViewGroup.LayoutParams.MATCH_PARENT);
 			mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.etao_default_swiperefresh_layout, null);
 			addView(mContainer, lp);
 			setGravity(Gravity.BOTTOM);
@@ -323,51 +259,29 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 
 		}
 
+		public void setupAnimation() {
 
-		public void setupAnimation(){
-
-
-
-
-			mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f) {
-				@Override
-				public void applyTransformation(float interpolatedTime, Transformation t) {
-					//ViewCompat.postInvalidateOnAnimation(mParent);
-					Log.i("lxy","applyTransformation : interpolatedTime = " + interpolatedTime);
-                    CustomHeadViewLayout.this.postInvalidate();
-					super.applyTransformation(interpolatedTime,t);
-                   // CustomHeadViewLayout.this.postInvalidate();
-				}
-			};
+			mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			Animation.AnimationListener mRotateUpAnimListener = new Animation.AnimationListener() {
 				@Override public void onAnimationStart(Animation animation) {
-					Log.i("lxy","start mRotateUpAnim");
+					Log.i("lxy", "start mRotateUpAnim");
 				}
 
 				@Override
 				public void onAnimationEnd(Animation animation) {
-					Log.i("lxy","end mRotateUpAnim");
+					Log.i("lxy", "end mRotateUpAnim");
 				}
 
 				@Override public void onAnimationRepeat(Animation animation) {
-					Log.i("lxy","repeat mRotateUpAnim");
+					Log.i("lxy", "repeat mRotateUpAnim");
 				}
 
 			};
 			mRotateUpAnim.setAnimationListener(mRotateUpAnimListener);
-			//mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			mRotateUpAnim.setDuration(ROTATE_ANIM_DURATION);
 			mRotateUpAnim.setFillAfter(true);
 
-
-			mRotateDownAnim =  new RotateAnimation(-180.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f) {
-				@Override
-				public void applyTransformation(float interpolatedTime, Transformation t) {
-					super.applyTransformation(interpolatedTime,t);
-                    CustomHeadViewLayout.this.postInvalidate();
-				}
-			};
-			//new RotateAnimation(-180.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+			mRotateDownAnim = new RotateAnimation(-180.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			mRotateDownAnim.setDuration(ROTATE_ANIM_DURATION);
 			mRotateDownAnim.setFillAfter(true);
 		}
@@ -377,7 +291,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 			if (state == mState) {
 				return;
 			}
-			Log.i("lxy","state = " + state);
+			Log.i("lxy", "state = " + state);
 			if (state == STATE_REFRESHING) {    // 显示进度
 				mImageView.clearAnimation();
 				mImageView.setVisibility(View.INVISIBLE);
@@ -415,5 +329,30 @@ final class CustomSwipeRefreshHeadview extends ViewGroup{
 			mState = state;
 		}
 
+		public void setLastUpdateTime(String time) {
+			mSubTextView.setVisibility(VISIBLE);
+			mSubTextView.setText(time);
+		}
+
+		public void updateData() {
+			//if (!TextUtils.isEmpty(mDataTag)) {
+			if (true) {
+				String time = fetchData();
+				if (!TextUtils.isEmpty(time)) {
+					mSubTextView.setVisibility(VISIBLE);
+					mSubTextView.setText(time);
+				} else {
+					mSubTextView.setVisibility(GONE);
+				}
+			} else {
+				mSubTextView.setVisibility(GONE);
+			}
+		}
+
+		public String fetchData() {
+			return "上次更新于" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+		}
+
 	}
+
 }

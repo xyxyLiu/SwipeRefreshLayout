@@ -3,16 +3,11 @@ package com.example.android.common.view;
  * Created by tony.lxy on 2014/9/5.
  */
 
-
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.media.Image;
 import android.support.v4.view.ViewCompat;
-
 
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -23,11 +18,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.example.android.common.logger.Log;
-import com.example.android.swiperefreshlayoutbasic.R;
 
 /**
  * The SwipeRefreshLayout should be used whenever the user can refresh the
@@ -41,7 +32,7 @@ import com.example.android.swiperefreshlayoutbasic.R;
  * indication of a refresh. If an activity wishes to show just the progress
  * animation, it should call setRefreshing(true). To disable the gesture and progress
  * animation, call setEnabled(false) on the view.
- *
+ * <p/>
  * <p> This layout should be made the parent of the view that will be refreshed as a
  * result of the gesture and can only support one direct child. This view will
  * also be made the target of the gesture and will be forced to match both the
@@ -50,19 +41,40 @@ import com.example.android.swiperefreshlayoutbasic.R;
  * refresh of the content wherever this gesture is used.</p>
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
-	private static final long RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 2000;
+
+	// 不滑动时返回原状态的时间限制
+	private static final long RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 200;
+
+	// 顶部滑动条动画加速度
 	private static final float ACCELERATE_INTERPOLATION_FACTOR = 1.5f;
+
+	// 顶部滑动条动画减速度
 	private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
+
+	//顶部进度条高度
 	private static final float PROGRESS_BAR_HEIGHT = 4;
-	private static final float MAX_SWIPE_DISTANCE_FACTOR = .6f;
-	private static final int REFRESH_TRIGGER_DISTANCE = 120;
 
-	private CustomSwipeProgressBar mProgressBar; //the thing that shows progress is going
+	//最大触发滑动长度（父容器高度百分比）
+	private static final float MAX_SWIPE_DISTANCE_FACTOR = .5f;
 
+	//下拉至释放的触发滑动长度
+	private static final int REFRESH_TRIGGER_DISTANCE = 80;
+
+	//下拉阻尼系数
+	private static final float SWIPE_DOMP_FACTOR = .5f;
+
+	//顶部进度条view
+	private CustomSwipeProgressBar mTopProgressBar;
+
+	//刷新头部view
 	private CustomSwipeRefreshHeadview mHeadview;
 
+	//是否加载顶部进度条
+	boolean enableTopProgressBar = true;
 
+	//
 	private View mTarget; //the content that gets pulled down
+
 	private int mOriginalOffsetTop;
 	private OnRefreshListener mListener;
 	private MotionEvent mDownEvent;
@@ -76,12 +88,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 	private float mCurrPercentage = 0;
 	private int mProgressBarHeight;
 	private int mCurrentTargetOffsetTop;
-	// Target is returning to its start offset because it was cancelled or a
-	// refresh was triggered.
+
+	//是否返回至原始状态
 	private boolean mReturningToStart;
 	private final DecelerateInterpolator mDecelerateInterpolator;
 	private final AccelerateInterpolator mAccelerateInterpolator;
-	private static final int[] LAYOUT_ATTRS = new int[] {
+	private static final int[] LAYOUT_ATTRS = new int[]{
 			android.R.attr.enabled
 	};
 
@@ -90,7 +102,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		public void applyTransformation(float interpolatedTime, Transformation t) {
 			int targetTop = 0;
 			if (mFrom != mOriginalOffsetTop) {
-				targetTop = (mFrom + (int)((mOriginalOffsetTop - mFrom) * interpolatedTime));
+				targetTop = (mFrom + (int) ((mOriginalOffsetTop - mFrom) * interpolatedTime));
 			}
 			int offset = targetTop - mTarget.getTop();
 			final int currentTop = mTarget.getTop();
@@ -98,7 +110,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 				offset = 0 - currentTop;
 			}
 			setTargetOffsetTopAndBottom(offset);
-			mHeadview.updateHeight(mTarget.getTop(),true);
+			mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, true);
 		}
 	};
 
@@ -106,7 +118,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		@Override
 		public void applyTransformation(float interpolatedTime, Transformation t) {
 			float percent = mFromPercentage + ((0 - mFromPercentage) * interpolatedTime);
-			mProgressBar.setTriggerPercentage(percent);
+			mTopProgressBar.setTriggerPercentage(percent);
 		}
 	};
 
@@ -145,7 +157,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			mReturningToStart = true;
 			// Timeout fired since the user last moved their finger; animate the
 			// trigger to 0 and put the target back at its original position
-			if (mProgressBar != null) {
+			if (mTopProgressBar != null && enableTopProgressBar) {
 				mFromPercentage = mCurrPercentage;
 				mShrinkTrigger.setDuration(mMediumAnimationDuration);
 				mShrinkTrigger.setAnimationListener(mShrinkAnimationListener);
@@ -161,34 +173,31 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
 	/**
 	 * Simple constructor to use when creating a SwipeRefreshLayout from code.
+	 *
 	 * @param context
 	 */
 	public CustomSwipeRefreshLayout(Context context) {
 		this(context, null);
-		Log.i("lxy","CustomSwipeRefreshLayout(Context context)");
+		Log.i("lxy", "CustomSwipeRefreshLayout(Context context)");
 	}
 
 	/**
 	 * Constructor that is called when inflating SwipeRefreshLayout from XML.
+	 *
 	 * @param context
 	 * @param attrs
 	 */
 	public CustomSwipeRefreshLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		Log.i("lxy","CustomSwipeRefreshLayout(Context context, AttributeSet attrs)");
+		Log.i("lxy", "CustomSwipeRefreshLayout(Context context, AttributeSet attrs)");
 		mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
 		mMediumAnimationDuration = getResources().getInteger(
 				android.R.integer.config_mediumAnimTime);
 
 		setWillNotDraw(false);
-		mProgressBar = new CustomSwipeProgressBar(this);
-
-
-		//mHeadview   = new CustomSwipeRefreshHeadview(this).setMainTextView(textView).setImageView(imageView);
-		//mHeadview.setMainText(new TextView(getContext()));
-		mHeadview   = new CustomSwipeRefreshHeadview(context);
-
+		mTopProgressBar = new CustomSwipeProgressBar(this);
+		mHeadview = new CustomSwipeRefreshHeadview(context);
 
 		final DisplayMetrics metrics = getResources().getDisplayMetrics();
 		mProgressBarHeight = (int) (metrics.density * PROGRESS_BAR_HEIGHT);
@@ -199,22 +208,16 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		setEnabled(a.getBoolean(0, true));
 		a.recycle();
 
-        addView(mHeadview);
+		// child index of mHeadview = 0; child index of mTarget = 1;
+		addView(mHeadview);
 	}
 
-	public ViewGroup getHeadViewLayout()
-	{
-		TextView textView = new TextView(getContext());
-		textView.setText("下拉刷新");
-		ImageView imageView = new ImageView(getContext());
-		imageView.setImageBitmap(BitmapFactory.decodeResource(this.getContext().getResources(), R.drawable.pulltorefresh));
-		LinearLayout newLayout = new LinearLayout(getContext());
-		newLayout.setGravity(Gravity.CENTER);
-		newLayout.setOrientation(LinearLayout.HORIZONTAL);
-		newLayout.addView(imageView,0);
-		newLayout.addView(textView,1);
+	public void enableTopProgressBar(boolean isEnable) {
+		if (enableTopProgressBar == isEnable)
+			return;
 
-		return newLayout;
+		enableTopProgressBar = isEnable;
+		requestLayout();
 	}
 
 	@Override
@@ -256,7 +259,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			return;
 		}
 		mCurrPercentage = percent;
-		mProgressBar.setTriggerPercentage(percent);
+		if (enableTopProgressBar) {
+			mTopProgressBar.setTriggerPercentage(percent);
+		}
 	}
 
 	/**
@@ -271,9 +276,17 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			mCurrPercentage = 0;
 			mRefreshing = refreshing;
 			if (mRefreshing) {
-				mProgressBar.start();
+				if (enableTopProgressBar) {
+					mTopProgressBar.start();
+				} else {
+					postInvalidate();
+				}
 			} else {
-				mProgressBar.stop();
+				if (enableTopProgressBar) {
+					mTopProgressBar.stop();
+				} else {
+					postInvalidate();
+				}
 				mReturnToStartPosition.run();
 			}
 		}
@@ -296,12 +309,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		final int color2 = res.getColor(colorRes2);
 		final int color3 = res.getColor(colorRes3);
 		final int color4 = res.getColor(colorRes4);
-		mProgressBar.setColorScheme(color1, color2, color3,color4);
+		mTopProgressBar.setColorScheme(color1, color2, color3, color4);
 	}
 
 	/**
 	 * @return Whether the SwipeRefreshWidget is actively showing refresh
-	 *         progress.
+	 * progress.
 	 */
 	public boolean isRefreshing() {
 		return mRefreshing;
@@ -318,10 +331,11 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			mOriginalOffsetTop = mTarget.getTop() + getPaddingTop();
 		}
 		if (mDistanceToTriggerSync == -1) {
-			if (getParent() != null && ((View)getParent()).getHeight() > 0) {
+			if (getParent() != null && ((View) getParent()).getHeight() > 0) {
 				final DisplayMetrics metrics = getResources().getDisplayMetrics();
+				Log.i("lxy" , "parent.height = " + ((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR + ", REFRESH_TRIGGER_DISTANCE * metrics.density = " + REFRESH_TRIGGER_DISTANCE * metrics.density);
 				mDistanceToTriggerSync = (int) Math.min(
-						((View) getParent()) .getHeight() * MAX_SWIPE_DISTANCE_FACTOR,
+						((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR,
 						REFRESH_TRIGGER_DISTANCE * metrics.density);
 			}
 		}
@@ -331,19 +345,29 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 	public void draw(Canvas canvas) {
 		//Log.i("lxy","draw(Canvas canvas)");
 		super.draw(canvas);
-        mProgressBar.draw(canvas);
-        mHeadview.draw(canvas);
+
+		if (enableTopProgressBar) {
+			mTopProgressBar.draw(canvas);
+		}
+		// refreshing while progressbar is disabled. redraw the headview until refreshing complete
+		else if (isRefreshing()) {
+			postInvalidate();
+		}
+
+		mHeadview.draw(canvas);
 	}
-
-
 
 	@Override
 	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.v("lxy","CustomSwipeRefreshLayout.onLayout()");
-		final int width =  getMeasuredWidth();
+		Log.v("lxy", "CustomSwipeRefreshLayout.onLayout()");
+		final int width = getMeasuredWidth();
 		final int height = getMeasuredHeight();
-		mProgressBar.setBounds(0, 0, width, mProgressBarHeight);
-		mHeadview.setBounds(0,0,width,0);
+		if (enableTopProgressBar) {
+			mTopProgressBar.setBounds(0, 0, width, mProgressBarHeight);
+		} else {
+			mTopProgressBar.setBounds(0, 0, 0, 0);
+		}
+		mHeadview.setBounds(0, 0, width, 0);
 
 		if (getChildCount() == 0) {
 			return;
@@ -354,6 +378,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		final int childWidth = width - getPaddingLeft() - getPaddingRight();
 		final int childHeight = height - getPaddingTop() - getPaddingBottom();
 		child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
+
+		Log.i("lxy", "child.layout(" + childLeft + "," + childTop + ", " + childLeft + childWidth + ", " + childTop + childHeight + ");");
 	}
 
 	@Override
@@ -375,7 +401,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
 	/**
 	 * @return Whether it is possible for the child view of this layout to
-	 *         scroll up. Override this if the child view is a custom view.
+	 * scroll up. Override this if the child view is a custom view.
 	 */
 	public boolean canChildScrollUp() {
 		if (android.os.Build.VERSION.SDK_INT < 14) {
@@ -418,8 +444,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		final int action = event.getAction();
 		boolean handled = false;
 
-
-
 		switch (action) {
 			case MotionEvent.ACTION_DOWN:
 				mCurrPercentage = 0;
@@ -433,29 +457,30 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 					float yDiff = eventY - mDownEvent.getY();
 					if (yDiff > mTouchSlop) {
 
-                        float offsetTop = yDiff;
+						float offsetTop = (yDiff - mTouchSlop) * SWIPE_DOMP_FACTOR;
 
 						// User velocity passed min velocity; trigger a refresh
-						if (yDiff > mDistanceToTriggerSync) {
+						if (offsetTop > mDistanceToTriggerSync) {
 							// User movement passed distance; trigger a refresh
 							refreshFlag = true;
-							handled = true;
+							//handled = true;
 							removeCallbacks(mCancel);
-							//break;
 						} else {
 							refreshFlag = false;
 							// Just track the user's movement
+
 							setTriggerPercentage(
 									mAccelerateInterpolator.getInterpolation(
-											yDiff / mDistanceToTriggerSync));
-							//float offsetTop = yDiff;
+											offsetTop / mDistanceToTriggerSync));
+
+							/*
 							if (mPrevY > eventY) {
 								offsetTop = yDiff - mTouchSlop;
 							}
-
+							*/
 							//updateContentOffsetTop((int) (offsetTop));
 
-							if (mPrevY > eventY && (mTarget.getTop() < mTouchSlop)) {
+							if (mPrevY > eventY && (mTarget.getTop() < 1)) {
 								// If the user puts the view back at the top, we
 								// don't need to. This shouldn't be considered
 								// cancelling the gesture as the user can restart from the top.
@@ -464,16 +489,17 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 								updatePositionTimeout();
 							}
 
-                        }
-							mPrevY = event.getY();
-							handled = true;
-                            updateContentOffsetTop((int) (offsetTop)/2);
+						}
+						mPrevY = event.getY();
+						handled = true;
+						//Log.i("lxy","offsetTop = " + offsetTop);
+						updateContentOffsetTop((int) (offsetTop));
 
 					}
 				}
 				break;
 			case MotionEvent.ACTION_UP:
-				if(refreshFlag) {
+				if (refreshFlag) {
 					startRefresh();
 					refreshFlag = false;
 					handled = true;
@@ -493,15 +519,14 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 	private void startRefresh() {
 		removeCallbacks(mCancel);
 		mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_REFRESHING);
+		mHeadview.tryToUpdateLastUpdateTime();
 		setRefreshing(true);
 		mListener.onRefresh();
 	}
 
-
-
 	private void updateContentOffsetTop(int targetTop) {
 		final int currentTop = mTarget.getTop();
-        /*
+	    /*
 		if (targetTop > mDistanceToTriggerSync) {
 			targetTop = (int) mDistanceToTriggerSync;
 		} else if (targetTop < 0) {
@@ -509,9 +534,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		}
 		*/
 
-        if (targetTop < 0) {
-            targetTop = 0;
-        }
+		if (targetTop < 0) {
+			targetTop = 0;
+		}
 
 		setTargetOffsetTopAndBottom(targetTop - currentTop);
 	}
@@ -519,9 +544,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 	private void setTargetOffsetTopAndBottom(int offset) {
 		mTarget.offsetTopAndBottom(offset);
 		mCurrentTargetOffsetTop = mTarget.getTop();
-
-		//update CustomSwipeRefreshLayout
-		mHeadview.updateHeight(mTarget.getTop(),false);
+		//Log.i("lxy","(mTarget.getTop() = " + mTarget.getTop() + ", mDistanceToTriggerSync = " +  mDistanceToTriggerSync);
+		mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, false);
 	}
 
 	private void updatePositionTimeout() {

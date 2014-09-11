@@ -52,7 +52,7 @@ public class MainActivity extends SampleActivityBase {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
+	    //setContentView(new CustomSwipeRefreshDemoView(getApplicationContext()));
 
     }
 
@@ -73,6 +73,7 @@ public class MainActivity extends SampleActivityBase {
 		SwipeRefreshLayoutBasicFragment fragment = new SwipeRefreshLayoutBasicFragment();
 		transaction.replace(R.id.sample_content_fragment, fragment);
 		transaction.commit();
+
 	}
 
 	@Override
@@ -124,6 +125,7 @@ public class MainActivity extends SampleActivityBase {
     /** Create a chain of targets that will receive log data */
     @Override
     public void initializeLogging() {
+
         // Wraps Android's native log framework.
         LogWrapper logWrapper = new LogWrapper();
         // Using Log, front-end to the logging chain, emulates android.util.log method signatures.
@@ -139,5 +141,6 @@ public class MainActivity extends SampleActivityBase {
         msgFilter.setNext(logFragment.getLogView());
 
         Log.i(TAG, "Ready");
+
     }
 }

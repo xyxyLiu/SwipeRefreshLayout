@@ -33,6 +33,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.android.common.view.CustomSwipeRefreshLayout;
+
 import java.util.List;
 
 /**
@@ -85,17 +86,86 @@ public class SwipeRefreshLayoutBasicFragment extends Fragment {
 
         // Retrieve the SwipeRefreshLayout and ListView instances
         mSwipeRefreshLayout = (CustomSwipeRefreshLayout) view.findViewById(R.id.swiperefresh);
+	    mSwipeRefreshLayout.enableTopProgressBar(true);
+
 
         // BEGIN_INCLUDE (change_colors)
         // Set the color scheme of the SwipeRefreshLayout by providing 4 color resource ids
         mSwipeRefreshLayout.setColorScheme(
-                R.color.swipe_color_1, R.color.swipe_color_2,
-                R.color.swipe_color_3, R.color.swipe_color_4);
+                R.color.swiperefresh_color_1, R.color.swiperefresh_color_2,
+                R.color.swiperefresh_color_3, R.color.swiperefresh_color_4);
         // END_INCLUDE (change_colors)
 
         // Retrieve the ListView
         mListView = (ListView) view.findViewById(android.R.id.list);
 
+	    /*
+	    ViewPager mViewPager = (ViewPager)view.findViewById(R.id.viewpager);
+	    PagerTitleStrip mPagerTitleStrip = (PagerTitleStrip)view.findViewById(R.id.pagertitle);
+
+
+	    mListAdapter = new ArrayAdapter<String>(
+			    getActivity(),
+			    android.R.layout.simple_list_item_1,
+			    android.R.id.text1,
+			    Cheeses.randomList(LIST_ITEM_COUNT));
+
+	    // Set the adapter between the ListView and its backing data.
+	    //mListView.setAdapter(mListAdapter);
+
+	    //将要分页显示的View装入数组中
+	    LayoutInflater mLi = LayoutInflater.from(getActivity().getApplicationContext());
+	    ListView view1 = (ListView)mLi.inflate(R.layout.onelistview, null);
+	    ListView view2 = (ListView)mLi.inflate(R.layout.onelistview, null);
+	    ListView view3 =(ListView) mLi.inflate(R.layout.onelistview, null);
+	    view1.setAdapter(mListAdapter);
+	    view2.setAdapter(mListAdapter);
+	    view3.setAdapter(mListAdapter);
+
+	    //每个页面的Title数据
+	    final ArrayList<View> views = new ArrayList<View>();
+	    views.add(view1);
+	    views.add(view2);
+	    views.add(view3);
+
+
+	    final ArrayList<String> titles = new ArrayList<String>();
+	    titles.add("tab1");
+	    titles.add("tab2");
+	    titles.add("tab3");
+
+	    //填充ViewPager的数据适配器
+	    PagerAdapter mPagerAdapter = new PagerAdapter() {
+
+		    @Override
+		    public boolean isViewFromObject(View arg0, Object arg1) {
+			    return arg0 == arg1;
+		    }
+
+		    @Override
+		    public int getCount() {
+			    return views.size();
+		    }
+
+		    @Override
+		    public void destroyItem(View container, int position, Object object) {
+			    ((ViewPager)container).removeView(views.get(position));
+		    }
+
+		    @Override
+		    public CharSequence getPageTitle(int position) {
+			    return titles.get(position);
+		    }
+
+		    @Override
+		    public Object instantiateItem(View container, int position) {
+			    ((ViewPager)container).addView(views.get(position));
+			    return views.get(position);
+		    }
+	    };
+
+	    mViewPager.setAdapter(mPagerAdapter);
+*/
         return view;
     }
     // END_INCLUDE (inflate_view)
@@ -117,6 +187,11 @@ public class SwipeRefreshLayoutBasicFragment extends Fragment {
 
         // Set the adapter between the ListView and its backing data.
         mListView.setAdapter(mListAdapter);
+
+
+
+
+
 
         // BEGIN_INCLUDE (setup_refreshlistener)
         /**
