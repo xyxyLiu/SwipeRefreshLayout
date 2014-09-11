@@ -1,13 +1,13 @@
 CustomSwipeRefreshLayout
 ========================
 
-CustomSwipeRefreshLayout is one modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headviews, refresh animations.
+CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headviews with custom animations.
 
-swipe the CustomSwipeRefreshLayout:
+swipe the CustomSwipeRefreshLayout：
 ![image](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/f-layout/website/SwipeRefreshStateScreenShot.png)
 
-release the CustomSwipeRefreshLayout:
+release the CustomSwipeRefreshLayout：
 ![image](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/f-layout/website/ReleaseRefreshStateScreenShot.png)
 
-refresh the CustomSwipeRefreshLayout
+refresh the CustomSwipeRefreshLayout：
 ![image](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/f-layout/website/RefreshStateScreenShot.png)
