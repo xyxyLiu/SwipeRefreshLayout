@@ -182,7 +182,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
 	public void updateHeight(int height, int distanceToTriggerSync, boolean changeHeightOnly) {
 
 		mBounds.bottom = height;
-		//Log.i("lxy","mBounds.bottom = " + mBounds.bottom);
+		//Log.i("lxy","changeHeightOnly = " + changeHeightOnly);
 		if (changeHeightOnly) {
 			invalidateView();
 			return;

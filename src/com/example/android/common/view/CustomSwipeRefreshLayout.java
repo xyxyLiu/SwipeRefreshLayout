@@ -109,10 +109,47 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			if (offset + currentTop < 0) {
 				offset = 0 - currentTop;
 			}
-			setTargetOffsetTopAndBottom(offset);
-			mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, true);
+			setTargetOffsetTopAndBottom(offset,true);
 		}
 	};
+
+
+	private final Animation mAnimateToTrigerPosition = new Animation() {
+		@Override
+		public void applyTransformation(float interpolatedTime, Transformation t) {
+			int targetTop = 0;
+			if (mFrom > mDistanceToTriggerSync) {
+				targetTop = (mFrom + (int) ((mDistanceToTriggerSync - mFrom) * interpolatedTime));
+			}
+			int offset = targetTop - mTarget.getTop();
+			final int currentTop = mTarget.getTop();
+			if (offset + currentTop < 0) {
+				offset = 0 - currentTop;
+			}
+			setTargetOffsetTopAndBottom(offset,true);
+		}
+	};
+
+	private void animateOffsetToTrigerPosition(int from, AnimationListener listener) {
+		mFrom = from;
+		mAnimateToTrigerPosition.reset();
+		mAnimateToTrigerPosition.setDuration(mMediumAnimationDuration);
+		mAnimateToTrigerPosition.setAnimationListener(listener);
+		mAnimateToTrigerPosition.setInterpolator(mDecelerateInterpolator);
+		mTarget.startAnimation(mAnimateToTrigerPosition);
+	}
+
+	private final Runnable mReturnToTrigerPosition = new Runnable() {
+
+		@Override
+		public void run() {
+			animateOffsetToTrigerPosition(mCurrentTargetOffsetTop + getPaddingTop(),
+					null);
+		}
+
+	};
+
+
 
 	private Animation mShrinkTrigger = new Animation() {
 		@Override
@@ -281,6 +318,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 				} else {
 					postInvalidate();
 				}
+				mReturnToTrigerPosition.run();
+
 			} else {
 				if (enableTopProgressBar) {
 					mTopProgressBar.stop();
@@ -333,7 +372,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		if (mDistanceToTriggerSync == -1) {
 			if (getParent() != null && ((View) getParent()).getHeight() > 0) {
 				final DisplayMetrics metrics = getResources().getDisplayMetrics();
-				Log.i("lxy" , "parent.height = " + ((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR + ", REFRESH_TRIGGER_DISTANCE * metrics.density = " + REFRESH_TRIGGER_DISTANCE * metrics.density);
+				//Log.i("lxy" , "parent.height = " + ((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR + ", REFRESH_TRIGGER_DISTANCE * metrics.density = " + REFRESH_TRIGGER_DISTANCE * metrics.density);
 				mDistanceToTriggerSync = (int) Math.min(
 						((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR,
 						REFRESH_TRIGGER_DISTANCE * metrics.density);
@@ -538,14 +577,14 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 			targetTop = 0;
 		}
 
-		setTargetOffsetTopAndBottom(targetTop - currentTop);
+		setTargetOffsetTopAndBottom(targetTop - currentTop, false);
 	}
 
-	private void setTargetOffsetTopAndBottom(int offset) {
+	private void setTargetOffsetTopAndBottom(int offset,boolean changeHeightOnly) {
 		mTarget.offsetTopAndBottom(offset);
 		mCurrentTargetOffsetTop = mTarget.getTop();
 		//Log.i("lxy","(mTarget.getTop() = " + mTarget.getTop() + ", mDistanceToTriggerSync = " +  mDistanceToTriggerSync);
-		mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, false);
+		mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, changeHeightOnly);
 	}
 
 	private void updatePositionTimeout() {
