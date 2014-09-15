@@ -326,6 +326,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 				} else {
 					postInvalidate();
 				}
+                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_COMPLETE);
 				mReturnToStartPosition.run();
 			}
 		}
@@ -475,7 +476,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 		// Nope.
 	}
 
-	private boolean refreshFlag = false;
+	private boolean toRefreshFlag = false;
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -488,24 +489,43 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 				mCurrPercentage = 0;
 				mDownEvent = MotionEvent.obtain(event);
 				mPrevY = mDownEvent.getY();
-				refreshFlag = false;
+                toRefreshFlag = false;
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if (mDownEvent != null && !mReturningToStart) {
 					final float eventY = event.getY();
 					float yDiff = eventY - mDownEvent.getY();
-					if (yDiff > mTouchSlop) {
+
+					if (yDiff > mTouchSlop || yDiff < -mTouchSlop) {
 
 						float offsetTop = (yDiff - mTouchSlop) * SWIPE_DOMP_FACTOR;
 
+                        if(isRefreshing())
+                        {
+                            //Log.v("lxy","if(isRefreshing())");
+                            if(offsetTop < 0)
+                            {
+                                setTargetOffsetTopAndBottom((int)((eventY - mPrevY)),true);
+                            }
+
+                            mPrevY = event.getY();
+                            handled = true;
+                            break;
+                        }
+
+                        if( yDiff < -mTouchSlop)
+                        {
+                            handled = false;
+                            break;
+                        }
 						// User velocity passed min velocity; trigger a refresh
 						if (offsetTop > mDistanceToTriggerSync) {
 							// User movement passed distance; trigger a refresh
-							refreshFlag = true;
+							toRefreshFlag = true;
 							//handled = true;
 							removeCallbacks(mCancel);
 						} else {
-							refreshFlag = false;
+							toRefreshFlag = false;
 							// Just track the user's movement
 
 							setTriggerPercentage(
@@ -538,9 +558,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 				}
 				break;
 			case MotionEvent.ACTION_UP:
-				if (refreshFlag) {
+				if (toRefreshFlag) {
 					startRefresh();
-					refreshFlag = false;
+					toRefreshFlag = false;
 					handled = true;
 					break;
 				}
