@@ -6,7 +6,7 @@
               android:gravity="bottom">
 
     <RelativeLayout
-            android:id="@+id/xlistview_header_content"
+            android:id="@+id/default_header_content"
             android:layout_height="40dp"
             android:layout_width="fill_parent"
             android:layout_marginTop="10dp"
@@ -14,27 +14,27 @@
             android:paddingLeft="10dp">
 
         <LinearLayout
-                android:id="@+id/xlistview_header_text"
+                android:id="@+id/default_image_view"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-            <!-- 提示 -->
+            <!-- text -->
 
             <TextView
-                    android:id="@+id/xlistview_header_hint_textview"
+                    android:id="@+id/default_header_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
                     android:textSize="12sp" />
 
-            <!-- 最近更新 -->
+            <!-- last update -->
 
             <TextView
                     android:layout_marginTop="2dp"
-                    android:id="@+id/xlistview_header_time"
+                    android:id="@+id/default_header_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#999999"
@@ -42,24 +42,24 @@
         </LinearLayout>
 
         <FrameLayout
-                android:layout_toLeftOf="@+id/xlistview_header_text"
+                android:layout_toLeftOf="@+id/default_image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true">
 
-            <!-- 箭头 -->
+            <!-- arrow -->
 
             <ImageView
-                    android:id="@+id/xlistview_header_arrow"
+                    android:id="@+id/default_header_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/pulltorefresh" />
 
-            <!-- 进度条 -->
+            <!-- progressbar -->
 
             <ProgressBar
-                    android:id="@+id/xlistview_header_progressbar"
+                    android:id="@+id/default_header_progressbar"
                     style="@android:style/Widget.ProgressBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
