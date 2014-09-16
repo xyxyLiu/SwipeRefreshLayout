@@ -5,5 +5,4 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 The following screenshots shows the default refresh headview with animations:
 
 swipe/release/refresh the CustomSwipeRefreshLayout:
-
-![image](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/f-layout/website/CSF_DEMO.png)
+![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/CSF_DEMO.png)
