@@ -10,6 +10,10 @@
         <option name="packageNamePattern" value="com.example.android.swiperefreshlayoutbasic" />
         <option name="pid" value="" />
       </filter>
+      <filter>
+        <option name="name" value="app: reginald.swiperefresh" />
+        <option name="packageNamePattern" value="reginald.swiperefresh" />
+      </filter>
     </filters>
   </component>
   <component name="AndroidLayoutPreviewToolWindow">
@@ -25,8 +29,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="applyTransformation" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.android.swiperefreshlayoutbasic" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: reginald.swiperefresh" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a3cba5f-5a65-4e27-ade2-a810984d6069" name="Default" comment="" />
@@ -52,593 +55,128 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="CustomSwipeRefreshLayout.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshLayout.java">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.5689654" vertical-offset="6153" max-vertical-offset="10184">
-              <caret line="330" column="27" selection-start-line="330" selection-start-column="27" selection-end-line="330" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1225" max-vertical-offset="13072">
+              <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3683#4192#0" expanded="true" />
-                <element signature="e#4188#4189#0" expanded="true" />
-                <element signature="e#4231#4473#0" expanded="true" />
-                <element signature="e#4469#4470#0" expanded="true" />
-                <element signature="e#4542#4775#0" expanded="true" />
-                <element signature="e#4771#4772#0" expanded="true" />
-                <element signature="e#4838#4962#0" expanded="true" />
-                <element signature="e#4958#4959#0" expanded="true" />
+                <element signature="e#3848#4422#0" expanded="true" />
+                <element signature="e#4415#4416#0" expanded="true" />
+                <element signature="e#4481#5062#0" expanded="true" />
+                <element signature="e#5055#5056#0" expanded="true" />
+                <element signature="e#5546#5738#0" expanded="true" />
+                <element signature="e#5730#5731#0" expanded="true" />
+                <element signature="e#5781#6065#0" expanded="true" />
+                <element signature="e#6058#6059#0" expanded="true" />
+                <element signature="e#6137#6418#0" expanded="true" />
+                <element signature="e#6411#6412#0" expanded="true" />
+                <element signature="e#6484#6638#0" expanded="true" />
+                <element signature="e#6631#6632#0" expanded="true" />
+                <element signature="e#6693#6948#0" expanded="true" />
+                <element signature="e#6940#6941#0" expanded="true" />
+                <element signature="e#7073#7928#0" expanded="true" />
+                <element signature="e#7920#7921#0" expanded="true" />
+                <element signature="e#10832#10833#0" expanded="true" />
+                <element signature="e#10868#10869#0" expanded="true" />
+                <element signature="e#12414#12415#0" expanded="true" />
+                <element signature="e#12450#12451#0" expanded="true" />
+                <element signature="e#13400#13401#0" expanded="true" />
+                <element signature="e#13434#13435#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomSwipeRefreshHeadview.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshHeadview.java">
+      <file leaf-file-name="CustomDefaultHeadViewLayout.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomDefaultHeadViewLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76" vertical-offset="7809" max-vertical-offset="8721">
-              <caret line="424" column="0" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="976" max-vertical-offset="2755">
+              <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2491#2492#0" expanded="true" />
-                <element signature="e#2559#2560#0" expanded="true" />
-                <element signature="e#10653#10654#0" expanded="true" />
-                <element signature="e#10700#10701#0" expanded="true" />
-                <element signature="e#10769#10770#0" expanded="true" />
-                <element signature="e#10814#10815#0" expanded="true" />
-                <element signature="e#10882#10883#0" expanded="true" />
-                <element signature="e#10930#10931#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Animation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/animation/Animation.java">
+      <file leaf-file-name="CustomSwipeRefreshHeadview.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshHeadview.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="10348" max-vertical-offset="20463">
-              <caret line="603" column="28" selection-start-line="603" selection-start-column="16" selection-end-line="603" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1307" max-vertical-offset="4256">
+              <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2843#2844#0" expanded="true" />
+                <element signature="e#2919#2920#0" expanded="true" />
+                <element signature="e#4543#4544#0" expanded="true" />
+                <element signature="e#4593#4594#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="CustomSwipeProgressBar.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeProgressBar.java">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.137931" vertical-offset="4512" max-vertical-offset="5358">
-              <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="5415">
+              <caret line="77" column="24" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4395#4396#0" expanded="true" />
+                <element signature="e#4445#4446#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomSwipeRefreshDemoView.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="2584">
+              <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2323#2555#0" expanded="true" />
+                <element signature="e#2544#2545#0" expanded="true" />
+                <element signature="e#2849#2850#0" expanded="true" />
+                <element signature="e#2900#2901#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.08" vertical-offset="0" max-vertical-offset="266">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo_list_item.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/demo_list_item.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.50554323" vertical-offset="0" max-vertical-offset="451">
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="832" max-vertical-offset="1159">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewCompat.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/support/v4/view/ViewCompat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11917" max-vertical-offset="19513">
-              <caret line="769" column="48" selection-start-line="769" selection-start-column="23" selection-end-line="769" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomInterpolator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomInterpolator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="1672">
-              <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SlidingTabLayout.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/SlidingTabLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="753" max-vertical-offset="5377">
-              <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewGroup.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.5" vertical-offset="456" max-vertical-offset="50654">
-              <caret line="103" column="6" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="6" />
-              <folding>
-                <element signature="docComment;field#DEBUG_DRAW#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#mDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#mChildTransformation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#mInvalidationTransformation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#6032#6091#0" expanded="false" />
-                <element signature="e#6281#6340#0" expanded="false" />
-                <element signature="e#6433#6492#0" expanded="false" />
-                <element signature="docComment;field#mGroupFlags#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#7278#7753#0" expanded="false" />
-                <element signature="docComment;field#mLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_CLIP_CHILDREN#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_USE_CHILD_DRAWING_ORDER#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_SUPPORT_STATIC_TRANSFORMATIONS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_ADD_STATES_FROM_CHILDREN#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_ALWAYS_DRAWN_WITH_CACHE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_CHILDREN_DRAWN_WITH_CACHE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_NOTIFY_CHILDREN_ON_DRAWABLE_STATE_CHANGE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FOCUS_BEFORE_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FOCUS_AFTER_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FOCUS_BLOCK_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#DESCENDANT_FOCUSABILITY_FLAGS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_DISALLOW_INTERCEPT#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_SPLIT_MOTION_EVENTS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#FLAG_LAYOUT_MODE_WAS_EXPLICITLY_SET#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#mPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#PERSISTENT_NO_CACHE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#PERSISTENT_ANIMATION_CACHE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#PERSISTENT_SCROLLING_CACHE#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#PERSISTENT_ALL_CACHES#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#LAYOUT_MODE_CLIP_BOUNDS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#LAYOUT_MODE_OPTICAL_BOUNDS#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#LAYOUT_MODE_DEFAULT#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#CLIP_TO_PADDING_MASK#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#ViewGroup#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#ViewGroup#2;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#21702#22057#0" expanded="false" />
-                <element signature="docComment;method#setDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#handleFocusGainInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#handleFocusGainInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestChildFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#focusableViewAvailable#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#24261#24340#0" expanded="false" />
-                <element signature="e#24466#24538#0" expanded="false" />
-                <element signature="docComment;method#showContextMenuForChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#startActionModeForChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#focusSearch#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#25936#26003#0" expanded="false" />
-                <element signature="docComment;method#requestChildRectangleOnScreen#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onRequestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onRequestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onRequestSendAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#childHasTransientStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchUnhandledMove#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchUnhandledMove#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#clearChildFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#clearFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#clearFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#unFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#unFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getFocusedChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#hasFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#findFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#hasFocusable#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#hasFocusable#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addFocusables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addFocusables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#33033#33103#0" expanded="false" />
-                <element signature="method#findViewsWithText#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#findViewByAccessibilityIdTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#findViewByAccessibilityIdTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchWindowFocusChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchWindowFocusChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addTouchables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addTouchables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#makeOptionalFitsSystemWindows#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#makeOptionalFitsSystemWindows#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchDisplayHint#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchDisplayHint#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onChildVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onChildVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#37132#37210#0" expanded="false" />
-                <element signature="docComment;method#dispatchVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchWindowVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchWindowVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchConfigurationChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchConfigurationChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#recomputeViewAttributes#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchCollectViewAttributes#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#bringChildToFront#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getLocalPoint#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchDragEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#42739#42808#0" expanded="false" />
-                <element signature="e#43162#43233#0" expanded="false" />
-                <element signature="method#findFrontmostDroppableChildAt#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#notifyChildOfDrag#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchWindowSystemUiVisiblityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchSystemUiVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#updateLocalSystemUiVisibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchKeyEventPreIme#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchKeyEventPreIme#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchKeyEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchKeyEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchKeyShortcutEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchKeyShortcutEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchTrackballEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchTrackballEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchHoverEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#52459#52500#0" expanded="false" />
-                <element signature="method#dispatchHoverEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#52936#53018#0" expanded="false" />
-                <element signature="e#54076#54137#0" expanded="false" />
-                <element signature="e#57540#57583#0" expanded="false" />
-                <element signature="e#59031#59074#0" expanded="false" />
-                <element signature="method#exitHoverTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#cancelHoverTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#hasHoveredChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addChildrenForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onInterceptHoverEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#obtainMotionEventNoHistoryOrSelf#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchGenericFocusedEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchGenericFocusedEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchTransformedGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchTransformedGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#68916#68983#0" expanded="false" />
-                <element signature="e#69843#69911#0" expanded="false" />
-                <element signature="e#70989#71055#0" expanded="false" />
-                <element signature="e#71455#71498#0" expanded="false" />
-                <element signature="e#72381#72435#0" expanded="false" />
-                <element signature="e#73567#73612#0" expanded="false" />
-                <element signature="e#74361#74435#0" expanded="false" />
-                <element signature="docComment;method#resetTouchState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetTouchState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetCancelNextUpFlag#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetCancelNextUpFlag#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#clearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#clearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#cancelAndClearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#cancelAndClearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getTouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getTouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addTouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addTouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#removePointersFromTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removePointersFromTouchTargets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#cancelTouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#canViewReceivePointerEvents#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#canViewReceivePointerEvents#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isTransformedTouchPointInView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#isTransformedTouchPointInView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchTransformedTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchTransformedTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#82727#82812#0" expanded="false" />
-                <element signature="e#83531#83612#0" expanded="false" />
-                <element signature="e#83780#83859#0" expanded="false" />
-                <element signature="docComment;method#setMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#86562#86636#0" expanded="false" />
-                <element signature="docComment;method#isMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestDisallowInterceptTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onInterceptTouchEvent#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#requestFocus#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onRequestFocusInDescendants#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onRequestFocusInDescendants#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchStartTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchStartTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchFinishTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchFinishTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchScreenStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchPopulateAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onInitializeAccessibilityNodeInfoInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onInitializeAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#97127#97193#0" expanded="false" />
-                <element signature="method#resetSubtreeAccessibilityStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#98203#98269#0" expanded="false" />
-                <element signature="docComment;method#internalSetPadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#internalSetPadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchSaveInstanceState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchSaveInstanceState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchFreezeSelfOnly#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchRestoreInstanceState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchRestoreInstanceState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchThawSelfOnly#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setChildrenDrawingCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setChildrenDrawingCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onAnimationStart#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onAnimationEnd#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#createSnapshot#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isLayoutModeOptical#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#computeOpticalInsets#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#fillRect#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#drawCorner#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dipsToPixels#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#drawRectCorners#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#fillDifference#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onDebugDrawMargins#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onDebugDraw#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onDebugDraw#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getOverlay#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getOverlay#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildDrawingOrder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchGetDisplayList#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getClipChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setClipChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setClipChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setClipToPadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchSetSelected#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchSetSelected#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#dispatchSetActivated#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchSetActivated#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#dispatchSetPressed#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#120562#120616#0" expanded="false" />
-                <element signature="method#dispatchCancelPendingInputEvents#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setStaticTransformationsEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildStaticTransformation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getChildTransformation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#findViewTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#findViewTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#findViewWithTagTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#findViewWithTagTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#findViewByPredicateTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#findViewByPredicateTraversal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addView#2;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#updateViewLayout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#checkLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onChildViewAdded#0;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onChildViewRemoved#0;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setOnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onViewAdded#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onViewAdded#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onViewRemoved#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onViewRemoved#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#clearCachedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addViewInLayout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addViewInLayout#1;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#cleanupLayoutState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#133120#133193#0" expanded="false" />
-                <element signature="method#addInArray#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#138139#138217#0" expanded="false" />
-                <element signature="method#removeView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeViewAt#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeViews#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeViewInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeViewInternal#1;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeViewsInternal#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeAllViews#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#removeDetachedView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#158692#158763#0" expanded="false" />
-                <element signature="e#161616#161692#0" expanded="false" />
-                <element signature="docComment;method#invalidateChildFast#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#invalidateChildFast#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#166996#167062#0" expanded="false" />
-                <element signature="docComment;method#invalidateChildInParentFast#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#offsetDescendantRectToMyCoords#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#offsetDescendantRectToMyCoords#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#offsetRectIntoDescendantCoords#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#offsetRectIntoDescendantCoords#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#offsetRectBetweenParentAndChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#170776#170840#0" expanded="false" />
-                <element signature="docComment;method#offsetChildrenTopAndBottom#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildVisibleRect#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#172299#172382#0" expanded="false" />
-                <element signature="method#layout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onLayout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#startLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#scheduleLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setAnimationCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isAlwaysDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setAlwaysDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#isChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#isChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setBooleanFlag#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#182045#182441#0" expanded="false" />
-                <element signature="docComment;method#setPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#invalidateInheritedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#invalidateInheritedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getLayoutMode#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setLayoutMode#1;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setLayoutMode#1;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#generateLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#generateLayoutParams#1;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#debug#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#debug#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#indexOfChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#indexOfChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildCount#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildAt#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getChildAt#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#measureChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#measureChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#measureChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#measureChild#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#measureChildWithMargins#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#measureChildWithMargins#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getChildMeasureSpec#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getChildMeasureSpec#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#194801#194854#0" expanded="false" />
-                <element signature="e#195373#195430#0" expanded="false" />
-                <element signature="e#195663#195716#0" expanded="false" />
-                <element signature="e#196248#196307#0" expanded="false" />
-                <element signature="e#196502#196559#0" expanded="false" />
-                <element signature="docComment;method#clearDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#clearDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addDisappearingView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#addDisappearingView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#finishAnimatingView#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#198606#198681#0" expanded="false" />
-                <element signature="docComment;method#isViewTransitioning#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#startViewTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#startViewTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#endViewTransition#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#201894:202878" expanded="false" />
-                <element signature="method#startTransition#0;class#201894:202878" expanded="false" />
-                <element signature="e#202099#202176#0" expanded="false" />
-                <element signature="method#endTransition#0;class#201894:202878" expanded="false" />
-                <element signature="docComment;method#suppressLayout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#suppressLayout#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isLayoutSuppressed#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#gatherTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#gatherTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#fitSystemWindows#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getLayoutAnimationListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#drawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#jumpDrawablesToCurrentState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onCreateDrawableState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setAddStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setAddStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#addStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#childDrawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#childDrawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setLayoutAnimationListener#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#requestTransitionStart#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#requestTransitionStart#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveRtlPropertiesIfNeeded#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveRtlPropertiesIfNeeded#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveTextDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveTextDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveTextAlignment#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveTextAlignment#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolvePadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolvePadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveDrawables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveDrawables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetResolvedLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetResolvedLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetResolvedTextDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetResolvedTextDirection#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetResolvedTextAlignment#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetResolvedTextAlignment#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetResolvedPadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetResolvedPadding#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resetResolvedDrawables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resetResolvedDrawables#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#shouldDelayChildPressedState#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onSetLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onSetLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#217772#217812#0" expanded="false" />
-                <element signature="docComment;field#width#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#218716#218942#0" expanded="false" />
-                <element signature="docComment;field#height#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#219203#219429#0" expanded="false" />
-                <element signature="docComment;field#layoutAnimationParameters#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#LayoutParams#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#LayoutParams#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#LayoutParams#1;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#LayoutParams#1;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#LayoutParams#2;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#LayoutParams#2;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#LayoutParams#3;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#LayoutParams#3;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setBaseAttributes#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setBaseAttributes#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveLayoutDirection#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveLayoutDirection#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#debug#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#debug#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onDebugDraw#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#onDebugDraw#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#sizeToString#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#sizeToString#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#leftMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#topMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#rightMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#bottomMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#startMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#endMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#DEFAULT_MARGIN_RELATIVE#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;field#mMarginFlags#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#227043#227955#1" expanded="false" />
-                <element signature="docComment;method#MarginLayoutParams#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#MarginLayoutParams#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#MarginLayoutParams#1;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#MarginLayoutParams#1;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#MarginLayoutParams#2;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#MarginLayoutParams#2;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#MarginLayoutParams#3;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#MarginLayoutParams#3;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setMarginsRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setMarginsRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#isMarginRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#setLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#setLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#getLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#resolveLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#resolveLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#239776#239861#0" expanded="false" />
-                <element signature="method#doResolveMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#240313#240396#0" expanded="false" />
-                <element signature="e#240950#241036#0" expanded="false" />
-                <element signature="docComment;method#isLayoutRtl#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;method#onDebugDraw#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#TouchTarget#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#obtain#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#recycle#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#HoverTarget#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#obtain#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#recycle#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#obtain#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#recycle#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#init#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-                <element signature="docComment;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#obtain#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#recycle#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#compareTo#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="e#251660#251723#0" expanded="false" />
-                <element signature="method#init#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#clear#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#getDebugPaint#0;class#ViewGroup#0" expanded="false" />
-                <element signature="method#drawRect#0;class#ViewGroup#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwipeRefreshLayoutBasicFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/SwipeRefreshLayoutBasicFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="3933">
-              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -664,17 +202,35 @@
         <option value="$PROJECT_DIR$/src/com/example/android/common/logger/LogFragment.java" />
         <option value="$PROJECT_DIR$/src/com/example/android/common/activities/SampleActivityBase.java" />
         <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomInterpolator.java" />
-        <option value="$PROJECT_DIR$/res/layout/fragment_sample.xml" />
         <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeProgressBar.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/anim/etao_default_swiperefresh_loading.xml" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/etao_default_swiperefresh_layout.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/MainActivity.java" />
         <option value="$PROJECT_DIR$/gen/com/example/android/swiperefreshlayoutbasic/R.java" />
-        <option value="$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/SwipeRefreshLayoutBasicFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshLayout.java" />
+        <option value="$PROJECT_DIR$/res/layout/onelistview.xml" />
+        <option value="$PROJECT_DIR$/res/layout/fragment_sample.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/android/common/view/abc.java" />
+        <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomHeadViewLayout.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomDefaultHeadViewLayout.java" />
         <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshHeadview.java" />
+        <option value="$PROJECT_DIR$/res/layout/default_swiperefresh_head_layout.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshLayout.java" />
+        <option value="$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/CustomSwipeRefreshDemoView.java" />
+        <option value="$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/SwipeRefreshLayoutBasicFragment.java" />
+        <option value="$PROJECT_DIR$/res/values/base-strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/android/demo/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/reginald/demo/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomDefaultHeadViewLayout.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshHeadview.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java" />
+        <option value="$PROJECT_DIR$/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/res/layout/demo_list_item.xml" />
       </list>
     </option>
   </component>
@@ -726,7 +282,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
+              <option name="myItemId" value="CustomSwipeRefreshLayout" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -736,77 +292,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swiperefreshlayoutbasic" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
+              <option name="myItemId" value="CustomSwipeRefreshLayout" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -820,7 +306,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
+              <option name="myItemId" value="CustomSwipeRefreshLayout" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -829,24 +315,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gen" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swiperefreshlayoutbasic" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -861,23 +329,31 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../etao4android" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="323056d352ea70fb" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="SH19XV805979" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="project.scopes" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="LayoutCode.rearrangeEntries" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.android.swiperefreshlayoutbasic" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ideaProjects\swipeDemo\res\drawable-mdpi" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.android.demo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\ideaProjects\swipeDemo\target" />
@@ -919,19 +395,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -957,6 +420,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1060,8 +536,28 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1070,22 +566,22 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23491028" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39761093" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36177474" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36215335" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34910277" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36177474" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.049488056" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28917485" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32423207" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1109,168 +605,26 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java</url>
+          <line>19</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/menu/main_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40575916" vertical-offset="92" max-vertical-offset="570">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/ViewAnimator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33246073" vertical-offset="1374" max-vertical-offset="6175">
-          <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/support/v4/app/FragmentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33246073" vertical-offset="11254" max-vertical-offset="16321">
-          <caret line="643" column="16" selection-start-line="643" selection-start-column="16" selection-end-line="643" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/logger/MessageOnlyLogFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.552356" vertical-offset="492" max-vertical-offset="874">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/logger/LogFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="1368">
-          <caret line="62" column="16" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/logger/LogView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="2261">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/os/AsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38547486" vertical-offset="9172" max-vertical-offset="11894">
-          <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/ArrayAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4720" max-vertical-offset="9082">
-          <caret line="285" column="29" selection-start-line="285" selection-start-column="29" selection-end-line="285" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/BaseAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="388" max-vertical-offset="988">
-          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/database/DataSetObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="627">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/database/DataSetObservable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="874">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files (x86)/Android/android-sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/widget/SwipeRefreshLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.28" vertical-offset="0" max-vertical-offset="2185">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files (x86)/Android/android-sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/widget/BakedBezierInterpolator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04822335" vertical-offset="0" max-vertical-offset="418">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files (x86)/Android/android-sdk/extras/android/support/v4/android-support-v4.jar!/android/support/v4/widget/SwipeProgressBar.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.56" vertical-offset="0" max-vertical-offset="988">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/MotionEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33208954" vertical-offset="30697" max-vertical-offset="64714">
-          <caret line="1645" column="22" selection-start-line="1645" selection-start-column="22" selection-end-line="1645" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33263597" vertical-offset="4078" max-vertical-offset="11723">
-          <caret line="245" column="18" selection-start-line="245" selection-start-column="8" selection-end-line="245" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/util/DisplayMetrics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8410714" vertical-offset="1885" max-vertical-offset="5510">
-          <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/Canvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6308901" vertical-offset="10570" max-vertical-offset="33592">
-          <caret line="608" column="26" selection-start-line="608" selection-start-column="26" selection-end-line="608" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/Rect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6627907" vertical-offset="3743" max-vertical-offset="10659">
           <caret line="246" column="16" selection-start-line="246" selection-start-column="16" selection-end-line="246" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/base-strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3523132" vertical-offset="0" max-vertical-offset="741">
-          <caret line="20" column="51" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/activities/SampleActivityBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="722">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/template-styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3309859" vertical-offset="362" max-vertical-offset="912">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,10 +632,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="9103" max-vertical-offset="168055">
           <caret line="622" column="11" selection-start-line="622" selection-start-column="11" selection-end-line="622" selection-end-column="11" />
-          <folding>
-            <element signature="e#24910#24911#0" expanded="false" />
-            <element signature="e#24989#24990#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59814817" vertical-offset="0" max-vertical-offset="540">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/pulltorefresh.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewRootImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33163264" vertical-offset="107011" max-vertical-offset="123576">
+          <caret line="5792" column="16" selection-start-line="5792" selection-start-column="16" selection-end-line="5792" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/ImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.14357683" vertical-offset="2679" max-vertical-offset="22534">
+          <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/drawable/Drawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33186814" vertical-offset="1635" max-vertical-offset="18449">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/LayoutInflater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7387173" vertical-offset="6263" max-vertical-offset="17005">
+          <caret line="392" column="52" selection-start-line="392" selection-start-column="48" selection-end-line="392" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/animation/Transformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33014354" vertical-offset="1926" max-vertical-offset="3059">
+          <caret line="128" column="22" selection-start-line="128" selection-start-column="15" selection-end-line="128" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3307393" vertical-offset="4912" max-vertical-offset="14744">
+          <caret line="322" column="40" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57459676" vertical-offset="0" max-vertical-offset="496">
+          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/support/v4/view/ViewCompat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11917" max-vertical-offset="19513">
+          <caret line="769" column="48" selection-start-line="769" selection-start-column="23" selection-end-line="769" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/animation/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10348" max-vertical-offset="20463">
+          <caret line="603" column="28" selection-start-line="603" selection-start-column="16" selection-end-line="603" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1292,727 +717,283 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="837" max-vertical-offset="1349">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59814817" vertical-offset="0" max-vertical-offset="540">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/SlidingTabStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="4047">
-          <caret line="75" column="29" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="2565">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/example/android/swiperefreshlayoutbasic/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="228">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fragment_sample.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.357143" vertical-offset="229" max-vertical-offset="646">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="931">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/pulltorefresh.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/etao_default_swiperefresh_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.785714" vertical-offset="855" max-vertical-offset="1463">
-          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewRootImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33163264" vertical-offset="107011" max-vertical-offset="123576">
-          <caret line="5792" column="16" selection-start-line="5792" selection-start-column="16" selection-end-line="5792" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/ImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.14357683" vertical-offset="2679" max-vertical-offset="22534">
-          <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/drawable/Drawable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33186814" vertical-offset="1635" max-vertical-offset="18449">
-          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/LayoutInflater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7387173" vertical-offset="6263" max-vertical-offset="17005">
-          <caret line="392" column="52" selection-start-line="392" selection-start-column="48" selection-end-line="392" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/LinearLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.413793" vertical-offset="449" max-vertical-offset="34618">
-          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewParent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33194155" vertical-offset="1114" max-vertical-offset="7619">
-          <caret line="82" column="22" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/swiperefreshlayoutbasic/SwipeRefreshLayoutBasicFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="3933">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5852" max-vertical-offset="36157">
+          <caret line="308" column="19" selection-start-line="308" selection-start-column="19" selection-end-line="308" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5" vertical-offset="456" max-vertical-offset="50654">
-          <caret line="103" column="6" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="6" />
-          <folding>
-            <element signature="docComment;field#DEBUG_DRAW#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#mDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#mChildTransformation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#mInvalidationTransformation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#6032#6091#0" expanded="false" />
-            <element signature="e#6281#6340#0" expanded="false" />
-            <element signature="e#6433#6492#0" expanded="false" />
-            <element signature="docComment;field#mGroupFlags#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#7278#7753#0" expanded="false" />
-            <element signature="docComment;field#mLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_CLIP_CHILDREN#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_USE_CHILD_DRAWING_ORDER#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_SUPPORT_STATIC_TRANSFORMATIONS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_ADD_STATES_FROM_CHILDREN#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_ALWAYS_DRAWN_WITH_CACHE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_CHILDREN_DRAWN_WITH_CACHE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_NOTIFY_CHILDREN_ON_DRAWABLE_STATE_CHANGE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FOCUS_BEFORE_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FOCUS_AFTER_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FOCUS_BLOCK_DESCENDANTS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#DESCENDANT_FOCUSABILITY_FLAGS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_DISALLOW_INTERCEPT#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_SPLIT_MOTION_EVENTS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_PREVENT_DISPATCH_ATTACHED_TO_WINDOW#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#FLAG_LAYOUT_MODE_WAS_EXPLICITLY_SET#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#mPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#PERSISTENT_NO_CACHE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#PERSISTENT_ANIMATION_CACHE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#PERSISTENT_SCROLLING_CACHE#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#PERSISTENT_ALL_CACHES#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#LAYOUT_MODE_CLIP_BOUNDS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#LAYOUT_MODE_OPTICAL_BOUNDS#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#LAYOUT_MODE_DEFAULT#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#CLIP_TO_PADDING_MASK#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#ViewGroup#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#ViewGroup#2;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#21702#22057#0" expanded="false" />
-            <element signature="docComment;method#setDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setDescendantFocusability#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#handleFocusGainInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#handleFocusGainInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestChildFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#focusableViewAvailable#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#24261#24340#0" expanded="false" />
-            <element signature="e#24466#24538#0" expanded="false" />
-            <element signature="docComment;method#showContextMenuForChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#startActionModeForChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#focusSearch#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#25936#26003#0" expanded="false" />
-            <element signature="docComment;method#requestChildRectangleOnScreen#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onRequestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onRequestSendAccessibilityEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onRequestSendAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#childHasTransientStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchUnhandledMove#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchUnhandledMove#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#clearChildFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#clearFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#clearFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#unFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#unFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getFocusedChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#hasFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#findFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#hasFocusable#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#hasFocusable#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addFocusables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addFocusables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#33033#33103#0" expanded="false" />
-            <element signature="method#findViewsWithText#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#findViewByAccessibilityIdTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#findViewByAccessibilityIdTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchWindowFocusChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchWindowFocusChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addTouchables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addTouchables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#makeOptionalFitsSystemWindows#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#makeOptionalFitsSystemWindows#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchDisplayHint#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchDisplayHint#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onChildVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onChildVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#37132#37210#0" expanded="false" />
-            <element signature="docComment;method#dispatchVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchWindowVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchWindowVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchConfigurationChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchConfigurationChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#recomputeViewAttributes#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchCollectViewAttributes#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#bringChildToFront#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getLocalPoint#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchDragEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#42739#42808#0" expanded="false" />
-            <element signature="e#43162#43233#0" expanded="false" />
-            <element signature="method#findFrontmostDroppableChildAt#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#notifyChildOfDrag#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchWindowSystemUiVisiblityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchSystemUiVisibilityChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#updateLocalSystemUiVisibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchKeyEventPreIme#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchKeyEventPreIme#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchKeyEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchKeyEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchKeyShortcutEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchKeyShortcutEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchTrackballEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchTrackballEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchHoverEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#52459#52500#0" expanded="false" />
-            <element signature="method#dispatchHoverEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#52936#53018#0" expanded="false" />
-            <element signature="e#54076#54137#0" expanded="false" />
-            <element signature="e#57540#57583#0" expanded="false" />
-            <element signature="e#59031#59074#0" expanded="false" />
-            <element signature="method#exitHoverTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#cancelHoverTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#hasHoveredChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addChildrenForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onInterceptHoverEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#obtainMotionEventNoHistoryOrSelf#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchGenericFocusedEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchGenericFocusedEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchTransformedGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchTransformedGenericPointerEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#68916#68983#0" expanded="false" />
-            <element signature="e#69843#69911#0" expanded="false" />
-            <element signature="e#70989#71055#0" expanded="false" />
-            <element signature="e#71455#71498#0" expanded="false" />
-            <element signature="e#72381#72435#0" expanded="false" />
-            <element signature="e#73567#73612#0" expanded="false" />
-            <element signature="e#74361#74435#0" expanded="false" />
-            <element signature="docComment;method#resetTouchState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetTouchState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetCancelNextUpFlag#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetCancelNextUpFlag#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#clearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#clearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#cancelAndClearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#cancelAndClearTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getTouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getTouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addTouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addTouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#removePointersFromTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removePointersFromTouchTargets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#cancelTouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#canViewReceivePointerEvents#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#canViewReceivePointerEvents#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isTransformedTouchPointInView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#isTransformedTouchPointInView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchTransformedTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchTransformedTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#82727#82812#0" expanded="false" />
-            <element signature="e#83531#83612#0" expanded="false" />
-            <element signature="e#83780#83859#0" expanded="false" />
-            <element signature="docComment;method#setMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#86562#86636#0" expanded="false" />
-            <element signature="docComment;method#isMotionEventSplittingEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestDisallowInterceptTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onInterceptTouchEvent#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#requestFocus#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onRequestFocusInDescendants#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onRequestFocusInDescendants#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchStartTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchStartTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchFinishTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchFinishTemporaryDetach#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchScreenStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchPopulateAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onInitializeAccessibilityNodeInfoInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onInitializeAccessibilityEventInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#97127#97193#0" expanded="false" />
-            <element signature="method#resetSubtreeAccessibilityStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#98203#98269#0" expanded="false" />
-            <element signature="docComment;method#internalSetPadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#internalSetPadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchSaveInstanceState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchSaveInstanceState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchFreezeSelfOnly#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchRestoreInstanceState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchRestoreInstanceState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchThawSelfOnly#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setChildrenDrawingCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setChildrenDrawingCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onAnimationStart#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onAnimationEnd#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#createSnapshot#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isLayoutModeOptical#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#computeOpticalInsets#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#fillRect#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#drawCorner#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dipsToPixels#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#drawRectCorners#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#fillDifference#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onDebugDrawMargins#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onDebugDraw#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onDebugDraw#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getOverlay#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getOverlay#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildDrawingOrder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchGetDisplayList#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getClipChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setClipChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setClipChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setClipToPadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchSetSelected#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchSetSelected#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#dispatchSetActivated#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchSetActivated#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#dispatchSetPressed#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#120562#120616#0" expanded="false" />
-            <element signature="method#dispatchCancelPendingInputEvents#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setStaticTransformationsEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildStaticTransformation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getChildTransformation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#findViewTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#findViewTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#findViewWithTagTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#findViewWithTagTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#findViewByPredicateTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#findViewByPredicateTraversal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addView#2;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#updateViewLayout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#checkLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onChildViewAdded#0;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onChildViewRemoved#0;class#OnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setOnHierarchyChangeListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onViewAdded#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onViewAdded#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onViewRemoved#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onViewRemoved#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#clearCachedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onAttachedToWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onDetachedFromWindow#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addViewInLayout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addViewInLayout#1;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#cleanupLayoutState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#133120#133193#0" expanded="false" />
-            <element signature="method#addInArray#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#138139#138217#0" expanded="false" />
-            <element signature="method#removeView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeViewAt#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeViews#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeViewInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeViewInternal#1;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getLayoutTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeViewsInternal#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeAllViews#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#removeDetachedView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#158692#158763#0" expanded="false" />
-            <element signature="e#161616#161692#0" expanded="false" />
-            <element signature="docComment;method#invalidateChildFast#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#invalidateChildFast#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#166996#167062#0" expanded="false" />
-            <element signature="docComment;method#invalidateChildInParentFast#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#offsetDescendantRectToMyCoords#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#offsetDescendantRectToMyCoords#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#offsetRectIntoDescendantCoords#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#offsetRectIntoDescendantCoords#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#offsetRectBetweenParentAndChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#170776#170840#0" expanded="false" />
-            <element signature="docComment;method#offsetChildrenTopAndBottom#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildVisibleRect#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#172299#172382#0" expanded="false" />
-            <element signature="method#layout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onLayout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#startLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#scheduleLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getLayoutAnimation#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setAnimationCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isAlwaysDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setAlwaysDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#isChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setChildrenDrawnWithCacheEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#isChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setChildrenDrawingOrderEnabled#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setBooleanFlag#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#182045#182441#0" expanded="false" />
-            <element signature="docComment;method#setPersistentDrawingCache#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#invalidateInheritedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#invalidateInheritedLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getLayoutMode#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setLayoutMode#1;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setLayoutMode#1;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#generateLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#generateLayoutParams#1;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#debug#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#debug#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#indexOfChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#indexOfChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildCount#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildAt#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getChildAt#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#measureChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#measureChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#measureChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#measureChild#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#measureChildWithMargins#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#measureChildWithMargins#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getChildMeasureSpec#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getChildMeasureSpec#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#194801#194854#0" expanded="false" />
-            <element signature="e#195373#195430#0" expanded="false" />
-            <element signature="e#195663#195716#0" expanded="false" />
-            <element signature="e#196248#196307#0" expanded="false" />
-            <element signature="e#196502#196559#0" expanded="false" />
-            <element signature="docComment;method#clearDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#clearDisappearingChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addDisappearingView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#addDisappearingView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#finishAnimatingView#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#198606#198681#0" expanded="false" />
-            <element signature="docComment;method#isViewTransitioning#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#startViewTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#startViewTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#endViewTransition#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#201894:202878" expanded="false" />
-            <element signature="method#startTransition#0;class#201894:202878" expanded="false" />
-            <element signature="e#202099#202176#0" expanded="false" />
-            <element signature="method#endTransition#0;class#201894:202878" expanded="false" />
-            <element signature="docComment;method#suppressLayout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#suppressLayout#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isLayoutSuppressed#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#gatherTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#gatherTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestTransparentRegion#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#fitSystemWindows#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getLayoutAnimationListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#drawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#jumpDrawablesToCurrentState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onCreateDrawableState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setAddStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setAddStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#addStatesFromChildren#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#childDrawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#childDrawableStateChanged#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setLayoutAnimationListener#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#requestTransitionStart#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#requestTransitionStart#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveRtlPropertiesIfNeeded#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveRtlPropertiesIfNeeded#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveTextDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveTextDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveTextAlignment#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveTextAlignment#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolvePadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolvePadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveDrawables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveDrawables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetResolvedLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetResolvedLayoutDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetResolvedTextDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetResolvedTextDirection#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetResolvedTextAlignment#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetResolvedTextAlignment#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetResolvedPadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetResolvedPadding#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resetResolvedDrawables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resetResolvedDrawables#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#shouldDelayChildPressedState#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onSetLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onSetLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#217772#217812#0" expanded="false" />
-            <element signature="docComment;field#width#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#218716#218942#0" expanded="false" />
-            <element signature="docComment;field#height#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#219203#219429#0" expanded="false" />
-            <element signature="docComment;field#layoutAnimationParameters#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#LayoutParams#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#LayoutParams#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#LayoutParams#1;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#LayoutParams#1;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#LayoutParams#2;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#LayoutParams#2;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#LayoutParams#3;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#LayoutParams#3;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setBaseAttributes#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setBaseAttributes#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveLayoutDirection#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveLayoutDirection#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#debug#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#debug#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onDebugDraw#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#onDebugDraw#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#sizeToString#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#sizeToString#0;class#LayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#leftMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#topMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#rightMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#bottomMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#startMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#endMargin#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#DEFAULT_MARGIN_RELATIVE#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;field#mMarginFlags#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#227043#227955#1" expanded="false" />
-            <element signature="docComment;method#MarginLayoutParams#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#MarginLayoutParams#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#MarginLayoutParams#1;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#MarginLayoutParams#1;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#MarginLayoutParams#2;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#MarginLayoutParams#2;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#MarginLayoutParams#3;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#MarginLayoutParams#3;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setMarginsRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setMarginsRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getMarginStart#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getMarginEnd#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#isMarginRelative#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#setLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#setLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#getLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#resolveLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#resolveLayoutDirection#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#239776#239861#0" expanded="false" />
-            <element signature="method#doResolveMargins#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#240313#240396#0" expanded="false" />
-            <element signature="e#240950#241036#0" expanded="false" />
-            <element signature="docComment;method#isLayoutRtl#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;method#onDebugDraw#0;class#MarginLayoutParams#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#TouchTarget#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#obtain#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#recycle#0;class#TouchTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#HoverTarget#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#obtain#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#recycle#0;class#HoverTarget#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#obtain#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#recycle#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#init#0;class#ChildListForAccessibility#0;class#ViewGroup#0" expanded="false" />
-            <element signature="docComment;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#obtain#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#recycle#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#compareTo#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="e#251660#251723#0" expanded="false" />
-            <element signature="method#init#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#clear#0;class#ViewLocationHolder#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#getDebugPaint#0;class#ViewGroup#0" expanded="false" />
-            <element signature="method#drawRect#0;class#ViewGroup#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="85426" max-vertical-offset="125324">
+          <caret line="4630" column="21" selection-start-line="4630" selection-start-column="21" selection-end-line="4630" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomInterpolator.java">
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewParent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="1672">
-          <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="140" max-vertical-offset="7619">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/widget/ProgressBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.38987342" vertical-offset="2814" max-vertical-offset="21755">
+          <caret line="192" column="13" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8409" max-vertical-offset="11723">
+          <caret line="507" column="15" selection-start-line="507" selection-start-column="15" selection-end-line="507" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/dummydata/Cheeses.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="3344">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/support/v4/app/FragmentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.200903" vertical-offset="3026" max-vertical-offset="16321">
+          <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomInterpolator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1178" max-vertical-offset="1748">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/SlidingTabLayout.java">
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/DisplayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="753" max-vertical-offset="5377">
-          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.33175355" vertical-offset="11640" max-vertical-offset="12730">
+          <caret line="642" column="25" selection-start-line="642" selection-start-column="25" selection-end-line="642" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/animation/Transformation.java">
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33014354" vertical-offset="1926" max-vertical-offset="3059">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="15" selection-end-line="128" selection-end-column="22" />
+        <state vertical-scroll-proportion="-6.8" vertical-offset="153" max-vertical-offset="570">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/graphics/Matrix.java">
+    <entry file="file://$PROJECT_DIR$/res/values/template-styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3307393" vertical-offset="4912" max-vertical-offset="14744">
-          <caret line="322" column="40" selection-start-line="322" selection-start-column="25" selection-end-line="322" selection-end-column="40" />
+        <state vertical-scroll-proportion="-6.84" vertical-offset="342" max-vertical-offset="912">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/animation/Animation.java">
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10348" max-vertical-offset="20463">
-          <caret line="603" column="28" selection-start-line="603" selection-start-column="16" selection-end-line="603" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeProgressBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.137931" vertical-offset="4512" max-vertical-offset="5358">
-          <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/support/v4/view/ViewCompat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11917" max-vertical-offset="19513">
-          <caret line="769" column="48" selection-start-line="769" selection-start-column="23" selection-end-line="769" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2280" max-vertical-offset="48260">
+          <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.418647" vertical-offset="267395" max-vertical-offset="359480">
-          <caret line="14464" column="36" selection-start-line="14464" selection-start-column="30" selection-end-line="14464" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.87410927" vertical-offset="180702" max-vertical-offset="360810">
+          <caret line="9853" column="16" selection-start-line="9853" selection-start-column="16" selection-end-line="9853" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshLayout.java">
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/values/ids.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5689654" vertical-offset="6153" max-vertical-offset="10184">
-          <caret line="330" column="27" selection-start-line="330" selection-start-column="27" selection-end-line="330" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.33136094" vertical-offset="439" max-vertical-offset="1729">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/layout/simple_list_item_2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1314102" vertical-offset="353" max-vertical-offset="893">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/default_swiperefresh_head_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0754716" vertical-offset="996" max-vertical-offset="1463">
+          <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33235294" vertical-offset="4599" max-vertical-offset="117135">
+          <caret line="248" column="20" selection-start-line="248" selection-start-column="20" selection-end-line="248" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/layout/simple_list_item_1.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.107143" vertical-offset="209" max-vertical-offset="608">
+          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/base-strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.76" vertical-offset="324" max-vertical-offset="741">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="358" max-vertical-offset="931">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3683#4192#0" expanded="true" />
-            <element signature="e#4188#4189#0" expanded="true" />
-            <element signature="e#4231#4473#0" expanded="true" />
-            <element signature="e#4469#4470#0" expanded="true" />
-            <element signature="e#4542#4775#0" expanded="true" />
-            <element signature="e#4771#4772#0" expanded="true" />
-            <element signature="e#4838#4962#0" expanded="true" />
-            <element signature="e#4958#4959#0" expanded="true" />
+            <element signature="e#944#962#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/android/common/view/CustomSwipeRefreshHeadview.java">
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomDefaultHeadViewLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76" vertical-offset="7809" max-vertical-offset="8721">
-          <caret line="424" column="0" selection-start-line="424" selection-start-column="0" selection-end-line="424" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="976" max-vertical-offset="2755">
+          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2491#2492#0" expanded="true" />
-            <element signature="e#2559#2560#0" expanded="true" />
-            <element signature="e#10653#10654#0" expanded="true" />
-            <element signature="e#10700#10701#0" expanded="true" />
-            <element signature="e#10769#10770#0" expanded="true" />
-            <element signature="e#10814#10815#0" expanded="true" />
-            <element signature="e#10882#10883#0" expanded="true" />
-            <element signature="e#10930#10931#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="5377">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4395#4396#0" expanded="true" />
+            <element signature="e#4445#4446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1225" max-vertical-offset="13072">
+          <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3848#4422#0" expanded="true" />
+            <element signature="e#4415#4416#0" expanded="true" />
+            <element signature="e#4481#5062#0" expanded="true" />
+            <element signature="e#5055#5056#0" expanded="true" />
+            <element signature="e#5546#5738#0" expanded="true" />
+            <element signature="e#5730#5731#0" expanded="true" />
+            <element signature="e#5781#6065#0" expanded="true" />
+            <element signature="e#6058#6059#0" expanded="true" />
+            <element signature="e#6137#6418#0" expanded="true" />
+            <element signature="e#6411#6412#0" expanded="true" />
+            <element signature="e#6484#6638#0" expanded="true" />
+            <element signature="e#6631#6632#0" expanded="true" />
+            <element signature="e#6693#6948#0" expanded="true" />
+            <element signature="e#6940#6941#0" expanded="true" />
+            <element signature="e#7073#7928#0" expanded="true" />
+            <element signature="e#7920#7921#0" expanded="true" />
+            <element signature="e#10832#10833#0" expanded="true" />
+            <element signature="e#10868#10869#0" expanded="true" />
+            <element signature="e#12414#12415#0" expanded="true" />
+            <element signature="e#12450#12451#0" expanded="true" />
+            <element signature="e#13400#13401#0" expanded="true" />
+            <element signature="e#13434#13435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="832" max-vertical-offset="1159">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshHeadview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="4256">
+          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2919#2920#0" expanded="true" />
+            <element signature="e#4543#4544#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="2584">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2323#2555#0" expanded="true" />
+            <element signature="e#2544#2545#0" expanded="true" />
+            <element signature="e#2849#2850#0" expanded="true" />
+            <element signature="e#2900#2901#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.08" vertical-offset="0" max-vertical-offset="266">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/demo_list_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50554323" vertical-offset="0" max-vertical-offset="451">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

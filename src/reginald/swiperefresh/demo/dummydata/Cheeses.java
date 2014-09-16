@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.common.dummydata;
+package reginald.swiperefresh.demo.dummydata;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -159,7 +159,7 @@ public class Cheeses {
 
     public static ArrayList<String> asList() {
         ArrayList<String> items = new ArrayList<String>();
-        for (int i = 0, z = CHEESES.length ; i < z ; i++) {
+        for (int i = 0, z = CHEESES.length; i < z; i++) {
             items.add(CHEESES[i]);
         }
         return items;
