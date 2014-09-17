@@ -48,7 +48,7 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
         // Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
         // Keeping the refreshing head on the top
-        mSwipeRefreshLayout.enableTopRefreshingHead(false);
+        mSwipeRefreshLayout.enableTopRefreshingHead(true);
         // Set progress bar colors
         mSwipeRefreshLayout.setColorScheme(
                 R.color.swiperefresh_color_1, R.color.swiperefresh_color_2,
@@ -101,7 +101,7 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
 
     private class DummyBackgroundTask extends AsyncTask<Void, Void, List<String>> {
 
-        static final int TASK_DURATION = 3 * 1000; // 3 seconds
+        static final int TASK_DURATION = 10 * 1000; // 3 seconds
 
         @Override
         protected List<String> doInBackground(Void... params) {

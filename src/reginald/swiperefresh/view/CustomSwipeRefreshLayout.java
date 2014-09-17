@@ -388,7 +388,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mTarget = getChildAt(1);
             mOriginalOffsetTop = mTarget.getTop() + getPaddingTop();
             mOriginalOffsetBottom = getChildAt(1).getHeight();
-            Log.i("lxy", "mOriginalOffsetBottom = " + mOriginalOffsetBottom);
+            //Log.i("lxy", "mOriginalOffsetBottom = " + mOriginalOffsetBottom);
         }
         if (mDistanceToTriggerSync == -1) {
             if (getParent() != null && ((View) getParent()).getHeight() > 0) {
@@ -467,18 +467,34 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      * scroll up. Override this if the child view is a custom view.
      */
     public boolean canChildScrollUp() {
+        boolean ret;
         if (android.os.Build.VERSION.SDK_INT < 14) {
             if (mTarget instanceof AbsListView) {
                 final AbsListView absListView = (AbsListView) mTarget;
-                return absListView.getChildCount() > 0
-                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(1)
+                ret = absListView.getChildCount() > 0
+                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
                         .getTop() < absListView.getPaddingTop());
             } else {
-                return mTarget.getScrollY() > 0;
+                ret = mTarget.getScrollY() > 0;
             }
         } else {
-            return ViewCompat.canScrollVertically(mTarget, -1);
+            ret = ViewCompat.canScrollVertically(mTarget, -1);
         }
+
+        return ret;
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (mStopInterceptFlag) {
+            //Log.v("lxy","@@ receive one mStopInterceptFlag!");
+            event.setAction(MotionEvent.ACTION_DOWN);
+            mStopInterceptFlag = false;
+        }
+
+
+        return super.dispatchTouchEvent(event);
     }
 
     @Override
@@ -488,9 +504,24 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         if (mReturningToStart && ev.getAction() == MotionEvent.ACTION_DOWN) {
             mReturningToStart = false;
         }
-        if (isEnabled() && !mReturningToStart && !canChildScrollUp()) {
-            handled = onTouchEvent(ev);
+
+        // record the first event:
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            mCurrPercentage = 0;
+            mDownEvent = MotionEvent.obtain(ev);
+            mPrevY = mDownEvent.getY();
+            mToRefreshFlag = false;
         }
+
+        if (isEnabled()) {
+            if (!mReturningToStart && !canChildScrollUp()) {
+                handled = onTouchEvent(ev);
+            } else {
+                // keep updating last Y position when the event is not intercepted!
+                mPrevY = ev.getY();
+            }
+        }
+
         return !handled ? super.onInterceptTouchEvent(ev) : handled;
     }
 
@@ -499,7 +530,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         // Nope.
     }
 
-    private boolean toRefreshFlag = false;
+    private boolean mToRefreshFlag = false;
+    private boolean mStopInterceptFlag = false;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -507,38 +539,37 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         final int action = event.getAction();
         boolean handled = false;
 
+
         switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                mCurrPercentage = 0;
-                mDownEvent = MotionEvent.obtain(event);
-                mPrevY = mDownEvent.getY();
-                toRefreshFlag = false;
-                break;
+
             case MotionEvent.ACTION_MOVE:
                 if (mDownEvent != null && !mReturningToStart) {
                     final float eventY = event.getY();
                     float yDiff = eventY - mDownEvent.getY();
+                    int curTargetTop = mTarget.getTop();
 
+                    // if yDiff is large enough to be counted as one move event
                     if (yDiff > mTouchSlop || yDiff < -mTouchSlop) {
 
-                        float offsetTop = (yDiff - mTouchSlop) * SWIPE_DOMP_FACTOR;
-
+                        // if refresh head moving with the mTarget is enabled
                         if (!enableTopRefreshingHead) {
+                            // when it is refreshing
                             if (isRefreshing()) {
-                                // scroll down while refreshing
-                                if ((yDiff - mTouchSlop) < 0) {
-                                    // when refresh head is disappear
-                                    if (mTarget.getTop() <= 0) {
+                                // scroll up
+                                if ((yDiff) < 0) {
+                                    // when the top of mTarget reach the parent top
+                                    if (curTargetTop <= 0) {
                                         mPrevY = event.getY();
                                         handled = false;
                                         updateContentOffsetTop(mOriginalOffsetTop, true);
+                                        mStopInterceptFlag = true;
                                         break;
                                     }
                                 }
-                                // scroll up while refreshing
+                                // scroll down
                                 else {
-                                    // when refresh head is disappear
-                                    if (mTarget.getTop() >= mDistanceToTriggerSync) {
+                                    // when refresh head is entirely visible
+                                    if (curTargetTop >= mDistanceToTriggerSync) {
                                         mPrevY = event.getY();
                                         handled = true;
                                         updateContentOffsetTop((int) mDistanceToTriggerSync, true);
@@ -547,59 +578,77 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                                     //setTargetOffsetTop((int)((eventY - mPrevY)),true);
                                 }
 
+                                //updateContentOffsetTop();
                                 setTargetOffsetTop((int) ((eventY - mPrevY)), true);
                                 mPrevY = event.getY();
                                 handled = true;
                                 break;
                             }
-                        } else {
-                            if (isRefreshing() && offsetTop > 0) {
+                        }
+                        // keep refresh head above mTarget when refreshing
+                        else {
+                            if (isRefreshing() && yDiff > 0) {
                                 mPrevY = event.getY();
+                                handled = false;
+                                break;
+                            }
+                            if (isRefreshing() && yDiff < 0) {
                                 handled = false;
                                 break;
                             }
                         }
 
-                        if (yDiff < -mTouchSlop) {
-                            handled = false;
-                            break;
-                        }
-                        // User velocity passed min velocity; trigger a refresh
-                        if (offsetTop > mDistanceToTriggerSync) {
+                        // curTargetTop is bigger than trigger
+                        if (curTargetTop > mDistanceToTriggerSync) {
+                            //Log.v("lxy","@@ offsetTop > mDistanceToTriggerSync");
                             // User movement passed distance; trigger a refresh
-                            toRefreshFlag = true;
+                            mToRefreshFlag = true;
                             //handled = true;
                             removeCallbacks(mCancel);
-                        } else {
-                            toRefreshFlag = false;
+                        }
+                        // curTargetTop is not bigger than trigger
+                        else {
+                            mToRefreshFlag = false;
                             // Just track the user's movement
 
                             setTriggerPercentage(
                                     mAccelerateInterpolator.getInterpolation(
-                                            offsetTop / mDistanceToTriggerSync));
+                                            curTargetTop / mDistanceToTriggerSync));
 
-                            if (mPrevY > eventY && (mTarget.getTop() < 1)) {
-                                // If the user puts the view back at the top, we
-                                // don't need to. This shouldn't be considered
-                                // cancelling the gesture as the user can restart from the top.
+                            if (mPrevY > eventY && (curTargetTop < 1)) {
+
                                 removeCallbacks(mCancel);
+                                // scroll up
+                                if (yDiff < 0) {
+                                    mStopInterceptFlag = true;
+                                }
+                                // scroll down
+                                else {
+                                }
+                                mPrevY = event.getY();
+                                handled = false;
+                                break;
                             } else {
                                 updatePositionTimeout();
                             }
 
                         }
-                        mPrevY = event.getY();
-                        handled = true;
-                        //Log.i("lxy","offsetTop = " + offsetTop);
-                        updateContentOffsetTop((int) (offsetTop), false);
 
+
+                        handled = true;
+
+                        if (curTargetTop > 0)
+                            setTargetOffsetTop((int) ((eventY - mPrevY) * SWIPE_DOMP_FACTOR), false);
+                        else
+                            setTargetOffsetTop((int) ((eventY - mPrevY)), true);
+                        mPrevY = event.getY();
                     }
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if (toRefreshFlag) {
+                if (mToRefreshFlag) {
                     startRefresh();
-                    toRefreshFlag = false;
+                    mToRefreshFlag = false;
                     handled = true;
                     break;
                 }
