@@ -162,6 +162,7 @@ final class CustomSwipeProgressBar {
                 // don't repost.
                 if ((now - mFinishTime) >= FINISH_ANIMATION_DURATION_MS) {
                     mFinishTime = 0;
+                    canvas.restoreToCount(restoreCount);
                     return;
                 }
 

@@ -98,7 +98,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         }
     }
 
-    public void tryToUpdateLastUpdateTime() {
+    public void updateData() {
         if (mHeadLayout instanceof CustomSwipeRefreshHeadLayout) {
             ((CustomSwipeRefreshHeadLayout) mHeadLayout).updateData();
         }
@@ -117,29 +117,6 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         return this;
     }
 
-    /**
-     * Set the four colors used in the progress animation. The first color will
-     * also be the color of the bar that grows in response to a user swipe
-     * gesture.
-     *
-     * @param color1 Integer representation of a color.
-     * @param color2 Integer representation of a color.
-     * @param color3 Integer representation of a color.
-     * @param color4 Integer representation of a color.
-     */
-    void setColorScheme(int color1, int color2, int color3, int color4) {
-        mColor1 = color1;
-        mColor2 = color2;
-        mColor3 = color3;
-        mColor4 = color4;
-    }
-
-    /**
-     * @return Return whether the progress animation is currently running.
-     */
-    boolean isRunning() {
-        return mRunning || mFinishTime > 0;
-    }
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -200,6 +177,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
 
     public interface CustomSwipeRefreshHeadLayout {
         void setState(int state);
+
         void updateData();
     }
 

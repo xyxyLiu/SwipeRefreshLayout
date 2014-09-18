@@ -75,13 +75,11 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
             return;
         }
         //Log.i("csr", "state = " + state);
-        if(state == CustomSwipeRefreshHeadview.STATE_COMPLETE)
-        {
+        if (state == CustomSwipeRefreshHeadview.STATE_COMPLETE) {
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
             mProgressBar.setVisibility(View.INVISIBLE);
-        }
-        else if (state == CustomSwipeRefreshHeadview.STATE_REFRESHING) {
+        } else if (state == CustomSwipeRefreshHeadview.STATE_REFRESHING) {
             // show progress
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
@@ -112,10 +110,12 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
                 break;
             case CustomSwipeRefreshHeadview.STATE_REFRESHING:
                 mMainTextView.setText(R.string.csr_text_state_refresh);
+                updateData();
                 break;
 
             case CustomSwipeRefreshHeadview.STATE_COMPLETE:
                 mMainTextView.setText(R.string.csr_text_state_complete);
+                updateData();
                 break;
             default:
         }

@@ -53,11 +53,10 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
         mSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
         // OPTIONAL:  Timeout to show the refresh complete information on the refreshing head.
         mSwipeRefreshLayout.setmRefreshCompleteTimeout(2000);
-        // OPTIONAL:  Set progress bar colors
-        mSwipeRefreshLayout.setColorScheme(
-                R.color.swiperefresh_color_1, R.color.swiperefresh_color_2,
-                R.color.swiperefresh_color_3, R.color.swiperefresh_color_4);
-
+        // OPTIONAL:  Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4))
+        mSwipeRefreshLayout.setProgressBarColor(
+                0x33669900, 0x99ccff00,
+                0x3399cc00, 0xaadddd00);
 
         // Create one listview as the only content view in the CustomSwipeRefreshLayout
         mListView = new ListView(mContext);
@@ -82,9 +81,7 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
 
 
         // add listview to CustomSwipeRefreshLayout. YOU SHOULD ONLY ADD ONE CHILD IN CUSTOMSWIPEREFRESHLAYOUT
-        mSwipeRefreshLayout.addView(mListView);
-
-
+        mSwipeRefreshLayout.setContent(mListView);
         addView(mSwipeRefreshLayout);
         setOrientation(LinearLayout.VERTICAL);
     }

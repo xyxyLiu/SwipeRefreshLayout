@@ -96,7 +96,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private int mCurrentTargetOffsetTop = 0;
 
 
-
     private int mReturnToOriginalTimeout = RETURN_TO_ORIGINAL_POSITION_TIMEOUT;
     private int mRefreshCompleteTimeout = REFRESH_COMPLETE_POSITION_TIMEOUT;
 
@@ -146,7 +145,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private final Animation mAnimateStayComplete = new Animation() {
         @Override
         public void applyTransformation(float interpolatedTime, Transformation t) {
-               // DO NOTHING
+            // DO NOTHING
         }
     };
 
@@ -405,13 +404,18 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      * @param colorRes3 Color resource.
      * @param colorRes4 Color resource.
      */
-    public void setColorScheme(int colorRes1, int colorRes2, int colorRes3, int colorRes4) {
+    public void setProgressBarColorRes(int colorRes1, int colorRes2, int colorRes3, int colorRes4) {
         //ensureTarget();
         final Resources res = getResources();
         final int color1 = res.getColor(colorRes1);
         final int color2 = res.getColor(colorRes2);
         final int color3 = res.getColor(colorRes3);
         final int color4 = res.getColor(colorRes4);
+        mTopProgressBar.setColorScheme(color1, color2, color3, color4);
+    }
+
+
+    public void setProgressBarColor(int color1, int color2, int color3, int color4) {
         mTopProgressBar.setColorScheme(color1, color2, color3, color4);
     }
 
@@ -503,6 +507,15 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
 
 
+    }
+
+
+    public void setContent(View content)
+    {
+        if (getChildCount() > 1 && !isInEditMode()) {
+            throw new IllegalStateException("SwipeRefreshLayout can host only one child content view");
+        }
+        addView(content);
     }
 
     /**
@@ -599,86 +612,86 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     if (mCheckValidMotionFlag && (yDiff > mTouchSlop || yDiff < -mTouchSlop)) {
                         mCheckValidMotionFlag = false;
                     }
-                        // if refresh head moving with the mTarget is enabled
-                        if (!enableTopRefreshingHead) {
-                            // when it is refreshing
-                            if (isRefreshing()) {
-                                // scroll down
-                                if (!isScrollUp){//(yDiff) < 0) {
-                                    // when the top of mTarget reach the parent top
-                                    if (curTargetTop <= 0) {
-                                        mPrevY = event.getY();
-                                        handled = false;
-                                        updateContentOffsetTop(mOriginalOffsetTop, true);
-                                        //mStopInterceptFlag = true;
-                                        break;
-                                    }
+                    // if refresh head moving with the mTarget is enabled
+                    if (!enableTopRefreshingHead) {
+                        // when it is refreshing
+                        if (isRefreshing()) {
+                            // scroll down
+                            if (!isScrollUp) {//(yDiff) < 0) {
+                                // when the top of mTarget reach the parent top
+                                if (curTargetTop <= 0) {
+                                    mPrevY = event.getY();
+                                    handled = false;
+                                    updateContentOffsetTop(mOriginalOffsetTop, true);
+                                    //mStopInterceptFlag = true;
+                                    break;
                                 }
-                                // scroll up
-                                else {
-                                    // when refresh head is entirely visible
-                                    if (curTargetTop >= mDistanceToTriggerSync) {
-                                        mPrevY = event.getY();
-                                        handled = true;
-                                        updateContentOffsetTop((int) mDistanceToTriggerSync, true);
-                                        break;
-                                    }
+                            }
+                            // scroll up
+                            else {
+                                // when refresh head is entirely visible
+                                if (curTargetTop >= mDistanceToTriggerSync) {
+                                    mPrevY = event.getY();
+                                    handled = true;
+                                    updateContentOffsetTop((int) mDistanceToTriggerSync, true);
+                                    break;
                                 }
-
-                                setTargetOffsetTop((int) ((eventY - mPrevY)), true);
-                                mPrevY = event.getY();
-                                handled = true;
-                                break;
-                            }
-                        }
-                        // keep refresh head above mTarget when refreshing
-                        else {
-                            if (isRefreshing() && isScrollUp){//yDiff > 0) {
-                                mPrevY = event.getY();
-                                handled = false;
-                                break;
-                            }
-                            if (isRefreshing() && !isScrollUp){////yDiff < 0) {
-                                //mPrevY = event.getY();
-                                handled = false;
-                                break;
-                            }
-                        }
-
-                        // curTargetTop is bigger than trigger
-                        if (curTargetTop > mDistanceToTriggerSync) {
-                            // User movement passed distance; trigger a refresh
-                            mToRefreshFlag = true;
-                            //handled = true;
-                            removeCallbacks(mCancel);
-                        }
-                        // curTargetTop is not bigger than trigger
-                        else {
-                            mToRefreshFlag = false;
-                            // Just track the user's movement
-
-                            setTriggerPercentage(
-                                    mAccelerateInterpolator.getInterpolation(
-                                            curTargetTop / mDistanceToTriggerSync));
-
-                            if (!isScrollUp && (curTargetTop < 1)) {
-                                removeCallbacks(mCancel);
-                                mPrevY = event.getY();
-                                handled = false;
-                                break;
-                            } else {
-                                updatePositionTimeout();
                             }
 
-                        }
-
-                        handled = true;
-                        if (curTargetTop > 0 && !isRefreshing())
-                            setTargetOffsetTop((int) ((eventY - mPrevY) * SWIPE_DOMP_FACTOR), false);
-                        else
                             setTargetOffsetTop((int) ((eventY - mPrevY)), true);
-                        mPrevY = event.getY();
+                            mPrevY = event.getY();
+                            handled = true;
+                            break;
+                        }
                     }
+                    // keep refresh head above mTarget when refreshing
+                    else {
+                        if (isRefreshing() && isScrollUp) {//yDiff > 0) {
+                            mPrevY = event.getY();
+                            handled = false;
+                            break;
+                        }
+                        if (isRefreshing() && !isScrollUp) {////yDiff < 0) {
+                            //mPrevY = event.getY();
+                            handled = false;
+                            break;
+                        }
+                    }
+
+                    // curTargetTop is bigger than trigger
+                    if (curTargetTop > mDistanceToTriggerSync) {
+                        // User movement passed distance; trigger a refresh
+                        mToRefreshFlag = true;
+                        //handled = true;
+                        removeCallbacks(mCancel);
+                    }
+                    // curTargetTop is not bigger than trigger
+                    else {
+                        mToRefreshFlag = false;
+                        // Just track the user's movement
+
+                        setTriggerPercentage(
+                                mAccelerateInterpolator.getInterpolation(
+                                        curTargetTop / mDistanceToTriggerSync));
+
+                        if (!isScrollUp && (curTargetTop < 1)) {
+                            removeCallbacks(mCancel);
+                            mPrevY = event.getY();
+                            handled = false;
+                            break;
+                        } else {
+                            updatePositionTimeout();
+                        }
+
+                    }
+
+                    handled = true;
+                    if (curTargetTop > 0 && !isRefreshing())
+                        setTargetOffsetTop((int) ((eventY - mPrevY) * SWIPE_DOMP_FACTOR), false);
+                    else
+                        setTargetOffsetTop((int) ((eventY - mPrevY)), true);
+                    mPrevY = event.getY();
+                }
 
                 break;
             case MotionEvent.ACTION_UP:
@@ -702,7 +715,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private void startRefresh() {
         removeCallbacks(mCancel);
         mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_REFRESHING);
-        mHeadview.tryToUpdateLastUpdateTime();
         setRefreshing(true);
         mListener.onRefresh();
     }
