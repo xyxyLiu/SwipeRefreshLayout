@@ -33,7 +33,7 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
             }
         });
 
-        // STEP4: add your content layout to CustomSwipeRefresh
+        // STEP4: add your content view to CustomSwipeRefresh
         mSwipeRefreshLayout.setContent(mListView);
 ```
 
