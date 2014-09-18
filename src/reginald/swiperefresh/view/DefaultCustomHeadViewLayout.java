@@ -1,7 +1,6 @@
 package reginald.swiperefresh.view;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,7 @@ import java.util.Date;
 /**
  * Created by liu on 2014/9/15.
  */
-public class CustomDefaultHeadViewLayout extends LinearLayout implements CustomSwipeRefreshHeadview.EtaoSwipeRefreshHeadLayout {
+public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout {
 
     private LinearLayout mContainer;
 
@@ -36,7 +35,7 @@ public class CustomDefaultHeadViewLayout extends LinearLayout implements CustomS
     private int mState = -1;
     private Animation.AnimationListener animationListener;
 
-    public CustomDefaultHeadViewLayout(Context context) {
+    public DefaultCustomHeadViewLayout(Context context) {
         super(context);
         setWillNotDraw(false);
         setupLayout();
@@ -70,17 +69,25 @@ public class CustomDefaultHeadViewLayout extends LinearLayout implements CustomS
         mRotateDownAnim.setFillAfter(true);
     }
 
+    @Override
     public void setState(int state) {
-        //tryToUpdateLastUpdateTime();
         if (state == mState) {
             return;
         }
-        Log.i("lxy", "state = " + state);
-        if (state == CustomSwipeRefreshHeadview.STATE_REFRESHING) {    // 显示进度
+        //Log.i("csr", "state = " + state);
+        if(state == CustomSwipeRefreshHeadview.STATE_COMPLETE)
+        {
+            mImageView.clearAnimation();
+            mImageView.setVisibility(View.INVISIBLE);
+            mProgressBar.setVisibility(View.INVISIBLE);
+        }
+        else if (state == CustomSwipeRefreshHeadview.STATE_REFRESHING) {
+            // show progress
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
             mProgressBar.setVisibility(View.VISIBLE);
-        } else {    // 显示箭头图片
+        } else {
+            // show arrow
             mImageView.setVisibility(View.VISIBLE);
             mProgressBar.setVisibility(View.INVISIBLE);
         }
@@ -116,11 +123,8 @@ public class CustomDefaultHeadViewLayout extends LinearLayout implements CustomS
         mState = state;
     }
 
-    public void setLastUpdateTime(String time) {
-        mSubTextView.setVisibility(VISIBLE);
-        mSubTextView.setText(time);
-    }
 
+    @Override
     public void updateData() {
 
         String time = fetchData();

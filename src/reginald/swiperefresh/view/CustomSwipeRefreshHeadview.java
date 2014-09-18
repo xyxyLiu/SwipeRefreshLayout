@@ -6,7 +6,6 @@ package reginald.swiperefresh.view;
 
 import android.content.Context;
 import android.graphics.*;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
@@ -61,7 +60,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
 
     public CustomSwipeRefreshHeadview(Context context) {
         super(context);
-        Log.i("lxy", "CustomSwipeRefreshHeadview(View parent)");
+        //Log.i("csr", "CustomSwipeRefreshHeadview(View parent)");
         mColor1 = COLOR1;
         mColor2 = COLOR2;
         mColor3 = COLOR3;
@@ -72,7 +71,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
 
     public CustomSwipeRefreshHeadview(Context context, ViewGroup layout) {
         super(context);
-        Log.i("lxy", "CustomSwipeRefreshHeadview(View parent)");
+        //Log.i("csr", "CustomSwipeRefreshHeadview(View parent)");
         mColor1 = COLOR1;
         mColor2 = COLOR2;
         mColor3 = COLOR3;
@@ -84,32 +83,32 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        Log.v("lxy", "CustomSwipeRefreshHeadview.onLayout");
+        //Log.v("lxy", "CustomSwipeRefreshHeadview.onLayout");
         // Never called here
         //mHeadLayout.layout(l,t,r,b);
     }
 
     public void setDefaultHeadLayout() {
-        setHeadLayout(new CustomDefaultHeadViewLayout(getContext()));
+        setHeadLayout(new DefaultCustomHeadViewLayout(getContext()));
     }
 
     public void setRefreshState(int state) {
-        if (mHeadLayout instanceof EtaoSwipeRefreshHeadLayout) {
-            ((EtaoSwipeRefreshHeadLayout) mHeadLayout).setState(state);
+        if (mHeadLayout instanceof CustomSwipeRefreshHeadLayout) {
+            ((CustomSwipeRefreshHeadLayout) mHeadLayout).setState(state);
         }
     }
 
     public void tryToUpdateLastUpdateTime() {
-        if (mHeadLayout instanceof EtaoSwipeRefreshHeadLayout) {
-            ((EtaoSwipeRefreshHeadLayout) mHeadLayout).updateData();
+        if (mHeadLayout instanceof CustomSwipeRefreshHeadLayout) {
+            ((CustomSwipeRefreshHeadLayout) mHeadLayout).updateData();
         }
     }
 
     public CustomSwipeRefreshHeadview setHeadLayout(ViewGroup layout) {
 
-        if (!(layout instanceof EtaoSwipeRefreshHeadLayout)) {
+        if (!(layout instanceof CustomSwipeRefreshHeadLayout)) {
             throw new IllegalStateException(
-                    "ViewGroup must implements EtaoSwipeRefreshHeadLayout interface!");
+                    "ViewGroup must implements CustomSwipeRefreshHeadLayout interface!");
         }
 
         mHeadLayout = layout;
@@ -143,11 +142,9 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        //Log.i("lxy","headview.onDraw()");
+    public void onDraw(Canvas canvas) {
         final int width = mBounds.width();
         final int height = mBounds.height();
-
         int restoreCount = canvas.save();
         canvas.clipRect(mBounds);
 
@@ -165,32 +162,27 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         canvas.translate(mainTextRect.left, mainTextRect.top);
         mHeadLayout.draw(canvas);
 
-        //Log.v("lxy", "mMainTextView.width = " + mMainTextView.getWidth() + ",mMainTextView.height = " + mMainTextView.getHeight());
         canvas.restoreToCount(restoreCount);
     }
 
     public void updateHeight(int height, int distanceToTriggerSync, boolean changeHeightOnly) {
-
         mBounds.bottom = height;
 
-        //Log.i("lxy","changeHeightOnly = " + changeHeightOnly);
         if (changeHeightOnly) {
             invalidateView();
             return;
         }
 
         if (mBounds.bottom > distanceToTriggerSync) {
-            //Log.i("lxy","change to STATE_READY");
             setRefreshState(STATE_READY);
         } else {
-            //Log.i("lxy","change to STATE_NORMAL");
             setRefreshState(STATE_NORMAL);
         }
 
         invalidateView();
     }
 
-    private void invalidateView() {
+    protected void invalidateView() {
         if (getParent() != null && getParent() instanceof View)
             ((View) getParent()).postInvalidate();
 
@@ -206,12 +198,9 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         mBounds.bottom = bottom;
     }
 
-    public interface EtaoSwipeRefreshHeadLayout {
+    public interface CustomSwipeRefreshHeadLayout {
         void setState(int state);
-
         void updateData();
-
-        String fetchData();
     }
 
 

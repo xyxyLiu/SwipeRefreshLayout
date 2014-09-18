@@ -45,11 +45,15 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
 
     protected void setupView() {
         mSwipeRefreshLayout = new CustomSwipeRefreshLayout(mContext);
-        // Enable the top progress bar
+        // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
-        // Keeping the refreshing head on the top
-        mSwipeRefreshLayout.enableTopRefreshingHead(true);
-        // Set progress bar colors
+        // OPTIONAL:  Keeping the refreshing head on the top
+        mSwipeRefreshLayout.enableTopRefreshingHead(false);
+        // OPTIONAL:  Timeout to return to original state when the swipe motion stay in the same position
+        mSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
+        // OPTIONAL:  Timeout to show the refresh complete information on the refreshing head.
+        mSwipeRefreshLayout.setmRefreshCompleteTimeout(2000);
+        // OPTIONAL:  Set progress bar colors
         mSwipeRefreshLayout.setColorScheme(
                 R.color.swiperefresh_color_1, R.color.swiperefresh_color_2,
                 R.color.swiperefresh_color_3, R.color.swiperefresh_color_4);
@@ -95,13 +99,15 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
         for (String cheese : result) {
             mListAdapter.add(cheese);
         }
+        // return to the first item
+        mListView.setSelection(0);
         // to notify CustomSwipeRefreshLayout that the refreshing is completed
         mSwipeRefreshLayout.onRefreshingComplete();
     }
 
     private class DummyBackgroundTask extends AsyncTask<Void, Void, List<String>> {
 
-        static final int TASK_DURATION = 10 * 1000; // 3 seconds
+        static final int TASK_DURATION = 3 * 1000; // 3 seconds
 
         @Override
         protected List<String> doInBackground(Void... params) {
