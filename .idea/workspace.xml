@@ -54,45 +54,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CustomSwipeRefreshLayout.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CustomSwipeRefreshLayout.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3448277" vertical-offset="9687" max-vertical-offset="15219">
-              <caret line="517" column="25" selection-start-line="517" selection-start-column="25" selection-end-line="517" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.09756097" vertical-offset="10748" max-vertical-offset="16397">
+              <caret line="610" column="50" selection-start-line="610" selection-start-column="50" selection-end-line="610" selection-end-column="50" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#4103#4677#0" expanded="true" />
                 <element signature="e#4670#4671#0" expanded="true" />
-                <element signature="e#4736#5317#0" expanded="true" />
-                <element signature="e#5310#5311#0" expanded="true" />
-                <element signature="e#5372#5533#0" expanded="true" />
-                <element signature="e#5526#5527#0" expanded="true" />
-                <element signature="e#6389#6525#0" expanded="true" />
-                <element signature="e#6517#6518#0" expanded="true" />
-                <element signature="e#6581#6773#0" expanded="true" />
-                <element signature="e#6765#6766#0" expanded="true" />
-                <element signature="e#6816#7100#0" expanded="true" />
-                <element signature="e#7093#7094#0" expanded="true" />
                 <element signature="e#7163#7359#0" expanded="true" />
                 <element signature="e#7352#7353#0" expanded="true" />
-                <element signature="e#7431#7712#0" expanded="true" />
-                <element signature="e#7705#7706#0" expanded="true" />
-                <element signature="e#7778#7932#0" expanded="true" />
-                <element signature="e#7925#7926#0" expanded="true" />
-                <element signature="e#7987#8300#0" expanded="true" />
-                <element signature="e#8292#8293#0" expanded="true" />
-                <element signature="e#8425#9280#0" expanded="true" />
-                <element signature="e#9272#9273#0" expanded="true" />
-                <element signature="e#12184#12185#0" expanded="true" />
-                <element signature="e#12220#12221#0" expanded="true" />
-                <element signature="e#13970#13971#0" expanded="true" />
-                <element signature="e#14006#14007#0" expanded="true" />
-                <element signature="e#15130#15131#0" expanded="true" />
-                <element signature="e#15164#15165#0" expanded="true" />
-                <element signature="e#27622#27623#0" expanded="true" />
-                <element signature="e#27669#27670#0" expanded="true" />
-                <element signature="e#27865#27866#0" expanded="true" />
-                <element signature="e#27911#27912#0" expanded="true" />
+                <element signature="e#7431#7752#0" expanded="true" />
+                <element signature="e#7745#7746#0" expanded="true" />
+                <element signature="e#7818#8012#0" expanded="true" />
+                <element signature="e#8005#8006#0" expanded="true" />
+                <element signature="e#8067#8380#0" expanded="true" />
+                <element signature="e#8372#8373#0" expanded="true" />
+                <element signature="e#8505#9360#0" expanded="true" />
+                <element signature="e#9352#9353#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,18 +80,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1121">
+            <state vertical-scroll-proportion="0.0" vertical-offset="608" max-vertical-offset="1425">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomSwipeRefreshDemoView.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CustomSwipeRefreshDemoView.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7037037" vertical-offset="1140" max-vertical-offset="2356">
-              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1311" max-vertical-offset="2356">
+              <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -121,7 +100,7 @@
       <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.28" vertical-offset="0" max-vertical-offset="266">
+            <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="266">
               <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="6" selection-end-column="54" />
               <folding />
             </state>
@@ -131,7 +110,7 @@
       <file leaf-file-name="CustomSwipeProgressBar.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6206896" vertical-offset="589" max-vertical-offset="5244">
+            <state vertical-scroll-proportion="0.0" vertical-offset="893" max-vertical-offset="5434">
               <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
               <folding />
             </state>
@@ -141,7 +120,7 @@
       <file leaf-file-name="DefaultCustomHeadViewLayout.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/DefaultCustomHeadViewLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1672" max-vertical-offset="2565">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2147" max-vertical-offset="2831">
               <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
               <folding />
             </state>
@@ -151,11 +130,9 @@
       <file leaf-file-name="CustomSwipeRefreshHeadview.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshHeadview.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2089" max-vertical-offset="3591">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2280" max-vertical-offset="3629">
               <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -209,8 +186,8 @@
         <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/DefaultCustomHeadViewLayout.java" />
         <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java" />
         <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshHeadview.java" />
-        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java" />
         <option value="$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java" />
+        <option value="$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java" />
       </list>
     </option>
   </component>
@@ -246,8 +223,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -324,26 +299,10 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="swipeDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CustomSwipeRefreshLayout" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -420,19 +379,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -458,6 +404,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -583,22 +542,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39761093" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2883959" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40273038" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35836178" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11774744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -610,6 +568,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39761093" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -666,9 +625,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="4256">
           <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -677,39 +634,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="10012" max-vertical-offset="12996">
           <caret line="594" column="50" selection-start-line="594" selection-start-column="50" selection-end-line="594" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4103#4677#0" expanded="true" />
             <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4736#5317#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5372#5533#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6389#6525#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6581#6773#0" expanded="true" />
-            <element signature="e#6765#6766#0" expanded="true" />
-            <element signature="e#6816#7100#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
             <element signature="e#7163#7359#0" expanded="true" />
             <element signature="e#7352#7353#0" expanded="true" />
-            <element signature="e#7431#7712#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7778#7932#0" expanded="true" />
-            <element signature="e#7925#7926#0" expanded="true" />
-            <element signature="e#7987#8300#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8425#9280#0" expanded="true" />
-            <element signature="e#9272#9273#0" expanded="true" />
-            <element signature="e#12184#12185#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#13970#13971#0" expanded="true" />
-            <element signature="e#14006#14007#0" expanded="true" />
-            <element signature="e#15130#15131#0" expanded="true" />
-            <element signature="e#15164#15165#0" expanded="true" />
-            <element signature="e#27622#27623#0" expanded="true" />
-            <element signature="e#27669#27670#0" expanded="true" />
-            <element signature="e#27865#27866#0" expanded="true" />
-            <element signature="e#27911#27912#0" expanded="true" />
+            <element signature="e#7431#7752#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7818#8012#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8067#8380#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8505#9360#0" expanded="true" />
+            <element signature="e#9352#9353#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -734,9 +670,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="4256">
           <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -745,39 +679,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="8243" max-vertical-offset="12084">
           <caret line="506" column="18" selection-start-line="506" selection-start-column="18" selection-end-line="506" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4103#4677#0" expanded="true" />
             <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4736#5317#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5372#5533#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6389#6525#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6581#6773#0" expanded="true" />
-            <element signature="e#6765#6766#0" expanded="true" />
-            <element signature="e#6816#7100#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
             <element signature="e#7163#7359#0" expanded="true" />
             <element signature="e#7352#7353#0" expanded="true" />
-            <element signature="e#7431#7712#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7778#7932#0" expanded="true" />
-            <element signature="e#7925#7926#0" expanded="true" />
-            <element signature="e#7987#8300#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8425#9280#0" expanded="true" />
-            <element signature="e#9272#9273#0" expanded="true" />
-            <element signature="e#12184#12185#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#13970#13971#0" expanded="true" />
-            <element signature="e#14006#14007#0" expanded="true" />
-            <element signature="e#15130#15131#0" expanded="true" />
-            <element signature="e#15164#15165#0" expanded="true" />
-            <element signature="e#27622#27623#0" expanded="true" />
-            <element signature="e#27669#27670#0" expanded="true" />
-            <element signature="e#27865#27866#0" expanded="true" />
-            <element signature="e#27911#27912#0" expanded="true" />
+            <element signature="e#7431#7752#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7818#8012#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8067#8380#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8505#9360#0" expanded="true" />
+            <element signature="e#9352#9353#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -786,9 +699,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="4256">
           <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -797,39 +708,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13072">
           <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4103#4677#0" expanded="true" />
             <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4736#5317#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5372#5533#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6389#6525#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6581#6773#0" expanded="true" />
-            <element signature="e#6765#6766#0" expanded="true" />
-            <element signature="e#6816#7100#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
             <element signature="e#7163#7359#0" expanded="true" />
             <element signature="e#7352#7353#0" expanded="true" />
-            <element signature="e#7431#7712#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7778#7932#0" expanded="true" />
-            <element signature="e#7925#7926#0" expanded="true" />
-            <element signature="e#7987#8300#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8425#9280#0" expanded="true" />
-            <element signature="e#9272#9273#0" expanded="true" />
-            <element signature="e#12184#12185#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#13970#13971#0" expanded="true" />
-            <element signature="e#14006#14007#0" expanded="true" />
-            <element signature="e#15130#15131#0" expanded="true" />
-            <element signature="e#15164#15165#0" expanded="true" />
-            <element signature="e#27622#27623#0" expanded="true" />
-            <element signature="e#27669#27670#0" expanded="true" />
-            <element signature="e#27865#27866#0" expanded="true" />
-            <element signature="e#27911#27912#0" expanded="true" />
+            <element signature="e#7431#7752#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7818#8012#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8067#8380#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8505#9360#0" expanded="true" />
+            <element signature="e#9352#9353#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -845,9 +735,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1307" max-vertical-offset="4256">
           <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -876,13 +764,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/demo_list_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="342">
           <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java">
@@ -898,39 +786,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1225" max-vertical-offset="13072">
           <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#4103#4677#0" expanded="true" />
             <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4736#5317#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5372#5533#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6389#6525#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6581#6773#0" expanded="true" />
-            <element signature="e#6765#6766#0" expanded="true" />
-            <element signature="e#6816#7100#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
             <element signature="e#7163#7359#0" expanded="true" />
             <element signature="e#7352#7353#0" expanded="true" />
-            <element signature="e#7431#7712#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7778#7932#0" expanded="true" />
-            <element signature="e#7925#7926#0" expanded="true" />
-            <element signature="e#7987#8300#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8425#9280#0" expanded="true" />
-            <element signature="e#9272#9273#0" expanded="true" />
-            <element signature="e#12184#12185#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#13970#13971#0" expanded="true" />
-            <element signature="e#14006#14007#0" expanded="true" />
-            <element signature="e#15130#15131#0" expanded="true" />
-            <element signature="e#15164#15165#0" expanded="true" />
-            <element signature="e#27622#27623#0" expanded="true" />
-            <element signature="e#27669#27670#0" expanded="true" />
-            <element signature="e#27865#27866#0" expanded="true" />
-            <element signature="e#27911#27912#0" expanded="true" />
+            <element signature="e#7431#7752#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7818#8012#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8067#8380#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8505#9360#0" expanded="true" />
+            <element signature="e#9352#9353#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -946,9 +813,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1307" max-vertical-offset="4256">
           <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -977,13 +842,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/demo_list_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="342">
           <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/MainActivity.java">
@@ -1044,13 +909,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/default_swiperefresh_head_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.0754716" vertical-offset="996" max-vertical-offset="1463">
           <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="37" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/base-strings.xml">
@@ -1075,13 +940,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/demo_list_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27696794" vertical-offset="0" max-vertical-offset="686">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://D:/Program Files (x86)/Android/android-sdk/platforms/android-19/data/res/values/config.xml">
@@ -1122,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.28" vertical-offset="0" max-vertical-offset="266">
+        <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="266">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="6" selection-end-column="54" />
           <folding />
         </state>
@@ -1130,24 +995,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeProgressBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6206896" vertical-offset="589" max-vertical-offset="5244">
+        <state vertical-scroll-proportion="0.0" vertical-offset="893" max-vertical-offset="5434">
           <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33236152" vertical-offset="61598" max-vertical-offset="125970">
-          <caret line="3334" column="16" selection-start-line="3334" selection-start-column="16" selection-end-line="3334" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83090377" vertical-offset="253422" max-vertical-offset="360810">
-          <caret line="13782" column="19" selection-start-line="13782" selection-start-column="19" selection-end-line="13782" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1156,9 +1005,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2089" max-vertical-offset="3591">
           <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,53 +1025,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3448277" vertical-offset="9687" max-vertical-offset="15219">
-          <caret line="517" column="25" selection-start-line="517" selection-start-column="25" selection-end-line="517" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4103#4677#0" expanded="true" />
-            <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#4736#5317#0" expanded="true" />
-            <element signature="e#5310#5311#0" expanded="true" />
-            <element signature="e#5372#5533#0" expanded="true" />
-            <element signature="e#5526#5527#0" expanded="true" />
-            <element signature="e#6389#6525#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6581#6773#0" expanded="true" />
-            <element signature="e#6765#6766#0" expanded="true" />
-            <element signature="e#6816#7100#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
-            <element signature="e#7163#7359#0" expanded="true" />
-            <element signature="e#7352#7353#0" expanded="true" />
-            <element signature="e#7431#7712#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7778#7932#0" expanded="true" />
-            <element signature="e#7925#7926#0" expanded="true" />
-            <element signature="e#7987#8300#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8425#9280#0" expanded="true" />
-            <element signature="e#9272#9273#0" expanded="true" />
-            <element signature="e#12184#12185#0" expanded="true" />
-            <element signature="e#12220#12221#0" expanded="true" />
-            <element signature="e#13970#13971#0" expanded="true" />
-            <element signature="e#14006#14007#0" expanded="true" />
-            <element signature="e#15130#15131#0" expanded="true" />
-            <element signature="e#15164#15165#0" expanded="true" />
-            <element signature="e#27622#27623#0" expanded="true" />
-            <element signature="e#27669#27670#0" expanded="true" />
-            <element signature="e#27865#27866#0" expanded="true" />
-            <element signature="e#27911#27912#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1311" max-vertical-offset="2356">
+          <caret line="86" column="5" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/demo/CustomSwipeRefreshDemoView.java">
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/ViewGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7037037" vertical-offset="1140" max-vertical-offset="2356">
-          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.33079848" vertical-offset="33486" max-vertical-offset="125932">
+          <caret line="1835" column="56" selection-start-line="1835" selection-start-column="43" selection-end-line="1835" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files (x86)/Android/android-sdk/sources/android-19/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="111452" max-vertical-offset="360810">
+          <caret line="6046" column="19" selection-start-line="6046" selection-start-column="19" selection-end-line="6046" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reginald/swiperefresh/view/CustomSwipeRefreshLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09756097" vertical-offset="10748" max-vertical-offset="16397">
+          <caret line="610" column="50" selection-start-line="610" selection-start-column="50" selection-end-line="610" selection-end-column="50" />
+          <folding>
+            <element signature="e#4103#4677#0" expanded="true" />
+            <element signature="e#4670#4671#0" expanded="true" />
+            <element signature="e#7163#7359#0" expanded="true" />
+            <element signature="e#7352#7353#0" expanded="true" />
+            <element signature="e#7431#7752#0" expanded="true" />
+            <element signature="e#7745#7746#0" expanded="true" />
+            <element signature="e#7818#8012#0" expanded="true" />
+            <element signature="e#8005#8006#0" expanded="true" />
+            <element signature="e#8067#8380#0" expanded="true" />
+            <element signature="e#8372#8373#0" expanded="true" />
+            <element signature="e#8505#9360#0" expanded="true" />
+            <element signature="e#9352#9353#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

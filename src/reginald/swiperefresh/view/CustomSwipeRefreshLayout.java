@@ -208,6 +208,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             // Once the target content has returned to its start position, reset
             // the target offset to 0
             mCurrentTargetOffsetTop = 0;
+            restoreInitialTouchState();
         }
     };
 
@@ -215,6 +216,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         @Override
         public void onAnimationEnd(Animation animation) {
             mCurrPercentage = 0;
+            restoreInitialTouchState();
         }
     };
 
@@ -540,6 +542,20 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         return ret;
     }
 
+    private boolean mTransferTouch = false;
+    private MotionEvent mLastEvent = null;
+    private boolean mChildConsumed = false;
+    private boolean mLastCanChildScrollUp = false;
+    private int mLastTargetTop = 0;
+
+    private void restoreInitialTouchState()
+    {
+        mLastTargetTop = 0;
+        mTransferTouch = false;
+        mChildConsumed = false;
+        mLastCanChildScrollUp = false;
+    }
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
@@ -550,12 +566,100 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mStopInterceptFlag = false;
         }
         */
-        return super.dispatchTouchEvent(event);
+        ensureTarget();
+        Log.i("csr","dispatchTouchEvent():  event = " + event.getAction() + ", Y = " + event.getY());
+        Log.i("csr","mTransferTouch =" + mTransferTouch+ ",canChildScrollUp() = " + canChildScrollUp() + ",mTarget.getTop() = " + mTarget.getTop() + ", mChildConsumed = " + mChildConsumed);
+        Log.i("csr","mLastCanChildScrollUp = " + mLastCanChildScrollUp + " ,mLastTargetTop = " + mLastTargetTop);
+        float curY = event.getY();
+        float lastY = mPrevY;
+
+        //mPrevY = curY;
+        if(mTransferTouch)
+        {
+            Log.i("csr","mTransferTouch = true, curY = " + curY +", lastY = " + lastY);
+
+                if (curY > lastY) {
+                    Log.i("csr", "curY > lastY");
+                    mChildConsumed = false;
+                } else if (curY < lastY) {
+                    Log.i("csr", "curY < lastY");
+                    mChildConsumed = true;
+                    mLastEvent.setAction(MotionEvent.ACTION_DOWN);
+                    super.dispatchTouchEvent(mLastEvent);
+                } else {
+                    mChildConsumed = true;
+                }
+
+
+
+        }
+
+        // record the first event:
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            mCurrPercentage = 0;
+            mDownEvent = MotionEvent.obtain(event);
+            mPrevY = mDownEvent.getY();
+            mToRefreshFlag = false;
+            mCheckValidMotionFlag = true;
+        }
+
+
+
+        boolean res = true;
+        if(!mChildConsumed) {
+            Log.i("csr", "mChildConsumed = false");
+            res = super.dispatchTouchEvent(event);
+
+        }
+        else
+        {
+            Log.i("csr", "mChildConsumed = true");
+            if(mDownEvent != null && event.getAction() == MotionEvent.ACTION_MOVE && (curY - mDownEvent.getY() > mTouchSlop || curY - mDownEvent.getY() < -mTouchSlop))
+                mTarget.dispatchTouchEvent(event);
+            if(event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_UP) {
+                Log.i("csr", "child down or up");
+                mTarget.dispatchTouchEvent(event);
+            }
+
+        }
+
+
+
+        boolean isValid = (event.getAction() == MotionEvent.ACTION_MOVE)&&(mLastEvent.getAction() == MotionEvent.ACTION_MOVE);
+        if(!mTransferTouch && isValid && ((mLastCanChildScrollUp && !canChildScrollUp() && mChildConsumed) || (mTarget.getTop() <= 0 && mLastTargetTop >= 0 && !mChildConsumed)))
+        {
+            Log.i("csr","mTransferTouch = true");
+            mTransferTouch = true;
+            mLastEvent =MotionEvent.obtain(event);
+            mLastTargetTop = mTarget.getTop();
+            mLastCanChildScrollUp = canChildScrollUp();
+            mPrevY = event.getY();
+            removeCallbacks(mCancel);
+            removeCallbacks(mReturnToStartPosition);
+            return true;
+        }
+
+        if(event.getAction() == MotionEvent.ACTION_UP )
+        {
+            if(mChildConsumed) {
+                event.setAction(MotionEvent.ACTION_CANCEL);
+            }
+            restoreInitialTouchState();
+        }
+        // mPrevY = event.getY();
+        mLastTargetTop = mTarget.getTop();
+        mLastCanChildScrollUp = canChildScrollUp();
+        mLastEvent =MotionEvent.obtain(event);
+        mTransferTouch = false;
+        mPrevY = event.getY();
+
+        return res;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        ensureTarget();
+        //ensureTarget();
+        Log.i("lxy","onInterceptTouchEvent(MotionEvent ev): event = " + ev.getAction()+ ", Y = " + ev.getY());
         boolean handled = false;
         if (mReturningToStart && ev.getAction() == MotionEvent.ACTION_DOWN) {
             mReturningToStart = false;
@@ -570,8 +674,10 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mCheckValidMotionFlag = true;
         }
 
+        Log.i("csr","onInterceptTouchEvent(): isEnabled() = " + isEnabled()+",mReturningToStart = " + mReturningToStart + " canChildScrollUp() = " + canChildScrollUp() + ",mTarget.getTop() = " + mTarget.getTop() + ", mChildConsumed = " + mChildConsumed);
         if (isEnabled()) {
-            if (!mReturningToStart && !canChildScrollUp()) {
+            if (!mReturningToStart && !canChildScrollUp() && !mChildConsumed) {
+                Log.i("csr","onInterceptTouchEvent(): handled = onTouchEvent(ev);");
                 handled = onTouchEvent(ev);
             } else {
                 // keep updating last Y position when the event is not intercepted!
@@ -579,7 +685,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             }
         }
 
-        return !handled ? super.onInterceptTouchEvent(ev) : handled;
+        Log.i("csr","onInterceptTouchEvent(): handled = "+ handled);
+        boolean res = !handled ? super.onInterceptTouchEvent(ev) : handled;
+        return res;
     }
 
     @Override
@@ -592,7 +700,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //Log.v("csr","onTouchEvent(MotionEvent event)");
+        Log.v("csr","onTouchEvent(MotionEvent event): event = " + event.getAction()+ ", Y = " + event.getY());
         final int action = event.getAction();
         boolean handled = false;
 
