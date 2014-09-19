@@ -13,7 +13,7 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
         // STEP 1: instantiate one SwipeRefreshLayout.
         mSwipeRefreshLayout = new CustomSwipeRefreshLayout(context);
         
-        // STEP 2(OPTIONAL): set features 
+        // STEP 2(OPTIONAL): settings
         // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
         // OPTIONAL:  Keeping the refreshing head on the top
