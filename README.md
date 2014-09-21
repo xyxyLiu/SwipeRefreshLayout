@@ -6,7 +6,8 @@ swipe/release/refresh the CustomSwipeRefreshLayout:
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/CSF_DEMO.png)
 
 
-CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headview which contains the images, texts, animations(A default refresh headview is provided). You can add you own view in CustomSwipeRefreshLayout. Note that CustomSwipeRefreshLayout can only contain one child View.  
+CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headview which contains the images, texts, animations(A default refresh headview is provided). You can add you own view in CustomSwipeRefreshLayout. 
+Note that CustomSwipeRefreshLayout can only contain one child View.  
 
 ### Features
 * Highly customizable(pull/swipe mode, different refresh header settings, even create your own refresh header)
@@ -57,7 +58,7 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 
 ```
 #### Layout & Styles
-Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use the internal default refresh head layout.
+Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use the internal default refresh head layout reginald.swiperefresh.view.DefaultCustomHeadViewLayout. You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.
 
 ### Demo
 See the demo in reginald.swiperefresh.demo:
