@@ -25,13 +25,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import reginald.swiperefresh.view.CustomSwipeRefreshLayout;
 
+/**
+ * Created by tony.lxy on 2014/9/11.
+ */
 
 /**
- * A simple launcher activity containing a summary sample description, sample log and a custom
- * {@link android.support.v4.app.Fragment} which can display a view.
- * <p/>
- * For devices with displays with a width of 720dp or greater, the sample log is always visible,
- * on other devices it's visibility is controlled by an item on the Action Bar.
+ * One Sample activity that shows the features of CustomSwipeRefreshLayout
  */
 public class DemoActivity extends Activity {
 

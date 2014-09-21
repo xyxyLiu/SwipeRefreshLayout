@@ -3,7 +3,6 @@ package reginald.swiperefresh.demo;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -15,6 +14,10 @@ import java.util.List;
 
 /**
  * Created by tony.lxy on 2014/9/11.
+ */
+
+/**
+ * One Sample view that shows the features of CustomSwipeRefreshLayout
  */
 public class CustomSwipeRefreshDemoView extends LinearLayout {
 

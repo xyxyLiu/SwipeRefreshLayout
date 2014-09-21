@@ -23,24 +23,16 @@ import android.widget.AbsListView;
 import android.annotation.TargetApi;
 
 /**
- * The SwipeRefreshLayout should be used whenever the user can refresh the
+ * The CustomSwipeRefreshLayout should be used whenever the user can refresh the
  * contents of a view via a vertical swipe gesture. The activity that
  * instantiates this view should add an OnRefreshListener to be notified
- * whenever the swipe to refresh gesture is completed. The SwipeRefreshLayout
+ * whenever the swipe to refresh gesture is completed. And onRefreshingComplete()
+ * should be called whenever the refreshing is complete. The CustomSwipeRefreshLayout
  * will notify the listener each and every time the gesture is completed again;
- * the listener is responsible for correctly determining when to actually
- * initiate a refresh of its content. If the listener determines there should
- * not be a refresh, it must call setRefreshing(false) to cancel any visual
- * indication of a refresh. If an activity wishes to show just the progress
- * animation, it should call setRefreshing(true). To disable the gesture and progress
- * animation, call setEnabled(false) on the view.
+ * Two refresh mode are supported:
+ * <li>swipe mode: android.support.v4.widget.SwipeRefreshLayout style with custom refresh head </li>
+ * <li>pull mode: pull-to-refresh style with progress bar and custom refresh head</li>
  * <p/>
- * <p> This layout should be made the parent of the view that will be refreshed as a
- * result of the gesture and can only support one direct child. This view will
- * also be made the target of the gesture and will be forced to match both the
- * width and the height supplied in this layout. The SwipeRefreshLayout does not
- * provide accessibility events; instead, a menu item must be provided to allow
- * refresh of the content wherever this gesture is used.</p>
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
