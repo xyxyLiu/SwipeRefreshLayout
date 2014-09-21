@@ -44,11 +44,13 @@ import android.annotation.TargetApi;
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
+    public static final int REFRESH_MODE_SWIPE = 1;
+    public static final int REFRESH_MODE_PULL = 2;
     // 不滑动时返回原状态的时间限制
     private static final int RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 200;
 
     // 不滑动时返回原状态的时间限制
-    private static final int REFRESH_COMPLETE_POSITION_TIMEOUT = 800;
+    private static final int REFRESH_COMPLETE_POSITION_TIMEOUT = 600;
 
     // 顶部滑动条动画加速度
     private static final float ACCELERATE_INTERPOLATION_FACTOR = 1.5f;
@@ -77,6 +79,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     //是否加载顶部进度条
     boolean enableTopProgressBar = false;
     boolean enableTopRefreshingHead = true;
+    int refresshMode = REFRESH_MODE_SWIPE;
     //
     private View mTarget = null; //the content that gets pulled down
 
@@ -293,6 +296,30 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         addView(mHeadview);
     }
 
+    public void setRefreshMode(int mode)
+    {
+        switch (mode) {
+            case REFRESH_MODE_PULL:
+                refresshMode = REFRESH_MODE_PULL;
+                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_NORMAL);
+                break;
+            case REFRESH_MODE_SWIPE:
+                refresshMode = REFRESH_MODE_SWIPE;
+                enableTopRefreshingHead(false);
+                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_NORMAL);
+                break;
+            default:
+                throw new IllegalStateException(
+                        "refresh mode " + mode + " is node supported in CustomSwipeRefreshLayout");
+
+        }
+    }
+
+    public int getRefreshMode()
+    {
+        return refresshMode;
+    }
+
     public void enableTopProgressBar(boolean isEnable) {
         if (enableTopProgressBar == isEnable)
             return;
@@ -302,12 +329,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
     public void enableTopRefreshingHead(boolean isEnable) {
-        if (enableTopRefreshingHead == isEnable)
-            return;
-
         enableTopRefreshingHead = isEnable;
     }
 
+    public boolean isEnableTopRefreshingHead()
+    {
+        return enableTopRefreshingHead;
+    }
 
     @Override
     public void onAttachedToWindow() {
@@ -359,7 +387,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      *
      * @param refreshing Whether or not the view should show refresh progress.
      */
-    public void setRefreshing(boolean refreshing) {
+    protected void setRefreshing(boolean refreshing) {
         if (mRefreshing != refreshing) {
             ensureTarget();
             mCurrPercentage = 0;
@@ -370,20 +398,33 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 } else {
                     postInvalidate();
                 }
-                mReturnToTrigerPosition.run();
+                if(refresshMode == REFRESH_MODE_PULL) {
+                    mReturnToTrigerPosition.run();
+                }
+                else if(refresshMode == REFRESH_MODE_SWIPE){
+                    mReturnToStartPosition.run();
+                }
 
             } else {
                 // keep refreshing state for refresh complete
-                mRefreshing = true;
+
                 if (enableTopProgressBar) {
                     mTopProgressBar.stop();
                 } else {
                     postInvalidate();
                 }
-                removeCallbacks(mReturnToStartPosition);
-                removeCallbacks(mCancel);
-                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_COMPLETE);
-                mStayRefreshCompletePosition.run();
+                if(refresshMode == REFRESH_MODE_PULL) {
+                    mRefreshing = true;
+                    removeCallbacks(mReturnToStartPosition);
+                    removeCallbacks(mCancel);
+                    mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_COMPLETE);
+                    mStayRefreshCompletePosition.run();
+                }
+                else if(refresshMode == REFRESH_MODE_SWIPE)
+                {
+                    mRefreshing = false;
+                    mReturnToStartPosition.run();
+                }
 
             }
         }
@@ -429,8 +470,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     private void ensureTarget() {
         // Don't bother getting the parent height if the parent hasn't been laid out yet.
-
-        // Log.i("lxy", " mTarget == null = " + ( mTarget == null?"yes":"no"));
         if (mTarget == null) {
             if (getChildCount() > 2 && !isInEditMode()) {
                 throw new IllegalStateException(
@@ -557,6 +596,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         ensureTarget();
         boolean handled = false;
+        float curY = ev.getY();
+
+
         if (mReturningToStart && ev.getAction() == MotionEvent.ACTION_DOWN) {
             mReturningToStart = false;
         }
@@ -568,6 +610,17 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mPrevY = mDownEvent.getY();
             mToRefreshFlag = false;
             mCheckValidMotionFlag = true;
+        }
+        else if(ev.getAction() == MotionEvent.ACTION_MOVE)
+        {
+            float yDiff = curY - mDownEvent.getY();
+            if(yDiff < 0)
+                yDiff = -yDiff;
+
+            if(yDiff < mTouchSlop) {
+                mPrevY = curY;
+                return false;
+            }
         }
 
         if (isEnabled()) {
@@ -617,7 +670,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                         // when it is refreshing
                         if (isRefreshing()) {
                             // scroll down
-                            if (!isScrollUp) {//(yDiff) < 0) {
+                            if (!isScrollUp) {
                                 // when the top of mTarget reach the parent top
                                 if (curTargetTop <= 0) {
                                     mPrevY = event.getY();
@@ -646,24 +699,27 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     }
                     // keep refresh head above mTarget when refreshing
                     else {
-                        if (isRefreshing() && isScrollUp) {//yDiff > 0) {
+                        if (isRefreshing()) {
                             mPrevY = event.getY();
-                            handled = false;
-                            break;
-                        }
-                        if (isRefreshing() && !isScrollUp) {////yDiff < 0) {
-                            //mPrevY = event.getY();
                             handled = false;
                             break;
                         }
                     }
 
                     // curTargetTop is bigger than trigger
-                    if (curTargetTop > mDistanceToTriggerSync) {
+                    if (curTargetTop >= mDistanceToTriggerSync) {
                         // User movement passed distance; trigger a refresh
-                        mToRefreshFlag = true;
-                        //handled = true;
                         removeCallbacks(mCancel);
+                        if(refresshMode == REFRESH_MODE_SWIPE)
+                        {
+                            mToRefreshFlag = false;
+                            startRefresh();
+                            handled = true;
+                            break;
+                        }
+                        else if(refresshMode == REFRESH_MODE_PULL) {
+                            mToRefreshFlag = true;
+                        }
                     }
                     // curTargetTop is not bigger than trigger
                     else {
@@ -695,7 +751,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (mToRefreshFlag) {
+                if (mToRefreshFlag && refresshMode == REFRESH_MODE_PULL) {
                     startRefresh();
                     mToRefreshFlag = false;
                     handled = true;
