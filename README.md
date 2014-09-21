@@ -56,6 +56,9 @@ Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml
 
 ### For more information
 See the demo in reginald.swiperefresh.demo:
-you can set pull/swipe mode, fixed/movable refreshing head mode in the menu.
+you can set 
+* pull/swipe mode mode 
+* fixed/movable refreshing head mode 
+<br>in the menu.
 <br>
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
