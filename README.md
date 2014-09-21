@@ -54,7 +54,7 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 #### Layout & Styles
 Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use the internal default refresh head layout.
 
-### For more information
+### Demo
 See the demo in reginald.swiperefresh.demo:
 you can use different setting as following in the menu:
 * pull/swipe mode mode 
