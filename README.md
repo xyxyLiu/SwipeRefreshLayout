@@ -3,12 +3,14 @@ CustomSwipeRefreshLayout
 
 
 swipe/release/refresh the CustomSwipeRefreshLayout:
+
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/CSF_DEMO.png)
 
 
 CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headviews with custom animations. You can add almost any View in CustomSwipeRefreshLayout, NOT ONLY Listview. Note that CustomSwipeRefreshLayout can only contain one child View.  You can make your own custom headview which contains the refreshing infomation like images, texts, animations....(A default headview is provided) and content View.
 
 ### Usage
+#### Create CustomSwipeRefreshLayout:
 ``` java
         // STEP 1: instantiate one SwipeRefreshLayout.
         mSwipeRefreshLayout = new CustomSwipeRefreshLayout(context);
@@ -29,7 +31,13 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
         // OPTIONAL:  Set progress bar colors
         mSwipeRefreshLayout.setProgressBarColor(color1, color2,color3, color4);
 
-        // STEP3: set onRefresh listener
+        // STEP3: add your content view to CustomSwipeRefresh
+        mSwipeRefreshLayout.setContent(yourContentView);
+```
+
+#### Handle refresh event
+``` java
+        //set onRefresh listener
         mSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -37,11 +45,16 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
             }
         });
 
-        // STEP4: add your content view to CustomSwipeRefresh
-        mSwipeRefreshLayout.setContent(mListView);
+
+        // use mSwipeRefreshLayout.onRefreshingComplete()
+        // to tell the CustomSwipeRefreshLayout when your refreshing process is complete
+
+
 ```
+
 
 ### For more information
 See the demo in reginald.swiperefresh.demo:
 you can set pull/swipe mode, fixed/movable refreshing head mode in the menu.
+
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
