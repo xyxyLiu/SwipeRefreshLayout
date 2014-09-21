@@ -46,11 +46,11 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
 
     protected void setupView() {
         mSwipeRefreshLayout = new CustomSwipeRefreshLayout(mContext);
-        // OPTIONAL:  Set refresh mode to swipe mode
+        // OPTIONAL:  Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
         mSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
         // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
-        // OPTIONAL:  keep the refreshing head movable(false stands for fixed) on the top
+        // OPTIONAL:  keep the refreshing head movable(true stands for fixed) on the top
         mSwipeRefreshLayout.enableTopRefreshingHead(false);
         // OPTIONAL:  Timeout to return to original state when the swipe motion stay in the same position
         mSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
