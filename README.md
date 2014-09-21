@@ -14,14 +14,17 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
         mSwipeRefreshLayout = new CustomSwipeRefreshLayout(context);
         
         // STEP 2(OPTIONAL): settings
+        mSwipeRefreshLayout = new CustomSwipeRefreshLayout(mContext);
+        // OPTIONAL:  Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
+        mSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
         // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
-        // OPTIONAL:  Keeping the refreshing head on the top
+        // OPTIONAL:  keep the refreshing head movable(true stands for fixed) on the top
         mSwipeRefreshLayout.enableTopRefreshingHead(false);
         // OPTIONAL:  Timeout to return to original state when the swipe motion stay in the same position
         mSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
         // OPTIONAL:  Timeout to show the refresh complete information on the refreshing head.
-        mSwipeRefreshLayout.setmRefreshCompleteTimeout(2000);
+        mSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
         // OPTIONAL:  Set progress bar colors
         mSwipeRefreshLayout.setProgressBarColor(color1, color2,color3, color4);
 
@@ -39,3 +42,4 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 
 ### For more information
 See the demo in reginald.swiperefresh.demo.
+![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
