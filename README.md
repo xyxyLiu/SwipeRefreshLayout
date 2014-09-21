@@ -14,8 +14,14 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 * Easy to integrate in your Android project (see usage)
 * Works for any Android project targeting Android 2.3 (API level 9) and up
 
-### Usage
+### Usage 
 
+#### Prelimenary:
+     You can import reginald.swiperefresh.view directly to your project. Note that android.support.v4 jar is required.
+     Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use      the internal default refresh head layout reginald.swiperefresh.view.DefaultCustomHeadViewLayout. You can also implement        your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.
+     
+     <br>AAR format package will be released later... 
+     
 #### Create CustomSwipeRefreshLayout:
 ``` java
         // STEP 1: instantiate one SwipeRefreshLayout.
@@ -57,8 +63,7 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 
 
 ```
-#### Layout & Styles
-Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use the internal default refresh head layout reginald.swiperefresh.view.DefaultCustomHeadViewLayout. You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.
+
 
 ### Demo
 See the demo in reginald.swiperefresh.demo:
