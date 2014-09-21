@@ -9,6 +9,7 @@ swipe/release/refresh the CustomSwipeRefreshLayout:
 CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headviews with custom animations. You can add almost any View in CustomSwipeRefreshLayout, NOT ONLY Listview. Note that CustomSwipeRefreshLayout can only contain one child View.  You can make your own custom headview which contains the refreshing infomation like images, texts, animations....(A default headview is provided) and content View.
 
 ### Usage
+
 #### Create CustomSwipeRefreshLayout:
 ``` java
         // STEP 1: instantiate one SwipeRefreshLayout.
@@ -34,7 +35,7 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
         mSwipeRefreshLayout.setContent(yourContentView);
 ```
 
-#### Handle refresh event
+#### Handle refresh event:
 ``` java
         //set onRefresh listener
         mSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
@@ -50,9 +51,11 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 
 
 ```
-
+#### Layout & Styles
+Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to your corresponding folders if you use the internal default refresh head layout.
 
 ### For more information
 See the demo in reginald.swiperefresh.demo:
 you can set pull/swipe mode, fixed/movable refreshing head mode in the menu.
+<br>
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
