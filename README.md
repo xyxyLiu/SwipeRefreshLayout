@@ -3,7 +3,6 @@ CustomSwipeRefreshLayout
 
 
 swipe/release/refresh the CustomSwipeRefreshLayout:
-
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/CSF_DEMO.png)
 
 
@@ -56,5 +55,4 @@ CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.Swip
 ### For more information
 See the demo in reginald.swiperefresh.demo:
 you can set pull/swipe mode, fixed/movable refreshing head mode in the menu.
-
 ![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
