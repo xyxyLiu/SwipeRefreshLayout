@@ -18,14 +18,12 @@
 
 
 <resources>
-    <string name="app_name">CustomSwipeRefreshLayout</string>
+    <string name="app_name">CustomSwipeRefreshLayout Demo</string>
     <string name="intro_message">
         <![CDATA[
         
             
-            A basic sample which shows how to use SwipeRefreshLayout to add the \'swipe-to-refresh\'
-            gesture to a View, enabling the ability to trigger a refresh from swiping down on the view.
-            In this sample the View which can be refreshed is a ListView.
+            A basic sample which shows how to use CustomSwipeRefreshLayout
             
         
         ]]>
