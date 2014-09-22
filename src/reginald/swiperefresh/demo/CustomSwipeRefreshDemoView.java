@@ -61,8 +61,8 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
         mSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
         // OPTIONAL:  Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4))
         mSwipeRefreshLayout.setProgressBarColor(
-                0x33669900, 0x99ccff00,
-                0x3399cc00, 0xaadddd00);
+                0x77ff6600, 0x99ffee33,
+                0x66ee5522, 0xddffcc11);
 
         // Create one listview as the only content view in the CustomSwipeRefreshLayout
         mListView = new ListView(mContext);
@@ -92,8 +92,7 @@ public class CustomSwipeRefreshDemoView extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
     }
 
-    public CustomSwipeRefreshLayout getSwipeRefreshLayout()
-    {
+    public CustomSwipeRefreshLayout getSwipeRefreshLayout() {
         return mSwipeRefreshLayout;
     }
 

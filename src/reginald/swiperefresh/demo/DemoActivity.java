@@ -52,27 +52,23 @@ public class DemoActivity extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) {
 
         menu.clear();
-        menu.add(0,1,0,"swipe mode");
-        menu.add(0,2,0,"pull mode");
-        if(mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
+        menu.add(0, 1, 0, "swipe mode");
+        menu.add(0, 2, 0, "pull mode");
+        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
             menu.getItem(0).setEnabled(true);
             menu.getItem(1).setEnabled(false);
-        }
-        else
-        {
+        } else {
             menu.getItem(0).setEnabled(false);
             menu.getItem(1).setEnabled(true);
         }
 
-        if(mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
+        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
             menu.add(1, 3, 0, "fixed refresh head");
             menu.add(1, 4, 0, "movable refresh head");
-            if(mCustomSwipeRefreshLayout.isEnableTopRefreshingHead()) {
+            if (mCustomSwipeRefreshLayout.isEnableTopRefreshingHead()) {
                 menu.getItem(2).setEnabled(false);
                 menu.getItem(3).setEnabled(true);
-            }
-            else
-            {
+            } else {
                 menu.getItem(2).setEnabled(true);
                 menu.getItem(3).setEnabled(false);
             }
@@ -86,8 +82,7 @@ public class DemoActivity extends Activity {
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         String text = "";
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case 1:
                 mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
                 text = "swipe refresh mode";
@@ -105,7 +100,7 @@ public class DemoActivity extends Activity {
                 text = "movable refreshing head";
                 break;
         }
-        Toast.makeText(DemoActivity.this,text,Toast.LENGTH_SHORT).show();
+        Toast.makeText(DemoActivity.this, text, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 

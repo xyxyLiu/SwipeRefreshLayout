@@ -288,8 +288,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         addView(mHeadview);
     }
 
-    public void setRefreshMode(int mode)
-    {
+    public void setRefreshMode(int mode) {
         switch (mode) {
             case REFRESH_MODE_PULL:
                 refresshMode = REFRESH_MODE_PULL;
@@ -307,8 +306,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
     }
 
-    public int getRefreshMode()
-    {
+    public int getRefreshMode() {
         return refresshMode;
     }
 
@@ -324,8 +322,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         enableTopRefreshingHead = isEnable;
     }
 
-    public boolean isEnableTopRefreshingHead()
-    {
+    public boolean isEnableTopRefreshingHead() {
         return enableTopRefreshingHead;
     }
 
@@ -390,10 +387,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 } else {
                     postInvalidate();
                 }
-                if(refresshMode == REFRESH_MODE_PULL) {
+                if (refresshMode == REFRESH_MODE_PULL) {
                     mReturnToTrigerPosition.run();
-                }
-                else if(refresshMode == REFRESH_MODE_SWIPE){
+                } else if (refresshMode == REFRESH_MODE_SWIPE) {
                     mReturnToStartPosition.run();
                 }
 
@@ -405,15 +401,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 } else {
                     postInvalidate();
                 }
-                if(refresshMode == REFRESH_MODE_PULL) {
+                if (refresshMode == REFRESH_MODE_PULL) {
                     mRefreshing = true;
                     removeCallbacks(mReturnToStartPosition);
                     removeCallbacks(mCancel);
                     mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_COMPLETE);
                     mStayRefreshCompletePosition.run();
-                }
-                else if(refresshMode == REFRESH_MODE_SWIPE)
-                {
+                } else if (refresshMode == REFRESH_MODE_SWIPE) {
                     mRefreshing = false;
                     mReturnToStartPosition.run();
                 }
@@ -488,10 +482,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         if (enableTopProgressBar) {
             mTopProgressBar.draw(canvas);
         }
-        // refreshing while progressbar is disabled. redraw the headview until refreshing complete
-        else if (isRefreshing()) {
-            postInvalidate();
-        }
 
         mHeadview.draw(canvas);
     }
@@ -516,9 +506,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         final int childWidth = width - getPaddingLeft() - getPaddingRight();
         final int childHeight = height - getPaddingTop() - getPaddingBottom();
         child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
-
-
-        //Log.i("csr", "child.layout(" + childLeft + "," + childTop + ", " + childLeft + childWidth + ", " + childTop + childHeight + ");");
     }
 
     @Override
@@ -541,8 +528,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
 
-    public void setContent(View content)
-    {
+    public void setContent(View content) {
         if (getChildCount() > 1 && !isInEditMode()) {
             throw new IllegalStateException("SwipeRefreshLayout can host only one child content view");
         }
@@ -574,13 +560,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        /*
-        if (mStopInterceptFlag) {
-            //Log.v("csr","@@ receive one mStopInterceptFlag!");
-            event.setAction(MotionEvent.ACTION_DOWN);
-            mStopInterceptFlag = false;
-        }
-        */
+
+        // to be further modified here ...
+
         return super.dispatchTouchEvent(event);
     }
 
@@ -602,14 +584,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mPrevY = mDownEvent.getY();
             mToRefreshFlag = false;
             mCheckValidMotionFlag = true;
-        }
-        else if(ev.getAction() == MotionEvent.ACTION_MOVE)
-        {
+        } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
             float yDiff = curY - mDownEvent.getY();
-            if(yDiff < 0)
+            if (yDiff < 0)
                 yDiff = -yDiff;
 
-            if(yDiff < mTouchSlop) {
+            if (yDiff < mTouchSlop) {
                 mPrevY = curY;
                 return false;
             }
@@ -637,10 +617,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //Log.v("csr","onTouchEvent(MotionEvent event)");
         final int action = event.getAction();
         boolean handled = false;
-
 
         switch (action) {
 
@@ -651,7 +629,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     int curTargetTop = mTarget.getTop();
                     mCurrentTargetOffsetTop = curTargetTop;
                     boolean isScrollUp = eventY - mPrevY > 0;
-                    //Log.i("csr","eventY = " + eventY + ",mPrevY = " + mPrevY + ",Scroll " + (isScrollUp?"up":"down"));
 
                     // if yDiff is large enough to be counted as one move event
                     if (mCheckValidMotionFlag && (yDiff > mTouchSlop || yDiff < -mTouchSlop)) {
@@ -702,14 +679,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     if (curTargetTop >= mDistanceToTriggerSync) {
                         // User movement passed distance; trigger a refresh
                         removeCallbacks(mCancel);
-                        if(refresshMode == REFRESH_MODE_SWIPE)
-                        {
+                        if (refresshMode == REFRESH_MODE_SWIPE) {
                             mToRefreshFlag = false;
                             startRefresh();
                             handled = true;
                             break;
-                        }
-                        else if(refresshMode == REFRESH_MODE_PULL) {
+                        } else if (refresshMode == REFRESH_MODE_PULL) {
                             mToRefreshFlag = true;
                         }
                     }
@@ -796,11 +771,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private void updatePositionTimeout() {
         removeCallbacks(mCancel);
         postDelayed(mCancel, mReturnToOriginalTimeout);
-    }
-
-
-    public int getmReturnToOriginalTimeout() {
-        return mReturnToOriginalTimeout;
     }
 
     public void setmReturnToOriginalTimeout(int mReturnToOriginalTimeout) {

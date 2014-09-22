@@ -4,8 +4,6 @@ package reginald.swiperefresh.view;
  */
 
 
-
-
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
