@@ -248,7 +248,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     };
 
     /**
-     * Simple constructor to use when creating a SwipeRefreshLayout from code.
+     * Simple constructor to use when creating a CustomSwipeRefreshLayout from code.
      *
      * @param context
      */
@@ -258,7 +258,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
     /**
-     * Constructor that is called when inflating SwipeRefreshLayout from XML.
+     * Constructor that is called when inflating CustomSwipeRefreshLayout from XML.
      *
      * @param context
      * @param attrs
@@ -512,7 +512,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         if (getChildCount() > 2 && !isInEditMode()) {
-            throw new IllegalStateException("SwipeRefreshLayout can host only one child content view");
+            throw new IllegalStateException("CustomSwipeRefreshLayout can host only one child content view");
         }
         if (getChildCount() > 0) {
             getChildAt(1).measure(
@@ -530,7 +530,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     public void setContent(View content) {
         if (getChildCount() > 1 && !isInEditMode()) {
-            throw new IllegalStateException("SwipeRefreshLayout can host only one child content view");
+            throw new IllegalStateException("CustomSwipeRefreshLayout can host only one child content view");
         }
         addView(content);
     }
@@ -678,6 +678,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     // curTargetTop is bigger than trigger
                     if (curTargetTop >= mDistanceToTriggerSync) {
                         // User movement passed distance; trigger a refresh
+                        if(enableTopProgressBar)
+                            mTopProgressBar.setTriggerPercentage(1f);
+
                         removeCallbacks(mCancel);
                         if (refresshMode == REFRESH_MODE_SWIPE) {
                             mToRefreshFlag = false;
@@ -701,6 +704,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                             removeCallbacks(mCancel);
                             mPrevY = event.getY();
                             handled = false;
+                            // clear the progressBar
+                            mTopProgressBar.setTriggerPercentage(0f);
                             break;
                         } else {
                             updatePositionTimeout();
@@ -755,7 +760,14 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void setTargetOffsetTop(int offset, boolean changeHeightOnly) {
-        mTarget.offsetTopAndBottom(offset);
+
+
+        // check whether the mTarget.getTop() is going to be smaller than 0
+        if(mCurrentTargetOffsetTop + offset >= 0)
+            mTarget.offsetTopAndBottom(offset);
+        else
+            updateContentOffsetTop(0,changeHeightOnly);
+
         mCurrentTargetOffsetTop = mTarget.getTop();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
