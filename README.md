@@ -1,7 +1,7 @@
 CustomSwipeRefreshLayout
 ========================
 
-# Demo
+### Demo
 CustomSwipeRefreshLayout has different refresh mode as following:
 * pull/swipe mode mode 
 * fixed/movable refreshing head mode
