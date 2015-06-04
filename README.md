@@ -2,11 +2,21 @@ CustomSwipeRefreshLayout
 ========================
 
 # Demo
-CustomSwipeRefreshLayout(swipe mode & pull mode)
-<p>
-   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe-mode.gif" width="240" alt="Screenshot"/>
-   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/pull-mode.gif" width="240" alt="Screenshot"/>
-</p>
+CustomSwipeRefreshLayout has different refresh mode as following:
+* pull/swipe mode mode 
+* fixed/movable refreshing head mode
+
+<table cellspacing="0" cellpadding="0" margin="0" style='border-collapse: collapse;'>
+<tr><td align="center">swipe mode</td><td align="center">pull mode<br>(fixed/movable refreshing head mode)</td></tr>
+<tr><td>
+   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe_mode.gif" width="240" alt="Screenshot"/>
+   </td>
+   <td>
+   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/pull_mode.gif" width="240" alt="Screenshot"/>
+   </td>
+</tr>
+</table>
+
 
 CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headview which contains the images, texts, animations(A default refresh headview is provided). You can add you own view in CustomSwipeRefreshLayout. 
 Note that CustomSwipeRefreshLayout can only contain one child View.  
@@ -22,10 +32,8 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 #### Prelimenary:
 * You can import reginald.swiperefresh.view directly to your project. Note that android.support.v4 jar is required.
 * Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to 
-your corresponding folders if you use the internal default refresh head layout              reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
-     
-     AAR format package will be released later... 
-     
+your corresponding folders if you use the internal default refresh head layout              com.reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
+
 #### Create CustomSwipeRefreshLayout
 ``` java
         // STEP 1: instantiate one SwipeRefreshLayout.
@@ -68,12 +76,3 @@ your corresponding folders if you use the internal default refresh head layout  
 
 ```
 
-
-### Demo
-See the demo in reginald.swiperefresh.demo:
-you can use different setting as following in the menu:
-* pull/swipe mode mode 
-* fixed/movable refreshing head mode 
-
-<br>
-![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
