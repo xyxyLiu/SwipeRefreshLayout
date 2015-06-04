@@ -34,7 +34,7 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 * Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to 
 your corresponding folders if you use the internal default refresh head layout              com.reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
 
-#### Create CustomSwipeRefreshLayout
+#### Use CustomSwipeRefreshLayout in your project
 STEP 1: apply CustomSwipeRefreshLayout in your layout XML
 ````xml
    <com.reginald.swiperefresh.CustomSwipeRefreshLayout
