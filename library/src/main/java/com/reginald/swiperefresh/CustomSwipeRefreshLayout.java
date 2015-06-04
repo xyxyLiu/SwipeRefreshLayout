@@ -527,12 +527,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     }
 
-
-    public void setContent(View content) {
+    @Override
+    public void addView(View content) {
         if (getChildCount() > 1 && !isInEditMode()) {
             throw new IllegalStateException("CustomSwipeRefreshLayout can host only one child content view");
         }
-        addView(content);
+        super.addView(content);
     }
 
     /**

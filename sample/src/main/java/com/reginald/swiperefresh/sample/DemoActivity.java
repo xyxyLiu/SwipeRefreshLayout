@@ -71,10 +71,7 @@ public class DemoActivity extends Activity {
 
     protected void setupView() {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
-        //the only content view in the CustomSwipeRefreshLayout
         mListView = (ListView)findViewById(R.id.listview);
-        // you can also add listview to CustomSwipeRefreshLayout in java code. YOU SHOULD ONLY ADD ONE CHILD IN CUSTOMSWIPEREFRESHLAYOUT
-        // mCustomSwipeRefreshLayout.setContent(mListView);
 
         // OPTIONAL:  Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
         mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
