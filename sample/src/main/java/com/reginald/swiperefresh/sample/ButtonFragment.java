@@ -1,46 +1,103 @@
-/*
-* Copyright 2013 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
-
-
 package com.reginald.swiperefresh.sample;
 
-import android.app.Activity;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
-import com.reginald.swiperefresh.sample.dummydata.Cheeses;
+        import android.app.Activity;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.support.v4.app.Fragment;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.ListView;
+        import android.widget.Toast;
 
-import java.util.List;
+        import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
+        import com.reginald.swiperefresh.sample.dummydata.Cheeses;
 
-/**
- * Created by tony.lxy on 2014/9/11.
- */
+        import java.util.List;
 
-/**
- * One Sample activity that shows the features of CustomSwipeRefreshLayout
- */
-public class DemoActivity extends Activity {
+public class ButtonFragment extends Fragment{
+    Button myButton;
+    View mRootView;
+    static final String TAG = "ButtonFragment";
 
-    public static final String TAG = "MainActivity";
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        Log.d(TAG, "ButtonFragment.onCreateView()" + this);
+        mRootView = inflater.inflate(R.layout.guide_1, container, false);//关联布局文件
+
+        myButton = (Button)mRootView.findViewById(R.id.mybutton);//根据rootView找到button
+        //设置按键监听事件
+        myButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Toast.makeText(ButtonFragment.this.getActivity(), "button is click!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        setHasOptionsMenu(true);
+        return mRootView;
+    }
+
+
+    @Override
+    public void onPause(){
+        Log.d(TAG, "ButtonFragment.onPause()" + this);
+        super.onPause();
+    }
+
+    @Override
+    public void onCreate(Bundle bundle){
+        Log.d(TAG, "ButtonFragment.onCreate()" + this);
+        super.onCreate(bundle);
+    }
+
+    @Override
+    public void onStart(){
+        Log.d(TAG, "ButtonFragment.onStart()" + this);
+        super.onStart();
+    }
+
+
+    public void onResume(){
+        Log.d(TAG, "ButtonFragment.onResume()" + this);
+            setupView(mRootView);
+        super.onResume();
+    }
+
+    @Override
+    public void onAttach(Activity activity){
+        Log.d(TAG, "ButtonFragment.onAttach()" + this);
+        super.onAttach(activity);
+    }
+
+
+    @Override
+    public void onStop(){
+        Log.d(TAG, "ButtonFragment.onStop()" + this);
+        super.onStop();
+    }
+
+    @Override
+    public void onDetach(){
+        Log.d(TAG, "ButtonFragment.onDetach()" + this);
+        super.onDetach();
+    }
+
+    @Override
+    public void onDestroy(){
+        Log.d(TAG, "ButtonFragment.onDestory()" + this);
+        super.onDestroy();
+    }
 
     private static final int LIST_ITEM_COUNT = 20;
 
@@ -61,17 +118,10 @@ public class DemoActivity extends Activity {
      */
     private ArrayAdapter<String> mListAdapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //show demo view
-        setContentView(R.layout.activity_main);
-        setupView();
-    }
 
-    protected void setupView() {
-        mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
-        mListView = (ListView)findViewById(R.id.listview);
+    protected void setupView(View rootView) {
+        mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) rootView.findViewById(R.id.swipelayout);
+        mListView = (ListView)rootView.findViewById(R.id.listview);
 
         // OPTIONAL:  Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
         mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
@@ -89,7 +139,7 @@ public class DemoActivity extends Activity {
                 0x66ee5522, 0xddffcc11);
 
         mListAdapter = new ArrayAdapter<String>(
-                this,
+                getActivity(),
                 R.layout.demo_list_item,
                 R.id.item_text,
                 Cheeses.randomList(LIST_ITEM_COUNT));
@@ -149,9 +199,16 @@ public class DemoActivity extends Activity {
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+         //inflater.inflate(R.menu.main, menu);
+    }
+
+
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public void onPrepareOptionsMenu(Menu menu) {
 
         menu.clear();
         menu.add(0, 1, 0, "swipe mode");
@@ -175,7 +232,7 @@ public class DemoActivity extends Activity {
                 menu.getItem(3).setEnabled(false);
             }
         }
-        return true;
+
     }
 
     @Override
@@ -199,8 +256,9 @@ public class DemoActivity extends Activity {
                 text = "movable refreshing head";
                 break;
         }
-        Toast.makeText(DemoActivity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 
 }
+

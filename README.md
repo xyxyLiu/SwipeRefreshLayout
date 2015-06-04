@@ -35,14 +35,23 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 your corresponding folders if you use the internal default refresh head layout              com.reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
 
 #### Create CustomSwipeRefreshLayout
-``` java
-        // STEP 1: instantiate one SwipeRefreshLayout.
-        mSwipeRefreshLayout = new CustomSwipeRefreshLayout(context);
-        
-        // STEP 2(OPTIONAL): settings
-        mSwipeRefreshLayout = new CustomSwipeRefreshLayout(mContext);
+STEP 1: apply CustomSwipeRefreshLayout in your layout XML
+````xml
+   <com.reginald.swiperefresh.CustomSwipeRefreshLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/swipelayout">
+     <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listview">
+     </ListView>
+   </com.reginald.swiperefresh.CustomSwipeRefreshLayout>
+````  
+STEP 2: make settings in your Java code (OPTIONAL)
+  ````java      
         // OPTIONAL:  Set refresh mode to swipe mode
-                      (CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
+                      (CustomSwipeRefreshLayout.REFRESH_MODE_PULL or CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE)
         mSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
         // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
@@ -54,25 +63,20 @@ your corresponding folders if you use the internal default refresh head layout  
         mSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
         // OPTIONAL:  Set progress bar colors
         mSwipeRefreshLayout.setProgressBarColor(color1, color2,color3, color4);
-
-        // STEP3: add your content view to CustomSwipeRefresh
-        mSwipeRefreshLayout.setContent(yourContentView);
 ```
-
-#### Handle refresh event:
+STEP 3: Handle refresh event
 ``` java
         //set onRefresh listener
         mSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 // do something here when it starts to refresh
+                // e.g. to request data from server
             }
         });
 
-
         // use mSwipeRefreshLayout.onRefreshingComplete()
         // to tell the CustomSwipeRefreshLayout when your refreshing process is complete
-
-
+        // e.g. when received data from server
 ```
 

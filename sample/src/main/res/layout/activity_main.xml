@@ -4,6 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout android:layout_width ="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_text"
+            android:text="IT IS A DEMO!"
+            android:textSize="15dp"
+            android:textColor="#116688"/>
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
 
     <com.reginald.swiperefresh.CustomSwipeRefreshLayout
         android:layout_width="match_parent"
@@ -20,6 +36,7 @@
         </ListView>
 
     </com.reginald.swiperefresh.CustomSwipeRefreshLayout>
+</LinearLayout>
 
 
 </LinearLayout>
