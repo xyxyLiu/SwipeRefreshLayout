@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <color name="swiperefresh_color_1">#336699</color>
-    <color name="swiperefresh_color_2">#99ccff</color>
-    <color name="swiperefresh_color_3">#3399cc</color>
-    <color name="swiperefresh_color_4">#aadddd</color>
-
-</resources>
