@@ -182,9 +182,6 @@ public class DemoActivity extends Activity {
     }
 
     @Override
-    /**
-     * 点击menu菜单中某一个选项时
-     */
     public boolean onOptionsItemSelected(MenuItem item) {
         String text = "";
         switch (item.getItemId()) {
