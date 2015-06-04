@@ -4,8 +4,8 @@ CustomSwipeRefreshLayout
 # Demo
 CustomSwipeRefreshLayout(swipe mode & pull mode)
 <p>
-   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe-mode.gif" width="240" alt="Screenshot"/>
-   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/pull-mode.gif" width="240" alt="Screenshot"/>
+   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe_mode.gif" width="240" alt="Screenshot"/>
+   <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/pull_mode.gif" width="240" alt="Screenshot"/>
 </p>
 
 CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headview which contains the images, texts, animations(A default refresh headview is provided). You can add you own view in CustomSwipeRefreshLayout. 
