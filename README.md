@@ -2,11 +2,18 @@ CustomSwipeRefreshLayout
 ========================
 
 # Demo
-CustomSwipeRefreshLayout(swipe mode & pull mode)
-<p>
+CustomSwipeRefreshLayout
+<table border="0">
+<tr border="0"><td align="center">swipe mode</td><td align="center">pull mode</td></tr>
+<tr border="0"><td>
    <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe_mode.gif" width="240" alt="Screenshot"/>
+   </td>
+   <td>
    <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/pull_mode.gif" width="240" alt="Screenshot"/>
-</p>
+   </td>
+</tr>
+</table>
+
 
 CustomSwipeRefreshLayout is a modified version of android.support.v4.widget.SwipeRefreshLayout, which supports custom refresh headview which contains the images, texts, animations(A default refresh headview is provided). You can add you own view in CustomSwipeRefreshLayout. 
 Note that CustomSwipeRefreshLayout can only contain one child View.  
@@ -23,9 +30,7 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 * You can import reginald.swiperefresh.view directly to your project. Note that android.support.v4 jar is required.
 * Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to 
 your corresponding folders if you use the internal default refresh head layout              reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
-     
-     AAR format package will be released later... 
-     
+
 #### Create CustomSwipeRefreshLayout
 ``` java
         // STEP 1: instantiate one SwipeRefreshLayout.
