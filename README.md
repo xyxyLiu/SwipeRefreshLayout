@@ -50,8 +50,8 @@ STEP 1: apply CustomSwipeRefreshLayout in your layout XML
 ````  
 STEP 2: make settings in your Java code (OPTIONAL)
   ````java      
-        // OPTIONAL:  Set refresh mode to swipe mode
-                      (CustomSwipeRefreshLayout.REFRESH_MODE_PULL or CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE)
+        // OPTIONAL:  Set refresh mode to swipe mode 
+        // (CustomSwipeRefreshLayout.REFRESH_MODE_PULL or CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE)
         mSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
         // OPTIONAL:  Enable the top progress bar
         mSwipeRefreshLayout.enableTopProgressBar(true);
