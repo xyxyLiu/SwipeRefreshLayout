@@ -2,10 +2,13 @@ CustomSwipeRefreshLayout
 ========================
 
 # Demo
-CustomSwipeRefreshLayout
-<table border="0">
-<tr border="0"><td align="center">swipe mode</td><td align="center">pull mode</td></tr>
-<tr border="0"><td>
+CustomSwipeRefreshLayout has different refresh mode as following:
+* pull/swipe mode mode 
+* fixed/movable refreshing head mode
+
+<table cellspacing="0" cellpadding="0" margin="0" style='border-collapse: collapse;'>
+<tr><td align="center">swipe mode</td><td align="center">pull mode<br>(fixed/movable refreshing head mode)</td></tr>
+<tr><td>
    <img src="https://raw.githubusercontent.com/xyxyLiu/SwipeRefreshLayout/master/website/swipe_mode.gif" width="240" alt="Screenshot"/>
    </td>
    <td>
@@ -29,7 +32,7 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 #### Prelimenary:
 * You can import reginald.swiperefresh.view directly to your project. Note that android.support.v4 jar is required.
 * Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to 
-your corresponding folders if you use the internal default refresh head layout              reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
+your corresponding folders if you use the internal default refresh head layout              com.reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
 
 #### Create CustomSwipeRefreshLayout
 ``` java
@@ -73,12 +76,3 @@ your corresponding folders if you use the internal default refresh head layout  
 
 ```
 
-
-### Demo
-See the demo in reginald.swiperefresh.demo:
-you can use different setting as following in the menu:
-* pull/swipe mode mode 
-* fixed/movable refreshing head mode 
-
-<br>
-![Screenshot](https://github.com/xyxyLiu/CustomSwipeRefreshLayout/blob/master/website/demoScreenShot.png)
