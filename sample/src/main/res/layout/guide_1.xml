@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff0000ff"
+    >
+
+    <Button
+        android:id="@+id/mybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="hit me"
+        android:gravity="center"/>
+
+    <com.reginald.swiperefresh.CustomSwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipelayout"
+        android:layout_below="@+id/mybutton"
+        android:background="#eeeeee"
+        >
+
+        <!-- Attention: you can ONLY add one view in CustomSwipeRefreshLayout either in xml or java code -->
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:id="@+id/listview">
+        </ListView>
+
+    </com.reginald.swiperefresh.CustomSwipeRefreshLayout>
+
+</RelativeLayout>  

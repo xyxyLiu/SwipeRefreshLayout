@@ -34,7 +34,9 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 * Add \res\layout\default_swiperefresh_head_layout.xml and \res\values\strings.xml to 
 your corresponding folders if you use the internal default refresh head layout              com.reginald.swiperefresh.view.DefaultCustomHeadViewLayout. (You can also implement your own custom refresh head by implementing CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.)
 
+
 #### Use CustomSwipeRefreshLayout in your project
+
 STEP 1: apply CustomSwipeRefreshLayout in your layout XML
 ````xml
    <com.reginald.swiperefresh.CustomSwipeRefreshLayout
@@ -50,7 +52,7 @@ STEP 1: apply CustomSwipeRefreshLayout in your layout XML
 ````  
 STEP 2: make settings in your Java code (OPTIONAL)
   ````java      
-        // OPTIONAL:  Set refresh mode to swipe mode 
+        // OPTIONAL:  Set refresh mode to swipe mode
         // (CustomSwipeRefreshLayout.REFRESH_MODE_PULL or CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE)
         mSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
         // OPTIONAL:  Enable the top progress bar
