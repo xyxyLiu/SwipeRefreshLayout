@@ -4,33 +4,27 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.app.Instrumentation;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Messenger;
-import android.os.SystemClock;
+import android.os.Message;
 import android.util.Log;
 
 
 import com.reginald.swiperefresh.sample.reflect.Reflect;
 import com.reginald.swiperefresh.sample.utils.CommonUtils;
-import com.reginald.swiperefresh.sample.utils.OsUtils;
 
 import java.lang.reflect.Field;
 
 /**
  * Created by baidu on 15/6/16.
  */
-public class ApplicationTest extends Application implements Application.ActivityLifecycleCallbacks {
+public class ApplicationTest extends Application {
 
     public static final String LOG_TAG = "TaskTest(Application)";
-    Messenger taskLoggerMessenger;
-    CommonUtils.TaskLoggerService taskLoggerService;
 
     static Context getContextImpl(Context context) {
         Context nextContext;
@@ -41,7 +35,7 @@ public class ApplicationTest extends Application implements Application.Activity
         return context;
     }
 
-    private void replaceIntrument(Context contextImpl){
+    private void replaceIntrumentation(Context contextImpl){
         Class<?> clazz = null;
         try {
             clazz = Class.forName("android.app.ContextImpl");
@@ -95,7 +89,7 @@ public class ApplicationTest extends Application implements Application.Activity
 
 
 
-        InstrumentTest newInstrumentation = new InstrumentTest(instrumentation, taskLoggerMessenger);
+        InstrumentTest newInstrumentation = new InstrumentTest(instrumentation);
 
         try {
             instrumentField.set(activityThread,newInstrumentation);
@@ -121,87 +115,107 @@ public class ApplicationTest extends Application implements Application.Activity
 //        Log.d(LOG_TAG," SHOW ALL METHODS IN  Instrumentation:  end --------------------------- ");
 
         Log.d(LOG_TAG, "newInstrumentation = " + instrumentation);
-        Log.d(LOG_TAG," replaceIntrument ok! ");
+        Log.d(LOG_TAG," replaceIntrumentation ok! ");
 
     }
 
 
-    public static class InstrumentTest extends Instrumentation {
+    public class InstrumentTest extends Instrumentation {
 
         Instrumentation base;
         Reflect instrumentRef;
-        Messenger taskLoggerMessenger;
-        public InstrumentTest(Instrumentation base, Messenger taskLoggerMessenger){
+
+        public InstrumentTest(Instrumentation base) {
             this.base = base;
             instrumentRef = Reflect.on(base);
-            this.taskLoggerMessenger = taskLoggerMessenger;
         }
 
-        @Override
-        public String toString(){
-            Log.d(LOG_TAG, "InstrumentTest.toString()");
-            return super.toString();
-        }
-
-        /**@Override*/
+        /**
+         * @Override
+         */
         public ActivityResult execStartActivity(
                 Context who, IBinder contextThread, IBinder token, Activity target,
                 Intent intent, int requestCode, Bundle options) {
 
             Log.i(LOG_TAG, "execStartActivity()");
-            launchActivity(who,intent, taskLoggerMessenger);
-            //String className = componentName.getClassName();
-            //Log.i(LOG_TAG, "Jump to " + className);
-            return instrumentRef.call("execStartActivity",who,contextThread,token,target,intent,requestCode,options).get();
+            launchActivity(who, intent);
+            return instrumentRef.call("execStartActivity", who, contextThread, token, target, intent, requestCode, options).get();
         }
 
-        /**@Override*/
+        /**
+         * @Override
+         */
         public ActivityResult execStartActivity(
                 Context who, IBinder contextThread, IBinder token, Activity target,
                 Intent intent, int requestCode) {
             Log.i(LOG_TAG, "execStartActivity()");
-            launchActivity(who,intent, taskLoggerMessenger);
-            //String className = componentName.getClassName();
-            //Log.i(LOG_TAG, "Jump to " + className);
-            return instrumentRef.call("execStartActivity",who,contextThread,token,target,intent,requestCode).get();
+            launchActivity(who, intent);
+            return instrumentRef.call("execStartActivity", who, contextThread, token, target, intent, requestCode).get();
 
+        }
+
+
+        @Override
+        public void callActivityOnCreate(Activity activity, Bundle bundle) {
+            Log.d(LOG_TAG, activity + "callActivityOnCreate()" + getSystemInfo(ApplicationTest.this));
+            connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_CREATE);
+            super.callActivityOnCreate(activity, bundle);
+        }
+
+        @Override
+        public void callActivityOnNewIntent(Activity activity, Intent intent) {
+            Log.d(LOG_TAG, activity + "callActivityOnNewIntent()" + getSystemInfo(ApplicationTest.this));
+            connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_NEW_INTENT);
+            super.callActivityOnNewIntent(activity, intent);
+        }
+
+        @Override
+        public void callActivityOnRestart(Activity activity){
+            Log.d(LOG_TAG, activity + "callActivityOnRestart()" + getSystemInfo(ApplicationTest.this));
+            connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_RESTART);
+            super.callActivityOnRestart(activity);
+        }
+
+        @Override
+        public void callActivityOnStart(Activity activity){
+            Log.d(LOG_TAG, activity + "callActivityOnStart()" + getSystemInfo(ApplicationTest.this));
+            super.callActivityOnStart(activity);
+        }
+
+        @Override
+        public void callActivityOnResume(Activity activity){
+            Log.d(LOG_TAG, activity + "callActivityOnResume()" + getSystemInfo(ApplicationTest.this));
+            connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_RESUME);
+            super.callActivityOnResume(activity);
+        }
+
+        @Override
+        public void callActivityOnPause(Activity activity){
+            Log.d(LOG_TAG, activity + "callActivityOnPause()" + getSystemInfo(ApplicationTest.this));
+            super.callActivityOnPause(activity);
+        }
+
+        @Override
+        public void callActivityOnStop(Activity activity){
+            Log.d(LOG_TAG, activity + "callActivityOnStop()" + getSystemInfo(ApplicationTest.this));
+            super.callActivityOnStop(activity);
+        }
+
+        @Override
+        public void callActivityOnDestroy(Activity activity)  {
+            Log.d(LOG_TAG, activity + "callActivityOnDestroy()" + getSystemInfo(ApplicationTest.this));
+            connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_DESTROY);
+            super.callActivityOnDestroy(activity);
         }
 
     }
 
 
-
-
-
-
-    public static void checkInstrInActivity(Activity activity){
-
-        Field instrumentField = null;
-        try {
-            instrumentField = Activity.class.getDeclaredField("mInstrumentation");
-            instrumentField.setAccessible(true);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Instrumentation instrumentation = null;
-        try {
-            instrumentation = (Instrumentation)instrumentField.get(activity);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            return;
-        }
-
-
-        Log.d(LOG_TAG, "checkInstrInActivity() instrumentation = " + instrumentation.toString());
-    }
-
-    public String getSystemInfo(){
+    public static String getSystemInfo(Context context){
         String currentProcName = "unknown";
         int pid = android.os.Process.myPid();
         long tid = Thread.currentThread().getId();
-        ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningAppProcessInfo processInfo : manager.getRunningAppProcesses())
         {
             if (processInfo.pid == pid)
@@ -216,164 +230,165 @@ public class ApplicationTest extends Application implements Application.Activity
     @Override
     protected void attachBaseContext(Context base){
         super.attachBaseContext(base);
-        Log.d(LOG_TAG, " ApplicationTest attachBaseContext() context base = " + base + getSystemInfo());
+        Log.d(LOG_TAG, " ApplicationTest attachBaseContext() context base = " + base + getSystemInfo(this));
 
         Context contextImpl = getContextImpl(this);
-        replaceIntrument(contextImpl);
-        registerActivityLifecycleCallbacks(this);
+        replaceIntrumentation(contextImpl);
+       // registerActivityLifecycleCallbacks(this);
     }
 
-    public void waitForConnectingService(long timeoutMs) {
+//    public void waitForConnectingService(long timeoutMs) {
+//
+//        if (taskLoggerMessenger != null)
+//            return;
+//
+//        if (OsUtils.getProcessName(this, android.os.Process.myPid()).equals("com.reginald.swiperefresh.sample:taskLogger"))
+//            return;
+//
+//        connectServiceIfNeeded();
+//
+//        long timeElapsed = 0;
+//        while (true) {
+//            Log.d(LOG_TAG, "checking status: " + taskLoggerMessenger);
+//            if (taskLoggerMessenger != null) {
+//                Log.d(LOG_TAG, "service connected!");
+//                return;
+//            }
+//            if (timeoutMs >= 0 && timeElapsed >= timeoutMs) {
+//                Log.d(LOG_TAG, "service connection timeout!");
+//                return;
+//            }
+//            connectServiceIfNeeded();
+//            SystemClock.sleep(100);
+//            timeElapsed += 100;
+//        }
+//
+//    }
+//
+//    private void connectServiceIfNeeded() {
+//        if (taskLoggerMessenger != null) {
+//            return; // service is running
+//        }
+//
+//        Intent intent = new Intent(this, CommonUtils.TaskLoggerService.class);
+//        Log.d(LOG_TAG, "connect service...");
+//        if (!bindService(intent, connection, Context.BIND_AUTO_CREATE)) {
+//            Log.e(LOG_TAG, "cannot connect");
+//        }
+//    }
+//
+//    ServiceConnection connection = new ServiceConnection() {
+//        private boolean mConnectLost = false;
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName name) {
+//            Log.d(LOG_TAG, "service disconnected: " + name + ", connLost: " + mConnectLost + getSystemInfo());
+//            if (mConnectLost) {
+//                return;
+//            }
+//            mConnectLost = true;
+//            taskLoggerMessenger = null;
+//            ApplicationTest.this.unbindService(this);
+//        }
+//
+//        @Override
+//        public void onServiceConnected(ComponentName name, IBinder service) {
+//            Log.d(LOG_TAG, "service connected: " + name + ", binder: " + service
+//                    + ", connLost: " + mConnectLost);
+//            Log.d(LOG_TAG, "onServiceConnected()" + getSystemInfo());
+//            if (!mConnectLost) {
+//                taskLoggerMessenger = new Messenger(service);
+//            }
+//        }
+//    };
 
-        if (taskLoggerMessenger != null)
-            return;
 
-        if (OsUtils.getProcessName(this, android.os.Process.myPid()).equals("com.reginald.swiperefresh.sample:taskLogger"))
-            return;
-
-        connectServiceIfNeeded();
-
-        long timeElapsed = 0;
-        while (true) {
-            Log.d(LOG_TAG, "checking status: " + taskLoggerMessenger);
-            if (taskLoggerMessenger != null) {
-                Log.d(LOG_TAG, "service connected!");
-                return;
-            }
-            if (timeoutMs >= 0 && timeElapsed >= timeoutMs) {
-                Log.d(LOG_TAG, "service connection timeout!");
-                return;
-            }
-            connectServiceIfNeeded();
-            SystemClock.sleep(100);
-            timeElapsed += 100;
-        }
-
-    }
-
-    private void connectServiceIfNeeded() {
-        if (taskLoggerMessenger != null) {
-            return; // service is running
-        }
-
+     void connectService(Activity activity, int flag){
         Intent intent = new Intent(this, CommonUtils.TaskLoggerService.class);
-
-
-
-        Log.d(LOG_TAG, "connect service...");
-        if (!bindService(intent, connection, Context.BIND_AUTO_CREATE)) {
-            Log.e(LOG_TAG, "cannot connect");
-        }
+        CommonUtils.TaskActivity taskActivity = new CommonUtils.TaskActivity(activity);
+        Message msg = Message.obtain();
+        msg.what = flag;
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("TaskActivity",taskActivity);
+        msg.setData(bundle);
+        intent.putExtra("message", msg);
+        startService(intent);
     }
-
-    ServiceConnection connection = new ServiceConnection() {
-        private boolean mConnectLost = false;
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            Log.d(LOG_TAG, "service disconnected: " + name + ", connLost: " + mConnectLost + getSystemInfo());
-            if (mConnectLost) {
-                return;
-            }
-            mConnectLost = true;
-            taskLoggerMessenger = null;
-            ApplicationTest.this.unbindService(this);
-        }
-
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d(LOG_TAG, "service connected: " + name + ", binder: " + service
-                    + ", connLost: " + mConnectLost);
-            Log.d(LOG_TAG, "onServiceConnected()" + getSystemInfo());
-            if (!mConnectLost) {
-                taskLoggerMessenger = new Messenger(service);
-            }
-        }
-    };
 
     @Override
     public void onCreate() {
-        Log.d(LOG_TAG, " ApplicationTest onCreate() " + getSystemInfo());
+        Log.d(LOG_TAG, " ApplicationTest onCreate() " + getSystemInfo(this));
         super.onCreate();
 
     }
 
     @Override
     public void onTerminate(){
-        Log.d(LOG_TAG, " ApplicationTest onTerminate() " + getSystemInfo());
+        Log.d(LOG_TAG, " ApplicationTest onTerminate() " + getSystemInfo(this));
         super.onTerminate();
     }
 
     @Override
     public void onLowMemory() {
-        Log.d(LOG_TAG, " ApplicationTest onLowMemory() " + getSystemInfo());
+        Log.d(LOG_TAG, " ApplicationTest onLowMemory() " + getSystemInfo(this));
         super.onLowMemory();
     }
 
     @Override
     public void onTrimMemory(int level) {
-        Log.d(LOG_TAG, " ApplicationTest onTrimMemory() " + getSystemInfo());
+        Log.d(LOG_TAG, " ApplicationTest onTrimMemory() " + getSystemInfo(this));
         super.onTrimMemory(level);
     }
 
 
-
-    @Override
-    public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
-        Log.d(LOG_TAG, activity + "onActivityCreated() " + getSystemInfo());
-
-        if (taskLoggerMessenger != null)
-            CommonUtils.TaskLoggerService.onActivityCreate(taskLoggerMessenger, activity);
-    }
-
-    @Override
-    public void onActivityStarted(Activity activity) {
-        Log.d(LOG_TAG, activity + "onActivityStarted()" + getSystemInfo());
-    }
-
-    @Override
-    public void onActivityResumed(Activity activity) {
-        Log.d(LOG_TAG, activity + "onActivityResumed()" + getSystemInfo());
-        if (taskLoggerMessenger != null)
-            CommonUtils.TaskLoggerService.onActivityResume(taskLoggerMessenger, activity);
-    }
-
-    @Override
-    public void onActivityPaused(Activity activity) {
-        Log.d(LOG_TAG, activity + "onActivityPaused()" + getSystemInfo());
-    }
-
-    @Override
-    public void onActivityStopped(Activity activity) {
-        Log.d(LOG_TAG, activity + "onActivityStopped()" + getSystemInfo());
-    }
-
-    @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState){
-            Log.d(LOG_TAG, activity + "onActivitySaveInstanceState()" + getSystemInfo());
-    }
-
-    @Override
-    public void onActivityDestroyed(Activity activity) {
-        Log.d(LOG_TAG, activity + "onActivityDestroyed()" + getSystemInfo());
-        CommonUtils.TaskLoggerService.onActivityDestroy(taskLoggerMessenger, activity);
-    }
+//
+//    @Override
+//    public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
+//        Log.d(LOG_TAG, activity + "onActivityCreated() " + getSystemInfo());
+//        connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_CREATE);
+//    }
+//
+//    @Override
+//    public void onActivityStarted(Activity activity) {
+//        Log.d(LOG_TAG, activity + "onActivityStarted()" + getSystemInfo());
+//    }
+//
+//    @Override
+//    public void onActivityResumed(Activity activity) {
+//        Log.d(LOG_TAG, activity + "onActivityResumed()" + getSystemInfo());
+//        connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_RESUME);
+//    }
+//
+//    @Override
+//    public void onActivityPaused(Activity activity) {
+//        Log.d(LOG_TAG, activity + "onActivityPaused()" + getSystemInfo());
+//    }
+//
+//    @Override
+//    public void onActivityStopped(Activity activity) {
+//        Log.d(LOG_TAG, activity + "onActivityStopped()" + getSystemInfo());
+//    }
+//
+//    @Override
+//    public void onActivitySaveInstanceState(Activity activity, Bundle outState){
+//            Log.d(LOG_TAG, activity + "onActivitySaveInstanceState()" + getSystemInfo());
+//    }
+//
+//    @Override
+//    public void onActivityDestroyed(Activity activity) {
+//        Log.d(LOG_TAG, activity + "onActivityDestroyed()" + getSystemInfo());
+//        connectService(activity, CommonUtils.TaskLoggerService.MSG_ON_ACTIVITY_DESTROY);
+//    }
 
 
 
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
-        launchActivity(this, intent, taskLoggerMessenger);
-    }
-
-    public static void launchActivity(Context context, Intent intent, Messenger taskLoggerMessenger){
-        intent.putExtra("m", taskLoggerMessenger);
-        launchActivity(context,intent);
+        launchActivity(this, intent);
     }
 
     public static void launchActivity(Context context, Intent intent){
-
             ResolveInfo info =  context.getPackageManager().resolveActivity(intent, 0);
             String activityName = info.activityInfo.name;
             String launchMode = CommonUtils.getLaunchMode(info.activityInfo.launchMode);
@@ -381,6 +396,5 @@ public class ApplicationTest extends Application implements Application.Activity
             String taskAffinity = info.activityInfo.taskAffinity;
             Log.d(LOG_TAG, "startActivity " + context.getClass().getSimpleName() + " -> " + activityName);
             Log.d(LOG_TAG,"launch mode = " + launchMode + " ,flags = " + flags + " ,taskAffinity = " + taskAffinity + " ,process = " + info.activityInfo.processName);
-
     }
 }

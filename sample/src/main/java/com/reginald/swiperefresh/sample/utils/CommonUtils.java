@@ -46,6 +46,22 @@ public class CommonUtils {
         public static final int MSG_TASKS_PRINT = 6;
 
         @Override
+        public void onCreate(){
+            Log.d(TAG, "TaskLoggerService.onCreate()");
+            super.onCreate();
+        }
+
+        @Override
+        public int onStartCommand(Intent intent, int flags, int startId){
+            Log.d(TAG, "TaskLoggerService.onStartCommand()");
+            Message msg = intent.getParcelableExtra("message");
+            Log.d(TAG,"message = " + msg);
+            handleMessage(msg);
+
+            return START_STICKY;
+        }
+
+        @Override
         public IBinder onBind(Intent intent) {
             Log.d(TAG, "TaskLoggerService.onBind()");
             return getBinder();
@@ -97,7 +113,11 @@ public class CommonUtils {
                     case MSG_ON_ACTIVITY_NEW_INTENT:
                     case MSG_ON_ACTIVITY_RESTART:
                     case MSG_ON_ACTIVITY_RESUME:{
-                        foregroundTaskId = msg.arg1;
+                        //foregroundTaskId = msg.arg1;
+                        Bundle bundle = msg.getData();
+                        bundle.setClassLoader(TaskActivity.class.getClassLoader());
+                        TaskActivity taskActivity = (TaskActivity)  bundle.getParcelable("TaskActivity");
+                        foregroundTaskId = taskActivity.taskId;
                         print();
                         break;
                     }
@@ -309,10 +329,21 @@ public class CommonUtils {
         public int taskId;
         public String taskName;
 
+        public TaskActivity(Activity a){
+            activity = TaskActivity.contextToString(a);
+            taskId = a.getTaskId();
+            ResolveInfo info = a.getPackageManager().resolveActivity(a.getIntent(), 0);
+            taskName = info.activityInfo.taskAffinity;
+        }
+
         public TaskActivity(int taskId, String activity, String name){
             this.taskId =taskId;
             this.activity = activity;
             this.taskName = name;
+        }
+
+        public String toString(){
+            return "[ activity = " + activity + " , taskId = " + taskId + " , taskName = " + taskName + " ]";
         }
 
         public TaskActivity(Parcel parcel){
