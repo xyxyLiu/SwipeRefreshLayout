@@ -67,6 +67,7 @@
         <activity
             android:name=".ActivityA"
             android:label="A"
+            android:process=":activityTest"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:taskAffinity=".T1">
@@ -76,6 +77,7 @@
         <activity
             android:name=".ActivityB"
             android:label="B"
+            android:process=":activityTest"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:taskAffinity=".T1">
