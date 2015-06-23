@@ -19,6 +19,7 @@ package com.reginald.swiperefresh.sample;
 
         import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
         import com.reginald.swiperefresh.sample.dummydata.Cheeses;
+        import com.reginald.swiperefresh.sample.utils.CommonUtils;
 
         import java.util.List;
 
@@ -209,6 +210,7 @@ public class ButtonFragment extends Fragment{
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
+//        CommonUtils.logTaskInfo(getActivity());
 
         menu.clear();
         menu.add(0, 1, 0, "swipe mode");

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <Button
+        android:id="@+id/test_viewpager_btn0"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="start DemoActivity"
+        android:gravity="center"
+        android:textSize="16dp"/>
+    <Button
+        android:id="@+id/test_viewpager_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="test1"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:layout_toRightOf="@+id/test_viewpager_btn0"/>
+    <Button
+        android:id="@+id/test_viewpager_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="test2"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:layout_below="@+id/test_viewpager_btn0"/>
+    <Button
+        android:id="@+id/test_viewpager_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="task info"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:layout_toRightOf="@+id/test_viewpager_btn2"
+        android:layout_below="@+id/test_viewpager_btn1"/>
+
+</RelativeLayout>

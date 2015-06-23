@@ -1,24 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.reginald.swiperefresh.sample">
+    package="com.reginald.swiperefresh.sample" >
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
 
     <application
-        android:noHistory="true"
-        android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:name=".ApplicationTest"
+        android:label="@string/app_name"
+        android:noHistory="true"
+        android:theme="@style/AppTheme" >
+
+        <service android:name=".utils.CommonUtils$TaskLoggerService"
+                 android:process=":taskLogger"
+            >
+        </service>
 
 
-        <activity android:name=".MainActivity"
-            android:label= "@string/app_name"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".DemoActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.reginald.swiperefresh.task.demo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.reginald.swiperefresh.task.other" >
+            <intent-filter>
+                <action android:name="com.reginald.swiperefresh.action.testviewpager" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+        <activity-alias
+            android:name=".MainActivityAlias"
+            android:label="MainActivityAlias"
+            android:targetActivity=".MainActivity" >
+        </activity-alias>
+        <activity-alias
+            android:name=".DemoActivityAlias"
+            android:label="it&apos;s an alias"
+            android:targetActivity=".DemoActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".ActivityA"
+            android:label="A"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:taskAffinity=".T1">
+
+
+        </activity>
+        <activity
+            android:name=".ActivityB"
+            android:label="B"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:taskAffinity=".T1">
+        </activity>
     </application>
 
 </manifest>

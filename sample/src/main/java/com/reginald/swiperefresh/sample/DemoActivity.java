@@ -18,16 +18,21 @@
 package com.reginald.swiperefresh.sample;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 import com.reginald.swiperefresh.sample.dummydata.Cheeses;
+import com.reginald.swiperefresh.sample.utils.CommonUtils;
 
 import java.util.List;
 
@@ -38,9 +43,9 @@ import java.util.List;
 /**
  * One Sample activity that shows the features of CustomSwipeRefreshLayout
  */
-public class DemoActivity extends Activity {
+public class DemoActivity extends Activity implements View.OnClickListener {
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "$$ MainActivity";
 
     private static final int LIST_ITEM_COUNT = 20;
 
@@ -67,11 +72,24 @@ public class DemoActivity extends Activity {
         //show demo view
         setContentView(R.layout.activity_main);
         setupView();
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+//        CommonUtils.logTaskInfo(this);
+        setTitle("DemoActivity (task " + getTaskId() + ")");
     }
 
     protected void setupView() {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
         mListView = (ListView)findViewById(R.id.listview);
+        Button testBtn0 = (Button) findViewById(R.id.test_viewpager_btn0);
+        testBtn0.setOnClickListener(this);
+        Button testBtn1 = (Button) findViewById(R.id.test_viewpager_btn1);
+        testBtn1.setOnClickListener(this);
+        Button testBtn2 = (Button) findViewById(R.id.test_viewpager_btn2);
+        testBtn2.setOnClickListener(this);
 
         // OPTIONAL:  Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
         mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
@@ -149,10 +167,30 @@ public class DemoActivity extends Activity {
     }
 
 
+    @Override
+    public void onClick(View view){
+        if (view.getId() == R.id.test_viewpager_btn0){
+            //Intent intent = new Intent("com.reginald.swiperefresh.action.testviewpager");
+            Intent intent = new Intent(this,DemoActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if (view.getId() == R.id.test_viewpager_btn1){
+            //Intent intent = new Intent("com.reginald.swiperefresh.action.testviewpager");
+            Intent intent = new Intent(this,MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if (view.getId() == R.id.test_viewpager_btn2){
+            ComponentName componentName = new ComponentName(this,ActivityA.class);//"com.reginald.swiperefresh.sample.MainActivityAlias");
+            Intent intent = new Intent();
+            intent.setComponent(componentName);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-
+//        CommonUtils.logTaskInfo(this);
         menu.clear();
         menu.add(0, 1, 0, "swipe mode");
         menu.add(0, 2, 0, "pull mode");
@@ -180,6 +218,7 @@ public class DemoActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         String text = "";
         switch (item.getItemId()) {
             case 1:
@@ -202,5 +241,8 @@ public class DemoActivity extends Activity {
         Toast.makeText(DemoActivity.this, text, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }
