@@ -52,12 +52,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="matrix"
-        android:src="@drawable/abc_btn_radio_material"/>
+        android:src="@drawable/ic_launcher"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:flipInterval="30"
         android:persistentDrawingCache="animation"/>
+
+    <include layout="@layout/buttons"/>
+
 </LinearLayout>

@@ -7,12 +7,14 @@ package com.reginald.swiperefresh.sample;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.ListView;
         import android.widget.TextView;
 
 public class TestFragment extends Fragment {
     private static final String TAG = "TestFragment";
     private String hello;// = "hello android";
     private String defaultHello = "default value";
+    private ListView listview;
 
     static TestFragment newInstance(String s) {
         TestFragment newFragment = new TestFragment();
@@ -37,8 +39,12 @@ public class TestFragment extends Fragment {
         View view = inflater.inflate(R.layout.guide_2, container, false);
         TextView viewhello = (TextView) view.findViewById(R.id.tv);
         viewhello.setText(hello);
-        return view;
 
+
+        listview = (ListView) view.findViewById(R.id.listview);
+
+
+        return view;
     }
 
 

@@ -15,4 +15,9 @@
 -->
 <resources>
     <string name="app_name">CustomSwipeRefreshLayout</string>
+    <string name="title_activity_">ActivityA</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity_b">ActivityB</string>
 </resources>

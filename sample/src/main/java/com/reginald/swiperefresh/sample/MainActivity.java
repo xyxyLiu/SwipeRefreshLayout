@@ -5,11 +5,11 @@ package com.reginald.swiperefresh.sample;
  */
 
         import java.util.ArrayList;
-        import java.util.List;
 
+        import android.content.ComponentName;
+        import android.content.Intent;
         import android.graphics.BitmapFactory;
         import android.graphics.Matrix;
-        import android.os.AsyncTask;
         import android.os.Bundle;
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentActivity;
@@ -17,21 +17,17 @@ package com.reginald.swiperefresh.sample;
         import android.support.v4.view.ViewPager.OnPageChangeListener;
         import android.util.DisplayMetrics;
         import android.util.Log;
-        import android.view.Menu;
-        import android.view.MenuItem;
         import android.view.View;
         import android.view.animation.Animation;
         import android.view.animation.TranslateAnimation;
-        import android.widget.ArrayAdapter;
+        import android.widget.Button;
         import android.widget.ImageView;
-        import android.widget.ListView;
         import android.widget.TextView;
         import android.widget.Toast;
 
-        import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
-        import com.reginald.swiperefresh.sample.dummydata.Cheeses;
+        import com.reginald.swiperefresh.sample.utils.CommonUtils;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements View.OnClickListener{
     private ViewPager mPager;
     private ArrayList<Fragment> fragmentList;
     private ImageView image;
@@ -40,7 +36,7 @@ public class MainActivity extends FragmentActivity {
     private int bmpW;//横线图片宽度
     private int offset;//图片移动的偏移量
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "$$ MainActivity";
 
 
     @Override
@@ -51,9 +47,79 @@ public class MainActivity extends FragmentActivity {
         InitTextView();
         InitImage();
         InitViewPager();
+
+        Button testBtn0 = (Button) findViewById(R.id.test_viewpager_btn0);
+        testBtn0.setOnClickListener(this);
+        Button testBtn1 = (Button) findViewById(R.id.test_viewpager_btn1);
+        testBtn1.setOnClickListener(this);
+        Button testBtn2 = (Button) findViewById(R.id.test_viewpager_btn2);
+        testBtn2.setOnClickListener(this);
+
     }
 
+    @Override
+    public void onClick(View view){
+        if (view.getId() == R.id.test_viewpager_btn0){
+            //Intent intent = new Intent("com.reginald.swiperefresh.action.testviewpager");
+            Intent intent = new Intent(this,DemoActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if (view.getId() == R.id.test_viewpager_btn1){
+            Log.d(TAG,"start MainActivity!");
+            //Intent intent = new Intent("com.reginald.swiperefresh.action.testviewpager");
+            Intent intent = new Intent(this,MainActivity.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else if (view.getId() == R.id.test_viewpager_btn2){
+            ComponentName componentName = new ComponentName(this,"com.reginald.swiperefresh.sample.MainActivityAlias");
+            Intent intent = new Intent();
+            intent.setComponent(componentName);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(TAG, "onStart() ");
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.d(TAG, "onRestart() ");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(TAG, "onResume() ");
+//        CommonUtils.logTaskInfo(this);
+    }
+
+    protected void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        Log.d(TAG, "onNewIntent ");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG,"onPause() ");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(TAG,"onStop() ");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG,"onDestroy() ");
+    }
 
     /*
      * 初始化标签名
