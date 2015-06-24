@@ -1,6 +1,5 @@
 package com.reginald.swiperefresh.sample;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,7 +57,6 @@ public class ActivityA extends ActivityTest implements View.OnClickListener{
             startActivity(intent);
         }else if (view.getId() == R.id.test_viewpager_btn3){
             //CommonUtils.logTaskInfo(this);
-//            printOnTaskLogger();
         }
     }
 

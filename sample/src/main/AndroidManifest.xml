@@ -11,12 +11,12 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:name=".ApplicationTest"
+        android:name=".tasklogger.TaskLoggerApplication"
         android:label="@string/app_name"
         android:noHistory="true"
         android:theme="@style/AppTheme" >
 
-        <service android:name=".utils.CommonUtils$TaskLoggerService"
+        <service android:name=".tasklogger.TaskLoggerService"
                  android:process=":taskLogger"
             >
         </service>
@@ -69,6 +69,7 @@
             android:label="A"
             android:process=":activityTest"
             android:launchMode="standard"
+            android:finishOnTaskLaunch="true"
             android:screenOrientation="portrait"
             android:taskAffinity=".T1">
 
@@ -78,7 +79,8 @@
             android:name=".ActivityB"
             android:label="B"
             android:process=":activityTest"
-            android:launchMode="singleInstance"
+            android:launchMode="standard"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:taskAffinity=".T1">
         </activity>

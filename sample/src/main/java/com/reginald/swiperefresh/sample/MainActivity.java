@@ -25,8 +25,6 @@ package com.reginald.swiperefresh.sample;
         import android.widget.TextView;
         import android.widget.Toast;
 
-        import com.reginald.swiperefresh.sample.utils.CommonUtils;
-
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
     private ViewPager mPager;
     private ArrayList<Fragment> fragmentList;

@@ -1,4 +1,4 @@
-package com.reginald.swiperefresh.sample.reflect;
+package com.reginald.swiperefresh.sample.tasklogger.reflect;
 
 import android.util.Log;
 
