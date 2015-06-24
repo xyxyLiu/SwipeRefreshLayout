@@ -19,7 +19,6 @@ package com.reginald.swiperefresh.sample;
 
         import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
         import com.reginald.swiperefresh.sample.dummydata.Cheeses;
-        import com.reginald.swiperefresh.sample.utils.CommonUtils;
 
         import java.util.List;
 

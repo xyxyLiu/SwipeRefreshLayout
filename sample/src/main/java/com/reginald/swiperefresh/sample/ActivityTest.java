@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.reginald.swiperefresh.sample.utils.CommonUtils;
 
 /**
  * Created by baidu on 15/6/10.
@@ -116,26 +115,6 @@ public class ActivityTest extends Activity{
 //        taskLogger.print();
 //    }
 
-    @Override
-    public void startActivity(Intent intent){
-        ComponentName componentName = intent.getComponent();
-        if (componentName != null){
-            Log.d(TAG,"startActivity " + this.getClass().getSimpleName() + " -> " + componentName.getClassName());
-            ResolveInfo info =  getPackageManager().resolveActivity(intent, 0);
-            String launchMode = CommonUtils.getLaunchMode(info.activityInfo.launchMode);
-            String flags = CommonUtils.getFlags(intent.getFlags());
-            String taskAffinity = info.activityInfo.taskAffinity;
-            Log.d(TAG,"launch mode = " + launchMode + " ,flags = " + flags + " ,taskAffinity = " + taskAffinity);
-//            String text = "" + CommonUtils.TaskActivity.activityToString(this) + " -> " + componentName.getShortClassName() + "\n";
-//            text += "launch mode = " + launchMode + "\nflags = " + flags + "\ntaskAffinity = " + taskAffinity;
-//            taskLogger.setLastUserActionInfo(text);
-        }
-
-
-
-        super.startActivity(intent);
-    }
-
 
     @Override
     public void onBackPressed(){
@@ -143,28 +122,6 @@ public class ActivityTest extends Activity{
 //        taskLogger.setLastUserActionInfo("back from " + CommonUtils.TaskActivity.activityToString(this));
     }
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.layout.menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
