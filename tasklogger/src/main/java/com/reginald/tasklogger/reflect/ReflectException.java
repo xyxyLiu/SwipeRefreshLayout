@@ -1,4 +1,4 @@
-package com.reginald.swiperefresh.sample.tasklogger.reflect;
+package com.reginald.tasklogger.reflect;
 
 /**
  * 反射发生错误时抛出异常
