@@ -80,3 +80,5 @@ STEP 3: Handle refresh event
         // e.g. when received data from server
 ```
 
+### Download
+ - [swiperefreshlayout-1.0.aar](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.0/swiperefreshlayout-1.0.aar)

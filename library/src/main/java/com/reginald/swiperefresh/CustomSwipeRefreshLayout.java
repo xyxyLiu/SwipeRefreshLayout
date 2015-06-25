@@ -68,7 +68,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private CustomSwipeProgressBar mTopProgressBar;
     private CustomSwipeRefreshHeadview mHeadview;
 
-    boolean enableTopProgressBar = false;
+    boolean enableTopProgressBar = true;
     boolean enableTopRefreshingHead = true;
     int refresshMode = REFRESH_MODE_SWIPE;
 
@@ -744,7 +744,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         removeCallbacks(mCancel);
         mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_REFRESHING);
         setRefreshing(true);
-        mListener.onRefresh();
+        if (mListener != null)
+            mListener.onRefresh();
     }
 
     private void updateContentOffsetTop(int targetTop, boolean changeHeightOnly) {
