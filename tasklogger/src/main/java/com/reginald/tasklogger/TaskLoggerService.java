@@ -1,4 +1,4 @@
-package com.reginald.swiperefresh.sample.tasklogger;
+package com.reginald.tasklogger;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -7,15 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.os.*;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -25,9 +17,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
-/**
- * Created by baidu on 15/6/9.
- */
 public class TaskLoggerService extends Service implements Handler.Callback {
 
     public static final String TASK_TAG = "$tasklogger$";
@@ -77,6 +66,7 @@ public class TaskLoggerService extends Service implements Handler.Callback {
 
     @Override
     public void onDestroy(){
+        Log.d(DEBUG_TAG, "TaskLoggerService.onDestroy()");
         super.onDestroy();
         mServiceLooper.quit();
     }
@@ -132,15 +122,17 @@ public class TaskLoggerService extends Service implements Handler.Callback {
                 int taskId = taskActivity.taskId;
 
                 List<TaskActivity> list = taskLists.get(taskId);
-                int index = list.indexOf(new TaskActivity(taskId, activity, null));
-                if (index != -1) {
-                    list.remove(index);
-                    if (list.size() == 0)
-                        taskLists.remove(taskId);
-                }
+                if (list != null) {
+                    int index = list.indexOf(new TaskActivity(taskId, activity, null));
+                    if (index != -1) {
+                        list.remove(index);
+                        if (list.size() == 0)
+                            taskLists.remove(taskId);
+                    }
 
-                if (taskLists.size() == 0) {
-                    foregroundTaskId = 0;
+                    if (taskLists.size() == 0) {
+                        foregroundTaskId = 0;
+                    }
                 }
 
                 print();
@@ -183,7 +175,7 @@ public class TaskLoggerService extends Service implements Handler.Callback {
         String taskAffinity = activityInfo.taskAffinity;
         String targetActivity = activityInfo.targetActivity;
 
-        Log.d(TASK_TAG, String.format("startActivity %s  ->  %s%s", taskActivity.invoker, activityName, (targetActivity == null ? "":"(" + targetActivity + ")")));
+        Log.d(TASK_TAG, String.format("startActivity %s  ->  %s%s", taskActivity.invoker, activityName, (targetActivity == null ? "" : "(" + targetActivity + ")")));
         Log.d(TASK_TAG, String.format("launch mode = %s ,intentFlags = %s ,taskAffinity = %s ,process = %s", launchMode, intentFlags, taskAffinity, activityInfo.processName));
     }
 
@@ -191,20 +183,41 @@ public class TaskLoggerService extends Service implements Handler.Callback {
 
 
     private void checkTaskLists(){
+
         ActivityManager activityManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+
+        for (ActivityManager.RunningAppProcessInfo process : activityManager.getRunningAppProcesses()) {
+            for (Map.Entry<Integer,List<TaskActivity>> tasklistMap : taskLists.entrySet()){
+                int taskId = tasklistMap.getKey();
+                boolean isKilled = true;
+                List<TaskActivity> tasklist = tasklistMap.getValue();
+                for (TaskActivity taskActivity: tasklist){
+                    if (taskActivity.pid == process.pid)
+                        isKilled = false;
+                }
+
+                if (isKilled)
+                    taskLists.remove(taskId);
+            }
+        }
+
+
+
+
         List<ActivityManager.RunningTaskInfo> runningTaskList = activityManager.getRunningTasks(100);
 
         for (int taskId: taskLists.keySet()){
             boolean taskIsRunning = false;
             for (ActivityManager.RunningTaskInfo task : runningTaskList) {
                 if (taskId == task.id) {
-                    Log.d(DEBUG_TAG,"checkTaskLists(): task " + taskId + " is running. base = " + task.baseActivity + " top = " + task.topActivity + " size = " + task.numActivities);
+                    Log.d(DEBUG_TAG, "checkTaskLists(): task " + taskId + " is running. base = " + task.baseActivity + " top = " + task.topActivity + " size = " + task.numActivities);
+//                    if (task.baseActivity.getClassName().equals(taskLists.get(taskId).get(0).activityInfo.name))
                     taskIsRunning = true;
                     break;
                 }
             }
             if (!taskIsRunning) {
-                Log.w(DEBUG_TAG,"checkTaskLists(): task " + taskId + " is not running! REMOVED from taskLists");
+                Log.w(DEBUG_TAG, "checkTaskLists(): task " + taskId + " is not running! REMOVED from taskLists");
                 taskLists.remove(taskId);
             }
 
@@ -214,7 +227,7 @@ public class TaskLoggerService extends Service implements Handler.Callback {
 
     private void print() {
 
-        Log.d(TASK_TAG, "$$$$$$$$$$$$$ task info: ");
+        Log.d(TASK_TAG, "$$$$$$$$$$$$$$$$$$$$$$$$$$ task info $$$$$$$$$$$$$$$$$$$$$$$$$$ ");
 
         StringBuilder msg = new StringBuilder("");
         for (HashMap.Entry<Integer, List<TaskActivity>> entry : taskLists.entrySet()) {
@@ -241,7 +254,7 @@ public class TaskLoggerService extends Service implements Handler.Callback {
             }
         }
 
-        Log.d(TASK_TAG, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        Log.d(TASK_TAG, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ ");
     }
 
     public static class TaskActivity implements Parcelable {

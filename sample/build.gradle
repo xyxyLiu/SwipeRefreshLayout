@@ -22,4 +22,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:21.0.0'
     compile project(':library')
+    compile files('/Users/baidu/Desktop/classes.jar')
 }

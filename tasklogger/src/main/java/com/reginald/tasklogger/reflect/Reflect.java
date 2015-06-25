@@ -1,4 +1,4 @@
-package com.reginald.swiperefresh.sample.tasklogger.reflect;
+package com.reginald.tasklogger.reflect;
 
 import android.util.Log;
 
@@ -283,7 +283,7 @@ public class Reflect {
                 showMethod(method);
                 return on(method, object, args);
             } catch (NoSuchMethodException e1) {
-                Log.e(TAG,"no similar found!");
+                Log.e(TAG, "no similar found!");
                 throw new ReflectException(e1);
             }
         }
@@ -634,7 +634,7 @@ public class Reflect {
         if (types.length != 0)
             msg.delete(msg.length()-2,msg.length());
         msg.append(")");
-        Log.d(TAG,msg.toString());
+        Log.d(TAG, msg.toString());
     }
 
 }

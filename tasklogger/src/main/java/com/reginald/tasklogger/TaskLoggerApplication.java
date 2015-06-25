@@ -1,4 +1,4 @@
-package com.reginald.swiperefresh.sample.tasklogger;
+package com.reginald.tasklogger;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -7,20 +7,15 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
 
-import com.reginald.swiperefresh.sample.tasklogger.reflect.Reflect;
+import com.reginald.tasklogger.reflect.Reflect;
 
-import static com.reginald.swiperefresh.sample.tasklogger.TaskLoggerService.TaskActivity;
+import static com.reginald.tasklogger.TaskLoggerService.TaskActivity;
 
-/**
- * Created by baidu on 15/6/16.
- */
 public class TaskLoggerApplication extends Application {
 
     public static final String TASK_TAG = "$tasklogger$";
