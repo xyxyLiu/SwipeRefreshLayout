@@ -4,6 +4,7 @@ package com.reginald.swiperefresh;
  */
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -21,6 +22,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.annotation.TargetApi;
+
+import java.text.AttributedCharacterIterator;
 
 /**
  * The CustomSwipeRefreshLayout should be used whenever the user can refresh the
@@ -41,10 +44,10 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     public static final int REFRESH_MODE_SWIPE = 1;
     public static final int REFRESH_MODE_PULL = 2;
     // time out for no movements during swipe action
-    private static final int RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 200;
+    private static final int RETURN_TO_ORIGINAL_POSITION_TIMEOUT = 500;
 
     // time out for showing refresh complete info
-    private static final int REFRESH_COMPLETE_POSITION_TIMEOUT = 600;
+    private static final int REFRESH_COMPLETE_POSITION_TIMEOUT = 1000;
 
     // acceleration of progress bar
     private static final float ACCELERATE_INTERPOLATION_FACTOR = 1.5f;
@@ -263,7 +266,11 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      * @param attrs
      */
     public CustomSwipeRefreshLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context,attrs,0);
+    }
+
+    public CustomSwipeRefreshLayout(Context context, AttributeSet attrs, int defStyle){
+        super(context,attrs,defStyle);
         if (SHOWDEBUG)
             Log.i("csr", "CustomSwipeRefreshLayout(Context context, AttributeSet attrs)");
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
@@ -280,9 +287,20 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         mDecelerateInterpolator = new DecelerateInterpolator(DECELERATE_INTERPOLATION_FACTOR);
         mAccelerateInterpolator = new AccelerateInterpolator(ACCELERATE_INTERPOLATION_FACTOR);
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, LAYOUT_ATTRS);
-        setEnabled(a.getBoolean(0, true));
-        a.recycle();
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CustomSwipeRefreshLayout);
+        if (a != null) {
+            refresshMode = a.getInteger(R.styleable.CustomSwipeRefreshLayout_refresh_mode, REFRESH_MODE_SWIPE);
+            enableTopProgressBar = a.getBoolean(R.styleable.CustomSwipeRefreshLayout_enable_top_progress_bar, true);
+            mReturnToOriginalTimeout = a.getInteger(R.styleable.CustomSwipeRefreshLayout_time_out_return_to_top, RETURN_TO_ORIGINAL_POSITION_TIMEOUT);
+            mRefreshCompleteTimeout = a.getInteger(R.styleable.CustomSwipeRefreshLayout_time_out_refresh_complete, REFRESH_COMPLETE_POSITION_TIMEOUT);
+            enableTopRefreshingHead = a.getBoolean(R.styleable.CustomSwipeRefreshLayout_keep_refresh_head, false);
+            int color1 = a.getColor(R.styleable.CustomSwipeRefreshLayout_top_progress_bar_color_1, 0);
+            int color2 = a.getColor(R.styleable.CustomSwipeRefreshLayout_top_progress_bar_color_2, 0);
+            int color3 = a.getColor(R.styleable.CustomSwipeRefreshLayout_top_progress_bar_color_3, 0);
+            int color4 = a.getColor(R.styleable.CustomSwipeRefreshLayout_top_progress_bar_color_4, 0);
+            setProgressBarColor(color1, color2, color3, color4);
+            a.recycle();
+        }
 
         // child index of mHeadview = 0; child index of mTarget = 1;
         addView(mHeadview);

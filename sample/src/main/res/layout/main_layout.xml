@@ -6,11 +6,21 @@
 
 
     <com.reginald.swiperefresh.CustomSwipeRefreshLayout
+        xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/swipelayout">
+        swiperefresh:refresh_mode="pull_mode"
+        swiperefresh:keep_refresh_head="true"
+        swiperefresh:enable_top_progress_bar="true"
+        swiperefresh:time_out_refresh_complete="2000"
+        swiperefresh:time_out_return_to_top="1000"
+        swiperefresh:top_progress_bar_color_1="@color/common_red"
+        swiperefresh:top_progress_bar_color_2="#ee5522"
+        swiperefresh:top_progress_bar_color_3="#ffa600"
+        swiperefresh:top_progress_bar_color_4="@color/common_yellow">
 
-    <!-- Attention: you can ONLY add one view in CustomSwipeRefreshLayout either in xml or java code -->
+    <!-- Attention: you can add ONLY one view in CustomSwipeRefreshLayout either in xml or java code -->
 
         <ListView
             android:layout_width="match_parent"
