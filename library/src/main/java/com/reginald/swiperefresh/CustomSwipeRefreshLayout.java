@@ -4,10 +4,10 @@ package com.reginald.swiperefresh;
  */
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 
@@ -22,8 +22,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.annotation.TargetApi;
-
-import java.text.AttributedCharacterIterator;
 
 /**
  * The CustomSwipeRefreshLayout should be used whenever the user can refresh the
@@ -557,31 +555,54 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      * @return Whether it is possible for the child view of this layout to
      * scroll up. Override this if the child view is a custom view.
      */
-    public boolean canChildScrollUp() {
+    public static boolean canViewScrollUp(View view, MotionEvent event) {
         boolean ret;
+
         if (android.os.Build.VERSION.SDK_INT < 14) {
-            if (mTarget instanceof AbsListView) {
-                final AbsListView absListView = (AbsListView) mTarget;
+            if (view instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) view;
                 ret = absListView.getChildCount() > 0
                         && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
                         .getTop() < absListView.getPaddingTop());
             } else {
-                ret = mTarget.getScrollY() > 0;
+                ret = view.getScrollY() > 0 || canChildrenScroolUp(view,event);
             }
         } else {
-            ret = ViewCompat.canScrollVertically(mTarget, -1);
+            ret = ViewCompat.canScrollVertically(view, -1) || canChildrenScroolUp(view,event);
         }
-
+        Log.d("hehe","canViewScrollUp() = " + ret);
         return ret;
     }
 
+    private static boolean canChildrenScroolUp(View view, MotionEvent event){
+        if(view instanceof ViewGroup){
+            final ViewGroup viewgroup = (ViewGroup) view;
+            int count = viewgroup.getChildCount();
+            Log.d("hehe","event = " + event);
+            for(int i = 0; i < count; ++i)
+            {
+                View child = viewgroup.getChildAt(i);
+                Rect bounds = new Rect();
+                child.getHitRect(bounds);
+                Log.d("hehe", child.getClass().getName() + " 's bounds = " + bounds);
+                if (bounds.contains((int)event.getX(),(int)event.getY())){
+                    Log.d("hehe","in " + child.getClass().getName());
+                    return canViewScrollUp(child, event);
+                }
+            }
+            Log.d("hehe","not in any child!");
+        }
+
+        return false;
+    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
 
         // to be further modified here ...
-
-        return super.dispatchTouchEvent(event);
+        boolean ret = super.dispatchTouchEvent(event);
+        Log.d("tag","dispatchTouchEvent() " + ret);
+        return ret;
     }
 
     @Override
@@ -614,15 +635,16 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
 
         if (isEnabled()) {
-            if (!mReturningToStart && !canChildScrollUp()) {
+            if (!mReturningToStart && !canViewScrollUp(mTarget, ev)) {
                 handled = onTouchEvent(ev);
             } else {
                 // keep updating last Y position when the event is not intercepted!
                 mPrevY = ev.getY();
             }
         }
-
-        return !handled ? super.onInterceptTouchEvent(ev) : handled;
+        boolean ret = !handled ? super.onInterceptTouchEvent(ev) : handled;
+        Log.d("tag","onInterceptTouchEvent() " + ret);
+        return ret;
     }
 
     @Override
@@ -635,6 +657,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        Log.d("tag","onTouchEvent() " + event);
         final int action = event.getAction();
         boolean handled = false;
 
