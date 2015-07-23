@@ -59,7 +59,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         mColor3 = COLOR3;
         mColor4 = COLOR4;
 
-        setDefaultHeadLayout();
+        //setDefaultHeadLayout();
     }
 
     public CustomSwipeRefreshHeadview(Context context, ViewGroup layout) {

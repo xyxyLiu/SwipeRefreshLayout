@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-    <com.reginald.swiperefresh.CustomSwipeRefreshLayout
-        xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
+    <com.reginald.swiperefresh.CustomSwipeRefreshLayout xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        swiperefresh:refresh_mode="pull_mode"
-        swiperefresh:keep_refresh_head="true"
         swiperefresh:enable_top_progress_bar="true"
+        swiperefresh:keep_refresh_head="true"
+        swiperefresh:refresh_mode="pull_mode"
         swiperefresh:time_out_refresh_complete="2000"
-        swiperefresh:time_out_return_to_top="1000"
+        swiperefresh:time_out_return_to_top="0"
         swiperefresh:top_progress_bar_color_1="@color/common_red"
         swiperefresh:top_progress_bar_color_2="#ee5522"
         swiperefresh:top_progress_bar_color_3="#ffa600"
@@ -27,15 +26,14 @@
             android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
-                android:text="abcdefg"
-                android:layout_gravity="center"
                 android:id="@+id/none_data"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:text="abcdefg" />
 
             <ListView
                 android:id="@+id/listview"
@@ -46,14 +44,23 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="300dp">
 
-                <ImageView
-                    android:src="@drawable/ic_launcher"
-                    android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:layout_width="500dp"
-                    android:layout_height="500dp" />
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:layout_width="500dp"
+                            android:layout_height="500dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_launcher" />
+                    </LinearLayout>
+                </HorizontalScrollView>
             </ScrollView>
 
         </LinearLayout>

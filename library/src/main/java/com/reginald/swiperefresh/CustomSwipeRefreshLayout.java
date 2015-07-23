@@ -528,9 +528,23 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (getChildCount() > 2 && !isInEditMode()) {
-            throw new IllegalStateException("CustomSwipeRefreshLayout can host only one child content view");
+        if (getChildCount() > 3 && !isInEditMode()) {
+            throw new IllegalStateException("CustomSwipeRefreshLayout can host one child content view, OR one content view with one custom headview");
         }
+
+        if (getChildCount() == 3){
+            ViewGroup headView = (ViewGroup)getChildAt(1);
+            if (!(headView instanceof CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout) || !(headView instanceof ViewGroup))
+                throw new IllegalStateException("custom head view must implement CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout");
+
+            removeView(headView);
+            mHeadview.setHeadLayout(headView);
+        }
+
+        if (getChildCount() == 2){
+            mHeadview.setDefaultHeadLayout();
+        }
+
         if (getChildCount() > 0) {
             getChildAt(1).measure(
                     MeasureSpec.makeMeasureSpec(
@@ -588,7 +602,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 Log.d(TAG, child.getClass().getName() + " 's bounds = " + bounds);
                 if (bounds.contains((int)event.getX(),(int)event.getY())){
                     Log.d(TAG,"in " + child.getClass().getName());
-                    event.offsetLocation(child.getScrollX()-child.getLeft(),child.getScrollY()-child.getTop());
+                    event.offsetLocation(child.getScrollX() - child.getLeft(), child.getScrollY() - child.getTop());
                     return canViewScrollUp(child, event);
                 }
             }
@@ -849,6 +863,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
     private void updatePositionTimeout(boolean isDelayed) {
+        if (isDelayed && mReturnToOriginalTimeout <= 0)
+            return;
         removeCallbacks(mCancel);
         postDelayed(mCancel, isDelayed ? mReturnToOriginalTimeout : 0);
     }
