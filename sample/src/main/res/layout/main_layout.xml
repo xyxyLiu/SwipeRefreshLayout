@@ -20,29 +20,43 @@
         swiperefresh:top_progress_bar_color_3="#ffa600"
         swiperefresh:top_progress_bar_color_4="@color/common_yellow">
 
-    <!-- Attention: you can add ONLY one view in CustomSwipeRefreshLayout either in xml or java code -->
+        <!-- Attention: you can add ONLY one view in CustomSwipeRefreshLayout either in xml or java code -->
 
-        <FrameLayout
+
+        <LinearLayout
             android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+
             <TextView
                 android:text="abcdefg"
                 android:layout_gravity="center"
                 android:id="@+id/none_data"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp"/>
+                android:layout_height="100dp" />
+
             <ListView
                 android:id="@+id/listview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
+
                 />
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:src="@drawable/ic_launcher"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:layout_width="500dp"
+                    android:layout_height="500dp" />
+            </ScrollView>
 
-        </FrameLayout>
+        </LinearLayout>
 
 
     </com.reginald.swiperefresh.CustomSwipeRefreshLayout>

@@ -38,6 +38,7 @@ import android.annotation.TargetApi;
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
     public static final boolean SHOWDEBUG = false;
+    public static final String TAG = "csrl";
 
     public static final int REFRESH_MODE_SWIPE = 1;
     public static final int REFRESH_MODE_PULL = 2;
@@ -570,7 +571,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         } else {
             ret = ViewCompat.canScrollVertically(view, -1) || canChildrenScroolUp(view,event);
         }
-        Log.d("hehe","canViewScrollUp() = " + ret);
+        Log.d(TAG, "canViewScrollUp(): " + view.getClass().getName() + " = " + ret);
         return ret;
     }
 
@@ -578,19 +579,20 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         if(view instanceof ViewGroup){
             final ViewGroup viewgroup = (ViewGroup) view;
             int count = viewgroup.getChildCount();
-            Log.d("hehe","event = " + event);
+            Log.d(TAG,"canChildrenScroolUp(): event = " + event);
             for(int i = 0; i < count; ++i)
             {
                 View child = viewgroup.getChildAt(i);
                 Rect bounds = new Rect();
                 child.getHitRect(bounds);
-                Log.d("hehe", child.getClass().getName() + " 's bounds = " + bounds);
+                Log.d(TAG, child.getClass().getName() + " 's bounds = " + bounds);
                 if (bounds.contains((int)event.getX(),(int)event.getY())){
-                    Log.d("hehe","in " + child.getClass().getName());
+                    Log.d(TAG,"in " + child.getClass().getName());
+                    event.offsetLocation(child.getScrollX()-child.getLeft(),child.getScrollY()-child.getTop());
                     return canViewScrollUp(child, event);
                 }
             }
-            Log.d("hehe","not in any child!");
+            Log.d(TAG,"canChildrenScroolUp(): not in any child!");
         }
 
         return false;
@@ -598,19 +600,29 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-
+        Log.d(TAG,"dispatchTouchEvent() start ");
         // to be further modified here ...
+
+//        if (event.getAction() == MotionEvent.ACTION_DOWN){
+//            MotionEvent ev = MotionEvent.obtain(event);
+//            ensureTarget();
+//            if (!mReturningToStart && !canViewScrollUp(mTarget, ev)) {
+//                onInterceptTouchEvent(event);
+//                return true;
+//            }
+//        }
+
         boolean ret = super.dispatchTouchEvent(event);
-        Log.d("tag","dispatchTouchEvent() " + ret);
-        return ret;
+        Log.d(TAG,"dispatchTouchEvent() " + ret);
+        return true;
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.d(TAG, "onInterceptTouchEvent() start ");
         ensureTarget();
         boolean handled = false;
         float curY = ev.getY();
-
 
         if (mReturningToStart && ev.getAction() == MotionEvent.ACTION_DOWN) {
             mReturningToStart = false;
@@ -635,15 +647,22 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
 
         if (isEnabled()) {
-            if (!mReturningToStart && !canViewScrollUp(mTarget, ev)) {
-                handled = onTouchEvent(ev);
+            MotionEvent event = MotionEvent.obtain(ev);
+            if (!mReturningToStart && !canViewScrollUp(mTarget, event)) {
+//                if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+//                    handled = true;
+//                }else {
+                    handled = onTouchEvent(ev);
+//                handled = true;
+//                }
+                Log.d(TAG,"onInterceptTouchEvent(): handled = onTouchEvent(event);" + handled);
             } else {
                 // keep updating last Y position when the event is not intercepted!
                 mPrevY = ev.getY();
             }
         }
         boolean ret = !handled ? super.onInterceptTouchEvent(ev) : handled;
-        Log.d("tag","onInterceptTouchEvent() " + ret);
+        Log.d(TAG,"onInterceptTouchEvent() " + ret);
         return ret;
     }
 
@@ -657,7 +676,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d("tag","onTouchEvent() " + event);
+        Log.d(TAG,"onTouchEvent() start");
         final int action = event.getAction();
         boolean handled = false;
 
@@ -749,7 +768,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                             mTopProgressBar.setTriggerPercentage(0f);
                             break;
                         } else {
-                            updatePositionTimeout();
+                            updatePositionTimeout(true);
                         }
 
                     }
@@ -764,13 +783,17 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (mToRefreshFlag && refresshMode == REFRESH_MODE_PULL) {
+                if (!mToRefreshFlag){
+                    if(!mRefreshing) {
+                        updatePositionTimeout(false);
+                        handled = true;
+                    }
+                } else if (refresshMode == REFRESH_MODE_PULL) {
                     startRefresh();
                     mToRefreshFlag = false;
                     handled = true;
-                    break;
                 }
-
+                break;
             case MotionEvent.ACTION_CANCEL:
                 if (mDownEvent != null) {
                     mDownEvent.recycle();
@@ -778,6 +801,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 }
                 break;
         }
+
+        Log.d(TAG,"onTouchEvent() " + handled);
+
         return handled;
     }
 
@@ -822,9 +848,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         mHeadview.updateHeight(mTarget.getTop(), (int) mDistanceToTriggerSync, changeHeightOnly);
     }
 
-    private void updatePositionTimeout() {
+    private void updatePositionTimeout(boolean isDelayed) {
         removeCallbacks(mCancel);
-        postDelayed(mCancel, mReturnToOriginalTimeout);
+        postDelayed(mCancel, isDelayed ? mReturnToOriginalTimeout : 0);
     }
 
     public void setmReturnToOriginalTimeout(int mReturnToOriginalTimeout) {
