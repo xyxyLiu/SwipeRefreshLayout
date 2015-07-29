@@ -23,11 +23,13 @@ import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.annotation.TargetApi;
 
+import com.reginald.swiperefresh.CustomSwipeRefreshHeadview.State;
+
 /**
  * The CustomSwipeRefreshLayout should be used whenever the user can refresh the
  * contents of a view via a vertical swipe gesture. The activity that
  * instantiates this view should add an OnRefreshListener to be notified
- * whenever the swipe to refresh gesture is completed. And onRefreshingComplete()
+ * whenever the swipe to refresh gesture is completed. And refreshComplete()
  * should be called whenever the refreshing is complete. The CustomSwipeRefreshLayout
  * will notify the listener each and every time the gesture is completed again;
  * Two refresh mode are supported:
@@ -37,7 +39,7 @@ import android.annotation.TargetApi;
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
-    public static final boolean SHOWDEBUG = false;
+    public static final boolean DEBUG = BuildConfig.ENABLE_DEBUG;
     public static final String TAG = "csrl";
 
     public static final int REFRESH_MODE_SWIPE = 1;
@@ -61,7 +63,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private static final float MAX_SWIPE_DISTANCE_FACTOR = .5f;
 
     // swipe distance to trigger refreshing
-    private static final int REFRESH_TRIGGER_DISTANCE = 80;
+    private static final int REFRESH_TRIGGER_DISTANCE = 100;
 
     // swipe domp factor
     private static final float SWIPE_DOMP_FACTOR = .5f;
@@ -69,6 +71,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     private CustomSwipeProgressBar mTopProgressBar;
     private CustomSwipeRefreshHeadview mHeadview;
+    private View mCustomHeadview;
+    private boolean hasHeadview;
 
     boolean enableTopProgressBar = true;
     boolean enableTopRefreshingHead = true;
@@ -92,13 +96,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     private int mProgressBarHeight;
     private int mCurrentTargetOffsetTop = 0;
 
+    private RefreshCheckHandler mRefreshCheckHandler;
 
     private int mReturnToOriginalTimeout = RETURN_TO_ORIGINAL_POSITION_TIMEOUT;
     private int mRefreshCompleteTimeout = REFRESH_COMPLETE_POSITION_TIMEOUT;
 
     private boolean mReturningToStart;
     private final DecelerateInterpolator mDecelerateInterpolator;
-
     private final AccelerateInterpolator mAccelerateInterpolator;
     private static final int[] LAYOUT_ATTRS = new int[]{
             android.R.attr.enabled
@@ -254,7 +258,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      */
     public CustomSwipeRefreshLayout(Context context) {
         this(context, null);
-        if (SHOWDEBUG)
+        if (DEBUG)
             Log.i("csr", "CustomSwipeRefreshLayout(Context context)");
     }
 
@@ -270,7 +274,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     public CustomSwipeRefreshLayout(Context context, AttributeSet attrs, int defStyle){
         super(context,attrs,defStyle);
-        if (SHOWDEBUG)
+        if (DEBUG)
             Log.i("csr", "CustomSwipeRefreshLayout(Context context, AttributeSet attrs)");
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
@@ -305,20 +309,24 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         addView(mHeadview);
     }
 
+    public void setCustomHeadview(View customHeadview){
+        mHeadview.setHeadLayout(customHeadview);
+        hasHeadview = true;
+    }
     public void setRefreshMode(int mode) {
         switch (mode) {
             case REFRESH_MODE_PULL:
                 refresshMode = REFRESH_MODE_PULL;
-                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_NORMAL);
+                mHeadview.setRefreshState(State.STATE_NORMAL);
                 break;
             case REFRESH_MODE_SWIPE:
                 refresshMode = REFRESH_MODE_SWIPE;
                 enableTopRefreshingHead(false);
-                mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_NORMAL);
+                mHeadview.setRefreshState(State.STATE_NORMAL);
                 break;
             default:
                 throw new IllegalStateException(
-                        "refresh mode " + mode + " is node supported in CustomSwipeRefreshLayout");
+                        "refresh mode " + mode + " is NOT supported in CustomSwipeRefreshLayout");
 
         }
     }
@@ -422,19 +430,18 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     mRefreshing = true;
                     removeCallbacks(mReturnToStartPosition);
                     removeCallbacks(mCancel);
-                    mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_COMPLETE);
                     mStayRefreshCompletePosition.run();
                 } else if (refresshMode == REFRESH_MODE_SWIPE) {
                     mRefreshing = false;
                     mReturnToStartPosition.run();
                 }
-
+                mHeadview.setRefreshState(State.STATE_COMPLETE);
             }
         }
     }
 
 
-    public void onRefreshingComplete() {
+    public void refreshComplete() {
         setRefreshing(false);
     }
 
@@ -489,6 +496,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                         ((View) getParent()).getHeight() * MAX_SWIPE_DISTANCE_FACTOR,
                         REFRESH_TRIGGER_DISTANCE * metrics.density);
             }
+            mHeadview.setTriggerDistance(mDistanceToTriggerSync);
         }
     }
 
@@ -528,21 +536,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (getChildCount() > 3 && !isInEditMode()) {
-            throw new IllegalStateException("CustomSwipeRefreshLayout can host one child content view, OR one content view with one custom headview");
+        if (getChildCount() > 2 && !isInEditMode()) {
+            throw new IllegalStateException("CustomSwipeRefreshLayout can host one child content view.");
         }
 
-        if (getChildCount() == 3){
-            ViewGroup headView = (ViewGroup)getChildAt(1);
-            if (!(headView instanceof CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout) || !(headView instanceof ViewGroup))
-                throw new IllegalStateException("custom head view must implement CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout");
-
-            removeView(headView);
-            mHeadview.setHeadLayout(headView);
-        }
-
-        if (getChildCount() == 2){
+        if (!hasHeadview){
             mHeadview.setDefaultHeadLayout();
+            hasHeadview = true;
         }
 
         if (getChildCount() > 0) {
@@ -566,6 +566,12 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         super.addView(content);
     }
 
+    public boolean checkCanDoRefresh(){
+        if (mRefreshCheckHandler != null){
+            return mRefreshCheckHandler.canRefresh();
+        }
+        return true;
+    }
     /**
      * @return Whether it is possible for the child view of this layout to
      * scroll up. Override this if the child view is a custom view.
@@ -585,7 +591,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         } else {
             ret = ViewCompat.canScrollVertically(view, -1) || canChildrenScroolUp(view,event);
         }
-        Log.d(TAG, "canViewScrollUp(): " + view.getClass().getName() + " = " + ret);
         return ret;
     }
 
@@ -593,20 +598,16 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         if(view instanceof ViewGroup){
             final ViewGroup viewgroup = (ViewGroup) view;
             int count = viewgroup.getChildCount();
-            Log.d(TAG,"canChildrenScroolUp(): event = " + event);
             for(int i = 0; i < count; ++i)
             {
                 View child = viewgroup.getChildAt(i);
                 Rect bounds = new Rect();
                 child.getHitRect(bounds);
-                Log.d(TAG, child.getClass().getName() + " 's bounds = " + bounds);
                 if (bounds.contains((int)event.getX(),(int)event.getY())){
-                    Log.d(TAG,"in " + child.getClass().getName());
                     event.offsetLocation(child.getScrollX() - child.getLeft(), child.getScrollY() - child.getTop());
                     return canViewScrollUp(child, event);
                 }
             }
-            Log.d(TAG,"canChildrenScroolUp(): not in any child!");
         }
 
         return false;
@@ -625,10 +626,11 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 //                return true;
 //            }
 //        }
-
         boolean ret = super.dispatchTouchEvent(event);
+        if (event.getAction() == MotionEvent.ACTION_DOWN)
+            ret = true;
         Log.d(TAG,"dispatchTouchEvent() " + ret);
-        return true;
+        return ret;
     }
 
     @Override
@@ -647,7 +649,6 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mCurrPercentage = 0;
             mDownEvent = MotionEvent.obtain(ev);
             mPrevY = mDownEvent.getY();
-            mToRefreshFlag = false;
             mCheckValidMotionFlag = true;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
             float yDiff = curY - mDownEvent.getY();
@@ -663,12 +664,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         if (isEnabled()) {
             MotionEvent event = MotionEvent.obtain(ev);
             if (!mReturningToStart && !canViewScrollUp(mTarget, event)) {
-//                if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-//                    handled = true;
-//                }else {
-                    handled = onTouchEvent(ev);
-//                handled = true;
-//                }
+                handled = onTouchEvent(ev);
                 Log.d(TAG,"onInterceptTouchEvent(): handled = onTouchEvent(event);" + handled);
             } else {
                 // keep updating last Y position when the event is not intercepted!
@@ -693,6 +689,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         Log.d(TAG,"onTouchEvent() start");
         final int action = event.getAction();
         boolean handled = false;
+        mCurrentTargetOffsetTop = mTarget.getTop();
 
         switch (action) {
 
@@ -700,8 +697,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 if (mDownEvent != null && !mReturningToStart) {
                     final float eventY = event.getY();
                     float yDiff = eventY - mDownEvent.getY();
-                    int curTargetTop = mTarget.getTop();
-                    mCurrentTargetOffsetTop = curTargetTop;
+                    int curTargetTop = mCurrentTargetOffsetTop;
+
                     boolean isScrollUp = eventY - mPrevY > 0;
 
                     // if yDiff is large enough to be counted as one move event
@@ -757,17 +754,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
                         removeCallbacks(mCancel);
                         if (refresshMode == REFRESH_MODE_SWIPE) {
-                            mToRefreshFlag = false;
                             startRefresh();
                             handled = true;
                             break;
-                        } else if (refresshMode == REFRESH_MODE_PULL) {
-                            mToRefreshFlag = true;
                         }
                     }
                     // curTargetTop is not bigger than trigger
                     else {
-                        mToRefreshFlag = false;
                         // Just track the user's movement
 
                         setTriggerPercentage(
@@ -788,7 +781,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     }
 
                     handled = true;
-                    if (curTargetTop > 0 && !isRefreshing())
+                    if (curTargetTop >= 0 && !isRefreshing())
                         setTargetOffsetTop((int) ((eventY - mPrevY) * SWIPE_DOMP_FACTOR), false);
                     else
                         setTargetOffsetTop((int) ((eventY - mPrevY)), true);
@@ -797,14 +790,14 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
                 break;
             case MotionEvent.ACTION_UP:
-                if (!mToRefreshFlag){
-                    if(!mRefreshing) {
-                        updatePositionTimeout(false);
-                        handled = true;
-                    }
-                } else if (refresshMode == REFRESH_MODE_PULL) {
+                if (mRefreshing)
+                    break;
+                if (mCurrentTargetOffsetTop >= mDistanceToTriggerSync &&
+                        refresshMode == REFRESH_MODE_PULL) {
                     startRefresh();
-                    mToRefreshFlag = false;
+                    handled = true;
+                }else{
+                    updatePositionTimeout(false);
                     handled = true;
                 }
                 break;
@@ -816,14 +809,18 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 break;
         }
 
-        Log.d(TAG,"onTouchEvent() " + handled);
+        Log.d(TAG, "onTouchEvent() " + handled);
 
         return handled;
     }
 
     private void startRefresh() {
+        if (!checkCanDoRefresh()){
+            updatePositionTimeout(false);
+            return;
+        }
         removeCallbacks(mCancel);
-        mHeadview.setRefreshState(CustomSwipeRefreshHeadview.STATE_REFRESHING);
+        mHeadview.setRefreshState(State.STATE_REFRESHING);
         setRefreshing(true);
         if (mListener != null)
             mListener.onRefresh();
@@ -881,6 +878,10 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         this.mRefreshCompleteTimeout = mRefreshCompleteTimeout;
     }
 
+    public void setScrollableHandler(RefreshCheckHandler handler){
+        mRefreshCheckHandler = handler;
+    }
+
     /**
      * Classes that wish to be notified when the swipe gesture correctly
      * triggers a refresh should implement this interface.
@@ -889,6 +890,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         public void onRefresh();
     }
 
+    public interface RefreshCheckHandler {
+        public boolean canRefresh();
+    }
     /**
      * Simple AnimationListener to avoid having to implement unneeded methods in
      * AnimationListeners.

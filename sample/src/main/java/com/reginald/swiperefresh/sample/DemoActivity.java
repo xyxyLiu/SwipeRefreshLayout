@@ -18,17 +18,29 @@
 package com.reginald.swiperefresh.sample;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 import com.reginald.swiperefresh.sample.dummydata.Cheeses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,6 +73,13 @@ public class DemoActivity extends Activity {
      */
     private ArrayAdapter<String> mListAdapter;
 
+    ArrayList<View> viewPagerViews = new ArrayList<>();
+    RecyclerView mRecyclerView;
+    MyAdapter mRecyclerViewAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+
+    private ViewPager mViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,31 +90,27 @@ public class DemoActivity extends Activity {
 
     protected void setupView() {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
-        mListView = (ListView)findViewById(R.id.listview);
+        mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadViewLayout(this));
 
-//        YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
-//        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
-//        mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
-//        // Enable the top progress bar
-//        mCustomSwipeRefreshLayout.enableTopProgressBar(true);
-//        // Keep the refreshing head movable(true stands for fixed) on the top
-//        mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
-//        // Timeout to return to original state when the swipe motion stay in the same position
-//        mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
-//        // Timeout to show the refresh complete information on the refreshing head.
-//        mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
-//        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
-//        mCustomSwipeRefreshLayout.setProgressBarColor(
-//                0x77ff6600, 0x99ffee33,
-//                0x66ee5522, 0xddffcc11);
+        setupViewPagerViews();
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager.setAdapter(new ViewPagerAdapter(viewPagerViews));
 
-        mListAdapter = new ArrayAdapter<String>(
-                this,
-                R.layout.demo_list_item,
-                R.id.item_text,
-                Cheeses.randomList(LIST_ITEM_COUNT));
-
-        mListView.setAdapter(mListAdapter);
+        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
+        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
+        mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
+        // Enable the top progress bar
+        mCustomSwipeRefreshLayout.enableTopProgressBar(true);
+        // Keep the refreshing head movable(true stands for fixed) on the top
+        mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
+        // Timeout to return to original state when the swipe motion stay in the same position
+        mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
+        // Timeout to show the refresh complete information on the refreshing head.
+        mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
+        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
+        mCustomSwipeRefreshLayout.setProgressBarColor(
+                0x77ff6600, 0x99ffee33,
+                0x66ee5522, 0xddffcc11);
 
         // set onRefresh listener
         mCustomSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
@@ -107,29 +122,182 @@ public class DemoActivity extends Activity {
         });
     }
 
-    private void onRefreshComplete(List<String> result) {
-        mListAdapter.clear();
-        for (String cheese : result) {
-            mListAdapter.add(cheese);
+    private void setupViewPagerViews(){
+        mRecyclerView = new RecyclerView(this);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new GridLayoutManager(this,2);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            Drawable mDivider;
+
+            {
+                final TypedArray a = DemoActivity.this.obtainStyledAttributes(new int[]{android.R.attr.listDivider});
+                mDivider = a.getDrawable(0);
+                a.recycle();
+            }
+
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                super.onDraw(c, parent, state);
+                final int left = parent.getPaddingLeft();
+                final int right = parent.getWidth() - parent.getPaddingRight();
+
+                final int childCount = parent.getChildCount();
+                for (int i = 0; i < childCount; i++) {
+                    final View child = parent.getChildAt(i);
+                    final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
+                            .getLayoutParams();
+                    final int top = child.getBottom() + params.bottomMargin;
+                    final int bottom = top + mDivider.getIntrinsicHeight();
+                    mDivider.setBounds(left, top, right, bottom);
+                    mDivider.draw(c);
+                }
+
+            }
+        });
+
+        // specify an adapter (see also next example)
+        mRecyclerViewAdapter = new MyAdapter(Cheeses.randomList(LIST_ITEM_COUNT));
+        mRecyclerView.setAdapter(mRecyclerViewAdapter);
+
+        mListView = new ListView(this);
+        mListAdapter = new ArrayAdapter<String>(
+                this,
+                R.layout.demo_list_item,
+                R.id.item_text,
+                Cheeses.randomList(LIST_ITEM_COUNT));
+
+        mListView.setAdapter(mListAdapter);
+
+
+        viewPagerViews.add(mListView);
+        viewPagerViews.add(mRecyclerView);
+    }
+
+    public static class ViewPagerAdapter extends PagerAdapter {
+        private List<View> list;
+
+        public ViewPagerAdapter(List<View> list) {
+            this.list = list;
         }
-        // return to the first item
-        mListView.setSelection(0);
+
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+            return arg0 == arg1;
+        }
+
+        @Override
+        public Object instantiateItem(View view, int position) {
+            ViewPager pViewPager = ((ViewPager) view);
+            pViewPager.addView(list.get(position));
+            return list.get(position);
+        }
+
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            ((ViewPager) container).removeView((View) object);
+        }
+
+    }
+
+    static class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+        private List<String> mDataset;
+
+        // Provide a reference to the views for each data item
+        // Complex data items may need more than one view per item, and
+        // you provide access to all the views for a data item in a view holder
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            // each data item is just a string in this case
+            public TextView mTextView;
+            public ViewHolder(TextView v) {
+                super(v);
+                mTextView = v;
+            }
+        }
+
+        // Provide a suitable constructor (depends on the kind of dataset)
+        public MyAdapter(List<String> myDataset) {
+            mDataset = myDataset;
+        }
+
+        // Create new views (invoked by the layout manager)
+        @Override
+        public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                int viewType) {
+            // create a new view
+            TextView v = (TextView) LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.demo_list_item, parent, false);
+
+            ViewHolder vh = new ViewHolder(v);
+            return vh;
+        }
+
+        // Replace the contents of a view (invoked by the layout manager)
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            // - get element from your dataset at this position
+            // - replace the contents of the view with that element
+            holder.mTextView.setText(mDataset.get(position));
+
+        }
+
+        public void updateData(List<String> newData){
+            mDataset.clear();
+            mDataset.addAll(newData);
+            notifyDataSetChanged();
+        }
+
+        // Return the size of your dataset (invoked by the layout manager)
+        @Override
+        public int getItemCount() {
+            return mDataset.size();
+        }
+    }
+
+    private void onRefreshComplete(int viewId, List<String> result) {
+
+        if (viewId == 1){
+            mRecyclerViewAdapter.updateData(result);
+            mRecyclerView.scrollToPosition(0);
+        } else if(viewId == 0) {
+            mListAdapter.clear();
+            for (String cheese : result) {
+                mListAdapter.add(cheese);
+            }
+            // return to the first item
+            mListView.setSelection(0);
+        }
+
         // to notify CustomSwipeRefreshLayout that the refreshing is completed
-        mCustomSwipeRefreshLayout.onRefreshingComplete();
+        mCustomSwipeRefreshLayout.refreshComplete();
     }
 
     private void initiateRefresh() {
-        new DummyBackgroundTask().execute();
+        new DummyBackgroundTask().execute(mViewPager.getCurrentItem());
     }
 
-    private class DummyBackgroundTask extends AsyncTask<Void, Void, List<String>> {
+    private class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {
 
         static final int TASK_DURATION = 3 * 1000; // 3 seconds
-
+        int viewId;
         @Override
-        protected List<String> doInBackground(Void... params) {
+        protected List<String> doInBackground(Integer... params) {
             // Sleep for a small amount of time to simulate a background-task
             try {
+                viewId = params[0];
+                Log.d(TAG,"viewId = " + viewId);
                 Thread.sleep(TASK_DURATION);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -144,7 +312,7 @@ public class DemoActivity extends Activity {
             super.onPostExecute(result);
 
             // Tell the view that the refresh has completed
-            onRefreshComplete(result);
+            onRefreshComplete(viewId,result);
         }
 
     }

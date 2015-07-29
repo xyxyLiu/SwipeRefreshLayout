@@ -6,12 +6,13 @@ package com.reginald.swiperefresh;
 
 import android.content.Context;
 import android.graphics.*;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
 
-final class CustomSwipeRefreshHeadview extends ViewGroup {
+public final class CustomSwipeRefreshHeadview extends ViewGroup {
 
     // Default progress animation colors are grays.
     private final static int COLOR1 = 0xB3000000;
@@ -35,11 +36,7 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
     private long mFinishTime;
     private boolean mRunning;
 
-    //states
-    public final static int STATE_NORMAL = 0;
-    public final static int STATE_READY = 1;
-    public final static int STATE_REFRESHING = 2;
-    public final static int STATE_COMPLETE = 3;
+
 
     // Colors used when rendering the animation,
     private int mColor1;
@@ -48,9 +45,11 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
     private int mColor4;
     //private View mParent;
 
-    private ViewGroup mHeadLayout;
+    private View mHeadLayout;
 
     private Rect mBounds = new Rect();
+    private float triggerDistance;
+    State currentState = new State(State.STATE_NORMAL,0f);
 
     public CustomSwipeRefreshHeadview(Context context) {
         super(context);
@@ -58,19 +57,6 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         mColor2 = COLOR2;
         mColor3 = COLOR3;
         mColor4 = COLOR4;
-
-        //setDefaultHeadLayout();
-    }
-
-    public CustomSwipeRefreshHeadview(Context context, ViewGroup layout) {
-        super(context);
-        mColor1 = COLOR1;
-        mColor2 = COLOR2;
-        mColor3 = COLOR3;
-        mColor4 = COLOR4;
-
-        setHeadLayout(layout);
-
     }
 
     @Override
@@ -79,31 +65,29 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         //mHeadLayout.layout(l,t,r,b);
     }
 
+    public void setTriggerDistance(float distance){
+        triggerDistance = distance;
+    }
+
     public void setDefaultHeadLayout() {
         setHeadLayout(new DefaultCustomHeadViewLayout(getContext()));
     }
 
     public void setRefreshState(int state) {
-        if (mHeadLayout instanceof CustomSwipeRefreshHeadLayout) {
-            ((CustomSwipeRefreshHeadLayout) mHeadLayout).setState(state);
-        }
+        currentState = new State(state,(float)mBounds.height()/triggerDistance);
+        ((CustomSwipeRefreshHeadLayout) mHeadLayout).onStateChange(currentState);
     }
 
-    public void updateData() {
-        if (mHeadLayout instanceof CustomSwipeRefreshHeadLayout) {
-            ((CustomSwipeRefreshHeadLayout) mHeadLayout).updateData();
-        }
-    }
-
-    public CustomSwipeRefreshHeadview setHeadLayout(ViewGroup layout) {
+    public CustomSwipeRefreshHeadview setHeadLayout(View layout) {
 
         if (!(layout instanceof CustomSwipeRefreshHeadLayout)) {
             throw new IllegalStateException(
                     "ViewGroup must implements CustomSwipeRefreshHeadLayout interface!");
         }
 
+        removeAllViews();
         mHeadLayout = layout;
-        mHeadLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        //mHeadLayout.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         addView(mHeadLayout);
         return this;
     }
@@ -116,18 +100,18 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
         int restoreCount = canvas.save();
         canvas.clipRect(mBounds);
 
-        Rect mainTextRect = new Rect();
-        mainTextRect.set(0, 0, width, height);
+        Rect mainRect = new Rect();
+        mainRect.set(0, 0, width, height);
 
         mHeadLayout.setBackgroundColor(Color.TRANSPARENT);
 
         //Measure the view at the exact dimensions (otherwise the view won't center correctly)
-        int widthSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.width(), View.MeasureSpec.EXACTLY);
-        int heightSpec = View.MeasureSpec.makeMeasureSpec(mainTextRect.height(), View.MeasureSpec.EXACTLY);
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(mainRect.width(), View.MeasureSpec.EXACTLY);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(mainRect.height(), View.MeasureSpec.EXACTLY);
         mHeadLayout.measure(widthSpec, heightSpec);
         //Lay the view out at the rect width and height
-        mHeadLayout.layout(0, 0, mainTextRect.width(), mainTextRect.height());
-        canvas.translate(mainTextRect.left, mainTextRect.top);
+        mHeadLayout.layout(0, 0, mainRect.width(), mainRect.height());
+        canvas.translate(mainRect.left, mainRect.top);
         mHeadLayout.draw(canvas);
 
         canvas.restoreToCount(restoreCount);
@@ -136,15 +120,14 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
     public void updateHeight(int height, int distanceToTriggerSync, boolean changeHeightOnly) {
         mBounds.bottom = height;
 
-        if (changeHeightOnly) {
-            invalidateView();
-            return;
-        }
-
-        if (mBounds.bottom > distanceToTriggerSync) {
-            setRefreshState(STATE_READY);
-        } else {
-            setRefreshState(STATE_NORMAL);
+        if(changeHeightOnly) {
+            setRefreshState(currentState.refreshState);
+        }else {
+            if (mBounds.bottom > distanceToTriggerSync) {
+                setRefreshState(State.STATE_READY);
+            } else {
+                setRefreshState(State.STATE_NORMAL);
+            }
         }
 
         invalidateView();
@@ -167,10 +150,31 @@ final class CustomSwipeRefreshHeadview extends ViewGroup {
     }
 
     public interface CustomSwipeRefreshHeadLayout {
-        void setState(int state);
-
-        void updateData();
+        void onStateChange(State state);
     }
 
+    public class State{
+        //states
+        public final static int STATE_NORMAL = 0;
+        public final static int STATE_READY = 1;
+        public final static int STATE_REFRESHING = 2;
+        public final static int STATE_COMPLETE = 3;
+
+        private int refreshState;
+        private float percent;
+        public State(int refreshState, float percent){
+            this.refreshState = refreshState;
+            this.percent = percent;
+        }
+        public int getRefreshState(){
+            return refreshState;
+        }
+        public float getPercent(){
+            return percent;
+        }
+        public String toString(){
+            return "[refreshState = " + refreshState + ", percent = " + percent + "]";
+        }
+    }
 
 }
