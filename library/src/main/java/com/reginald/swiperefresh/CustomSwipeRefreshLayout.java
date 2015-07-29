@@ -613,6 +613,49 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         return false;
     }
 
+
+    /**
+     * @return Whether it is possible for the child view of this layout to
+     * scroll up. Override this if the child view is a custom view.
+     */
+    public static boolean canViewScrollHorizontally(View view, MotionEvent event, int direction) {
+        boolean ret;
+
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (direction == 0)
+                ret = view.getScrollX() != 0;
+            else
+                ret = view.getScrollX() * direction > 0;
+        } else {
+            if (direction == 0)
+                ret = ViewCompat.canScrollHorizontally(view, direction);
+            else
+                ret = ViewCompat.canScrollHorizontally(view, 1) || ViewCompat.canScrollHorizontally(view, -1);
+        }
+
+        ret = ret || canChildrenScroolHorizontally(view,event,direction);
+        return ret;
+    }
+
+    private static boolean canChildrenScroolHorizontally(View view, MotionEvent event, int direction){
+        if(view instanceof ViewGroup){
+            final ViewGroup viewgroup = (ViewGroup) view;
+            int count = viewgroup.getChildCount();
+            for(int i = 0; i < count; ++i)
+            {
+                View child = viewgroup.getChildAt(i);
+                Rect bounds = new Rect();
+                child.getHitRect(bounds);
+                if (bounds.contains((int)event.getX(),(int)event.getY())){
+                    event.offsetLocation(child.getScrollX() - child.getLeft(), child.getScrollY() - child.getTop());
+                    return canViewScrollHorizontally(child, event,direction);
+                }
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.d(TAG,"dispatchTouchEvent() start ");
@@ -663,9 +706,14 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
         if (isEnabled()) {
             MotionEvent event = MotionEvent.obtain(ev);
-            if (!mReturningToStart && !canViewScrollUp(mTarget, event)) {
+            if (canViewScrollHorizontally(mTarget, MotionEvent.obtain(event), 0)) {
+                handled = false;
+                if (DEBUG)
+                    Log.d(TAG,"onInterceptTouchEvent(): canViewScrollHorizontally(mTarget, MotionEvent.obtain(event), 0) = true ");
+            }else if (!mReturningToStart && !canViewScrollUp(mTarget, event)) {
                 handled = onTouchEvent(ev);
-                Log.d(TAG,"onInterceptTouchEvent(): handled = onTouchEvent(event);" + handled);
+                if (DEBUG)
+                    Log.d(TAG,"onInterceptTouchEvent(): handled = onTouchEvent(event);" + handled);
             } else {
                 // keep updating last Y position when the event is not intercepted!
                 mPrevY = ev.getY();
@@ -673,6 +721,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
         boolean ret = !handled ? super.onInterceptTouchEvent(ev) : handled;
         Log.d(TAG,"onInterceptTouchEvent() " + ret);
+        prevX = ev.getX();
         return ret;
     }
 
@@ -683,6 +732,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     private boolean mToRefreshFlag = false;
     private boolean mCheckValidMotionFlag = true;
+
+    private float prevX;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -700,6 +751,15 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                     int curTargetTop = mCurrentTargetOffsetTop;
 
                     boolean isScrollUp = eventY - mPrevY > 0;
+
+                    float xDiff = event.getX() - mDownEvent.getX();
+                    if (canViewScrollHorizontally(mTarget,MotionEvent.obtain(event),xDiff > 0 ? 1 : -1) &&
+                            Math.abs(xDiff) > 2 * Math.abs(eventY - mPrevY)) {
+                        if (DEBUG)
+                            Log.d(TAG,"canViewScrollHorizontally && xDiff > 2yDiff !");
+                        handled = false;
+                        break;
+                    }
 
                     // if yDiff is large enough to be counted as one move event
                     if (mCheckValidMotionFlag && (yDiff > mTouchSlop || yDiff < -mTouchSlop)) {
@@ -792,6 +852,16 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             case MotionEvent.ACTION_UP:
                 if (mRefreshing)
                     break;
+
+//                float xDiff = event.getX() - mDownEvent.getX();
+//                if (canViewScrollHorizontally(mTarget,MotionEvent.obtain(event),xDiff > 0 ? 1 : -1) &&
+//                        Math.abs(xDiff) > 2 * Math.abs(event.getY() - mPrevY)) {
+//                    if (DEBUG)
+//                        Log.d(TAG,"canViewScrollHorizontally && xDiff > 2yDiff !");
+//                    handled = false;
+//                    break;
+//                }
+
                 if (mCurrentTargetOffsetTop >= mDistanceToTriggerSync &&
                         refresshMode == REFRESH_MODE_PULL) {
                     startRefresh();
@@ -810,7 +880,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         }
 
         Log.d(TAG, "onTouchEvent() " + handled);
-
+        prevX = event.getX();
         return handled;
     }
 
@@ -860,9 +930,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
     private void updatePositionTimeout(boolean isDelayed) {
+        removeCallbacks(mCancel);
         if (isDelayed && mReturnToOriginalTimeout <= 0)
             return;
-        removeCallbacks(mCancel);
         postDelayed(mCancel, isDelayed ? mReturnToOriginalTimeout : 0);
     }
 

@@ -96,21 +96,22 @@ public class DemoActivity extends Activity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(new ViewPagerAdapter(viewPagerViews));
 
-        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
-        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
-        mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
-        // Enable the top progress bar
-        mCustomSwipeRefreshLayout.enableTopProgressBar(true);
-        // Keep the refreshing head movable(true stands for fixed) on the top
-        mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
-        // Timeout to return to original state when the swipe motion stay in the same position
-        mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
-        // Timeout to show the refresh complete information on the refreshing head.
-        mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
-        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
-        mCustomSwipeRefreshLayout.setProgressBarColor(
-                0x77ff6600, 0x99ffee33,
-                0x66ee5522, 0xddffcc11);
+
+//        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
+//        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
+//        mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
+//        // Enable the top progress bar
+//        mCustomSwipeRefreshLayout.enableTopProgressBar(true);
+//        // Keep the refreshing head movable(true stands for fixed) on the top
+//        mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
+//        // Timeout to return to original state when the swipe motion stay in the same position
+//        mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
+//        // Timeout to show the refresh complete information on the refreshing head.
+//        mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
+//        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
+//        mCustomSwipeRefreshLayout.setProgressBarColor(
+//                0x77ff6600, 0x99ffee33,
+//                0x66ee5522, 0xddffcc11);
 
         // set onRefresh listener
         mCustomSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
@@ -159,7 +160,6 @@ public class DemoActivity extends Activity {
                     mDivider.setBounds(left, top, right, bottom);
                     mDivider.draw(c);
                 }
-
             }
         });
 

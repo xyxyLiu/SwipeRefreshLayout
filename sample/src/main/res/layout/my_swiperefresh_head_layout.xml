@@ -44,23 +44,28 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true">
 
+
             <!-- arrow -->
 
             <ImageView
                 android:id="@+id/default_header_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/pulltorefresh" />
+                android:src="@drawable/arrow" />
 
             <!-- progressbar -->
 
             <ProgressBar
                 android:id="@+id/default_header_progressbar"
-                style="@android:style/Widget.ProgressBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:minHeight="28dp"
+                android:indeterminateDrawable="@drawable/my_refresh_progress_bar"
+                android:maxHeight="28dp"
+                android:maxWidth="28dp"
+                android:minWidth="28dp"
                 android:visibility="gone" />
         </FrameLayout>
 

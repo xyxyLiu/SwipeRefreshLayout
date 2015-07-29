@@ -22,11 +22,6 @@ import com.reginald.swiperefresh.CustomSwipeRefreshHeadview.State;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-/**
- * Created by baidu on 15/7/28.
- */
-
 public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout {
 
     private static final boolean DEBUG = BuildConfig.ENABLE_DEBUG;
@@ -78,7 +73,7 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     // show arrow
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
-                    mMainTextView.setText(com.reginald.swiperefresh.R.string.csr_text_state_normal);
+                    mMainTextView.setText("  pull to refresh    ");
                 }
                 break;
             case State.STATE_READY:
@@ -87,7 +82,7 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     mImageView.setRotation(180);
-                    mMainTextView.setText(com.reginald.swiperefresh.R.string.csr_text_state_ready);
+                    mMainTextView.setText("release to refresh");
                     mMainTextView.setTextColor(Color.RED);
                 }
                 break;
@@ -96,7 +91,7 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     // show progress
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.VISIBLE);
-                    mMainTextView.setText(com.reginald.swiperefresh.R.string.csr_text_state_refresh);
+                    mMainTextView.setText("    refreshing  ...    ");
                     mMainTextView.setTextColor(Color.RED);
                 }
                 break;
@@ -120,8 +115,7 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     colorAnimation.start();
                 }
 
-                mMainTextView.setText(com.reginald.swiperefresh.R.string.csr_text_state_complete);
-                //updateData();
+                mMainTextView.setText("  refresh  complete  ");
                 break;
             default:
         }
@@ -129,14 +123,4 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
         mState = stateCode;
     }
 
-    public void updateData(int numberUpdated) {
-
-        if (numberUpdated != 0) {
-            mSubTextView.setVisibility(VISIBLE);
-            mSubTextView.setText(numberUpdated + " item(s) updated! ");
-        } else {
-            mSubTextView.setVisibility(GONE);
-        }
-
-    }
 }
