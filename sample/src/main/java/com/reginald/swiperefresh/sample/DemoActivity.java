@@ -34,6 +34,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -92,9 +93,12 @@ public class DemoActivity extends Activity {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
         mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadViewLayout(this));
 
+        LinearLayout content = (LinearLayout) findViewById(R.id.content);
         setupViewPagerViews();
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        mViewPager.setAdapter(new ViewPagerAdapter(viewPagerViews));
+        content.addView(mListView);
+//        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+//        mViewPager.setAdapter(new ViewPagerAdapter(viewPagerViews));
+
 
 
 //        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
@@ -285,7 +289,7 @@ public class DemoActivity extends Activity {
     }
 
     private void initiateRefresh() {
-        new DummyBackgroundTask().execute(mViewPager.getCurrentItem());
+        new DummyBackgroundTask().execute(0);
     }
 
     private class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {

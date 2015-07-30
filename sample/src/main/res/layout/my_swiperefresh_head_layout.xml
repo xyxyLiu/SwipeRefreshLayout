@@ -62,11 +62,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:minHeight="28dp"
+                android:indeterminateOnly="true"
+                android:indeterminate="true"
+                android:indeterminateDuration="500"
                 android:indeterminateDrawable="@drawable/my_refresh_progress_bar"
                 android:maxHeight="28dp"
                 android:maxWidth="28dp"
                 android:minWidth="28dp"
                 android:visibility="gone" />
+
         </FrameLayout>
 
     </RelativeLayout>
