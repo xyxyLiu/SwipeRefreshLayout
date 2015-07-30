@@ -18,6 +18,7 @@
 package com.reginald.swiperefresh.sample;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -31,6 +32,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -171,7 +173,7 @@ public class DemoActivity extends Activity {
         mRecyclerViewAdapter = new MyAdapter(Cheeses.randomList(LIST_ITEM_COUNT));
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
 
-        mListView = new ListView(this);
+        mListView = new MyListView(this);
         mListAdapter = new ArrayAdapter<String>(
                 this,
                 R.layout.demo_list_item,
@@ -183,6 +185,17 @@ public class DemoActivity extends Activity {
 
         viewPagerViews.add(mListView);
         viewPagerViews.add(mRecyclerView);
+    }
+
+    static class MyListView extends ListView{
+        public MyListView(Context context){
+            super(context);
+        }
+        @Override
+        public boolean dispatchTouchEvent(MotionEvent event){
+            Log.d(TAG,"ListView.dispatchTouchEvent() " + event);
+            return super.dispatchTouchEvent(event);
+        }
     }
 
     public static class ViewPagerAdapter extends PagerAdapter {
@@ -290,6 +303,7 @@ public class DemoActivity extends Activity {
 
     private void initiateRefresh() {
         new DummyBackgroundTask().execute(0);
+//        new DummyBackgroundTask().execute(mViewPager.getCurrentItem());
     }
 
     private class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {

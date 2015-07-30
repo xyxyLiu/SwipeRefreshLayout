@@ -11,19 +11,15 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.reginald.swiperefresh.CustomSwipeRefreshHeadview;
-import com.reginald.swiperefresh.CustomSwipeRefreshHeadview.State;
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout {
+public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
 
     private static final boolean DEBUG = BuildConfig.ENABLE_DEBUG;
     private ViewGroup mContainer;
@@ -36,13 +32,11 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
 
     public MyCustomHeadViewLayout(Context context) {
         super(context);
-        setWillNotDraw(false);
         setupLayout();
     }
 
     private void setupLayout() {
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.my_swiperefresh_head_layout, null);
         addView(mContainer, lp);
         setGravity(Gravity.BOTTOM);
@@ -54,14 +48,14 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
 
     @SuppressLint("NewApi")
     @Override
-    public void onStateChange(CustomSwipeRefreshHeadview.State state) {
+    public void onStateChange(State state) {
         if (DEBUG)
             Log.d("csrh", "onStateChange state = " + state);
         int stateCode = state.getRefreshState();
         float percent = state.getPercent();
 
         switch (stateCode) {
-            case State.STATE_NORMAL:
+            case CustomSwipeRefreshLayout.State.STATE_NORMAL:
                 if (percent > 0.5f) {
                     mImageView.setRotation((percent - 0.5f) * 180 / 0.5f);
                     mMainTextView.setTextColor(Color.argb(0xff,(int)((percent - 0.5f) * 255 / 0.5f),0,0));
@@ -70,16 +64,14 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     mMainTextView.setTextColor(Color.BLACK);
                 }
 
-                if (mState != State.STATE_NORMAL) {
-                    // show arrow
+                if (mState != CustomSwipeRefreshLayout.State.STATE_NORMAL) {
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     mMainTextView.setText("  pull to refresh    ");
                 }
                 break;
-            case State.STATE_READY:
-                if (mState != State.STATE_READY) {
-                    // show arrow
+            case CustomSwipeRefreshLayout.State.STATE_READY:
+                if (mState != CustomSwipeRefreshLayout.State.STATE_READY) {
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     mImageView.setRotation(180);
@@ -87,9 +79,8 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     mMainTextView.setTextColor(Color.RED);
                 }
                 break;
-            case State.STATE_REFRESHING:
-                if (mState != State.STATE_REFRESHING) {
-                    // show progress
+            case CustomSwipeRefreshLayout.State.STATE_REFRESHING:
+                if (mState != CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.VISIBLE);
                     mMainTextView.setText("    refreshing  ...    ");
@@ -97,8 +88,8 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                 }
                 break;
 
-            case State.STATE_COMPLETE:
-                if (mState != State.STATE_COMPLETE){
+            case CustomSwipeRefreshLayout.State.STATE_COMPLETE:
+                if (mState != CustomSwipeRefreshLayout.State.STATE_COMPLETE){
                     mImageView.setRotation(0);
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
@@ -115,12 +106,10 @@ public class MyCustomHeadViewLayout extends LinearLayout implements CustomSwipeR
                     colorAnimation.setDuration(1000);
                     colorAnimation.start();
                 }
-
                 mMainTextView.setText("  refresh  complete  ");
                 break;
             default:
         }
-
         mState = stateCode;
     }
 

@@ -64,7 +64,7 @@
                 android:minHeight="28dp"
                 android:indeterminateOnly="true"
                 android:indeterminate="true"
-                android:indeterminateDuration="500"
+                android:indeterminateDuration="800"
                 android:indeterminateDrawable="@drawable/my_refresh_progress_bar"
                 android:maxHeight="28dp"
                 android:maxWidth="28dp"

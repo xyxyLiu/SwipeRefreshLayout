@@ -8,9 +8,9 @@
     <com.reginald.swiperefresh.CustomSwipeRefreshLayout xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipelayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        swiperefresh:enable_top_progress_bar="false"
-        swiperefresh:keep_refresh_head="true"
+        android:layout_height="match_parent"
+        swiperefresh:enable_top_progress_bar="true"
+        swiperefresh:keep_refresh_head="false"
         swiperefresh:refresh_mode="pull_mode"
         swiperefresh:time_out_refresh_complete="2000"
         swiperefresh:time_out_return_to_top="1000"
@@ -27,12 +27,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="It's a TextView"
-                android:textSize="35sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="It's a TextView \n in A ScrollView!"
+                        android:textSize="70dp" />
+                </HorizontalScrollView>
+            </ScrollView>
+
 
             <ProgressBar
                 android:layout_width="wrap_content"
