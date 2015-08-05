@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.v4.view.ViewCompat;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
@@ -124,12 +125,11 @@ final class CustomSwipeProgressBar {
     void draw(Canvas canvas) {
         final int width = mBounds.width();
         final int height = mBounds.height();
-        final int cx = width / 2;
-        final int cy = height / 2;
+        final int cx = mBounds.left + width / 2;
+        final int cy = mBounds.top + height / 2;
         boolean drawTriggerWhileFinishing = false;
         int restoreCount = canvas.save();
         canvas.clipRect(mBounds);
-
         if (mRunning || (mFinishTime > 0)) {
             long now = AnimationUtils.currentAnimationTimeMillis();
             long elapsed = (now - mStartTime) % ANIMATION_DURATION_MS;
@@ -155,7 +155,7 @@ final class CustomSwipeProgressBar {
                 float pct = (finishProgress / 100f);
                 // Radius of the circle is half of the screen.
                 float clearRadius = width / 2 * INTERPOLATOR.getInterpolation(pct);
-                mClipRect.set(cx - clearRadius, 0, cx + clearRadius, height);
+                mClipRect.set(cx - clearRadius, mBounds.top, cx + clearRadius, mBounds.bottom);
                 canvas.saveLayerAlpha(mClipRect, 0, 0);
                 // Only draw the trigger if there is a space in the center of
                 // this refreshing view that needs to be filled in by the

@@ -18,7 +18,6 @@
 package com.reginald.swiperefresh.sample;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -32,14 +31,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.astuetz.PagerSlidingTabStrip;
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 import com.reginald.swiperefresh.sample.dummydata.Cheeses;
 
@@ -53,7 +52,7 @@ import java.util.List;
 /**
  * One Sample activity that shows the features of CustomSwipeRefreshLayout
  */
-public class DemoActivity extends Activity {
+public class ViewPagerDemoActivity extends Activity {
 
     public static final String TAG = "MainActivity";
 
@@ -77,6 +76,7 @@ public class DemoActivity extends Activity {
     private ArrayAdapter<String> mListAdapter;
 
     ArrayList<View> viewPagerViews = new ArrayList<>();
+    ArrayList<String> viewPagerTitles = new ArrayList<>();
     RecyclerView mRecyclerView;
     MyAdapter mRecyclerViewAdapter;
     RecyclerView.LayoutManager mLayoutManager;
@@ -87,37 +87,64 @@ public class DemoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //show demo view
-        setContentView(R.layout.main_layout);
-        setupView();
+        setContentView(R.layout.viewpager_demo_layout);
+        setupViews();
     }
 
-    protected void setupView() {
-        mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
-        mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadViewLayout(this));
-
-        LinearLayout content = (LinearLayout) findViewById(R.id.content);
+    protected void setupViews(){
+        setupCustomSwipeRefreshLayout();
+        // setup other views
         setupViewPagerViews();
-        content.addView(mListView);
-//        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-//        mViewPager.setAdapter(new ViewPagerAdapter(viewPagerViews));
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        mViewPager.setAdapter(new ViewPagerAdapter(viewPagerTitles, viewPagerViews));
 
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        tabs.setViewPager(mViewPager);
+        tabs.setAllCaps(false);
+    }
 
+    protected void setupCustomSwipeRefreshLayout() {
+        mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
+        //mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadView(this));
 
-//        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
-//        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
-//        mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
-//        // Enable the top progress bar
-//        mCustomSwipeRefreshLayout.enableTopProgressBar(true);
-//        // Keep the refreshing head movable(true stands for fixed) on the top
-//        mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
-//        // Timeout to return to original state when the swipe motion stay in the same position
-//        mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
-//        // Timeout to show the refresh complete information on the refreshing head.
-//        mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
-//        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
-//        mCustomSwipeRefreshLayout.setProgressBarColor(
-//                0x77ff6600, 0x99ffee33,
-//                0x66ee5522, 0xddffcc11);
+        // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
+        // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)
+        //mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
+
+        // Enable the top progress bar
+        //mCustomSwipeRefreshLayout.enableTopProgressBar(true);
+
+        // Keep the refreshing head movable(true stands for fixed) on the top
+        //mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
+
+        // Timeout to return to original state when the swipe motion stay in the same position
+        //mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
+
+        // Timeout to show the refresh complete information on the refreshing head.
+        //mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
+
+        // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
+        //mCustomSwipeRefreshLayout.setProgressBarColor(
+        //        0x77ff6600, 0x99ffee33,
+        //        0x66ee5522, 0xddffcc11);
+
+        // Set the height of Progress bar
+        //mCustomSwipeRefreshLayout.setProgressBarHeight(3);
+
+        // Set the resistance factor
+        //mCustomSwipeRefreshLayout.setResistanceFactor(0.5f);
+
+        // Set the trigger distance.
+        // (pull -> release distance for PULL mode or swipe refresh distance for SWIPE mode)
+        //mCustomSwipeRefreshLayout.setTriggerDistance(120);
+
+        // set refresh checker to check whether to trigger refresh
+//        mCustomSwipeRefreshLayout.setRefreshCheckHandler(new CustomSwipeRefreshLayout.RefreshCheckHandler() {
+//            @Override
+//            public boolean canRefresh() {
+//                // i.e. return false when nothing can be refreshed
+//            }
+//        });
 
         // set onRefresh listener
         mCustomSwipeRefreshLayout.setOnRefreshListener(new CustomSwipeRefreshLayout.OnRefreshListener() {
@@ -145,7 +172,7 @@ public class DemoActivity extends Activity {
             Drawable mDivider;
 
             {
-                final TypedArray a = DemoActivity.this.obtainStyledAttributes(new int[]{android.R.attr.listDivider});
+                final TypedArray a = ViewPagerDemoActivity.this.obtainStyledAttributes(new int[]{android.R.attr.listDivider});
                 mDivider = a.getDrawable(0);
                 a.recycle();
             }
@@ -173,7 +200,7 @@ public class DemoActivity extends Activity {
         mRecyclerViewAdapter = new MyAdapter(Cheeses.randomList(LIST_ITEM_COUNT));
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
 
-        mListView = new MyListView(this);
+        mListView = new ListView(this);
         mListAdapter = new ArrayAdapter<String>(
                 this,
                 R.layout.demo_list_item,
@@ -185,24 +212,17 @@ public class DemoActivity extends Activity {
 
         viewPagerViews.add(mListView);
         viewPagerViews.add(mRecyclerView);
-    }
-
-    static class MyListView extends ListView{
-        public MyListView(Context context){
-            super(context);
-        }
-        @Override
-        public boolean dispatchTouchEvent(MotionEvent event){
-            Log.d(TAG,"ListView.dispatchTouchEvent() " + event);
-            return super.dispatchTouchEvent(event);
-        }
+        viewPagerTitles.add("ListView");
+        viewPagerTitles.add("RecyclerView");
     }
 
     public static class ViewPagerAdapter extends PagerAdapter {
         private List<View> list;
+        private List<String> titles;
 
-        public ViewPagerAdapter(List<View> list) {
+        public ViewPagerAdapter(List<String> titles, List<View> list) {
             this.list = list;
+            this.titles = titles;
         }
 
         @Override
@@ -225,6 +245,11 @@ public class DemoActivity extends Activity {
         @Override
         public void destroyItem(View container, int position, Object object) {
             ((ViewPager) container).removeView((View) object);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position){
+            return titles.get(position);
         }
 
     }
@@ -315,7 +340,6 @@ public class DemoActivity extends Activity {
             // Sleep for a small amount of time to simulate a background-task
             try {
                 viewId = params[0];
-                Log.d(TAG,"viewId = " + viewId);
                 Thread.sleep(TASK_DURATION);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -351,7 +375,7 @@ public class DemoActivity extends Activity {
             menu.getItem(1).setEnabled(true);
         }
 
-        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
+//        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
             menu.add(1, 3, 0, "fixed refresh head");
             menu.add(1, 4, 0, "movable refresh head");
             if (mCustomSwipeRefreshLayout.isEnableTopRefreshingHead()) {
@@ -361,7 +385,7 @@ public class DemoActivity extends Activity {
                 menu.getItem(2).setEnabled(true);
                 menu.getItem(3).setEnabled(false);
             }
-        }
+//        }
         return true;
     }
 
@@ -386,7 +410,7 @@ public class DemoActivity extends Activity {
                 text = "movable refreshing head";
                 break;
         }
-        Toast.makeText(DemoActivity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ViewPagerDemoActivity.this, text, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 

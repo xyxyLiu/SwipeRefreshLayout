@@ -24,5 +24,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.3'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile project(':library')
 }

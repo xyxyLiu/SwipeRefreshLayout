@@ -80,12 +80,10 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
 
     @Override
     public void onStateChange(State state) {
-        Log.d("csrh", "onStateChange state = " + state);
         int stateCode = state.getRefreshState();
         if (stateCode == mState) {
             return;
         }
-        //Log.i("csr", "state = " + state);
         if (stateCode == CustomSwipeRefreshLayout.State.STATE_COMPLETE) {
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
