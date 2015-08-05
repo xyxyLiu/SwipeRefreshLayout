@@ -2,26 +2,23 @@ package com.reginald.swiperefresh.sample;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
 
 public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
 
@@ -92,6 +89,7 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
                 break;
             case CustomSwipeRefreshLayout.State.STATE_REFRESHING:
                 if (mState != CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
+                    mImageView.clearAnimation();
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.VISIBLE);
                     mMainTextView.setText("    refreshing  ...    ");
@@ -101,7 +99,6 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
 
             case CustomSwipeRefreshLayout.State.STATE_COMPLETE:
                 if (mState != CustomSwipeRefreshLayout.State.STATE_COMPLETE) {
-                    setImageRotation(0);
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB) {
@@ -117,7 +114,7 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
                         });
                         colorAnimation.setDuration(1000);
                         colorAnimation.start();
-                    }else {
+                    } else {
                         mMainTextView.setTextColor(Color.BLACK);
                     }
                 }
@@ -129,22 +126,23 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
         mState = stateCode;
     }
 
-    Matrix matrix = new Matrix();
+
     private void setImageRotation(float rotation) {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             mImageView.setRotation(rotation);
         } else {
-            // 计算旋转的中心点
-            Drawable imageDrawable = mImageView.getDrawable();
-            if (null != imageDrawable) {
-                int rotationPivotX = Math.round(imageDrawable.getIntrinsicWidth() / 2f);
-                int rotationPivotY = Math.round(imageDrawable.getIntrinsicHeight() / 2f);
-                matrix.setRotate(rotation, rotationPivotX, rotationPivotY);
-                mImageView.setImageMatrix(matrix);
+            if (mImageView.getTag() == null){
+                mImageView.setTag(0f);
             }
+            mImageView.clearAnimation();
+            Float lastDegree = (Float)mImageView.getTag();
+            RotateAnimation rotate = new RotateAnimation(lastDegree, rotation,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            mImageView.setTag(rotation);
+            rotate.setFillAfter(true);
+            mImageView.startAnimation(rotate);
         }
     }
-
 
 }

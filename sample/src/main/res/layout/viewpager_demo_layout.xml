@@ -9,7 +9,7 @@
         android:id="@+id/swipelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        swiperefresh:enable_top_progress_bar="false"
+        swiperefresh:enable_top_progress_bar="true"
         swiperefresh:keep_refresh_head="true"
         swiperefresh:refresh_mode="pull_mode"
         swiperefresh:time_out_refresh_complete="2000"

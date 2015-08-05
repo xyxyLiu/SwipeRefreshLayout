@@ -155,7 +155,7 @@ public class ListViewDemoActivity extends Activity {
 
     private class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {
 
-        static final int TASK_DURATION = 3 * 1000; // 3 seconds
+        static final int TASK_DURATION = 6 * 1000; // 3 seconds
         int viewId;
         @Override
         protected List<String> doInBackground(Integer... params) {

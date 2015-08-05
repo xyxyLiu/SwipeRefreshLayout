@@ -105,7 +105,7 @@ public class ViewPagerDemoActivity extends Activity {
 
     protected void setupCustomSwipeRefreshLayout() {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
-        //mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadView(this));
+        mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadView(this));
 
         // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
         // Set refresh mode to swipe mode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL for pull-to-refresh mode)

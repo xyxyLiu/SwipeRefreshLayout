@@ -3,5 +3,8 @@
     android:drawable="@drawable/refresh"
     android:pivotX="50%"
     android:pivotY="50%"
+    android:fromDegrees="0"
+    android:toDegrees="359"
+    android:interpolator="@android:anim/linear_interpolator"
     android:repeatCount="infinite"
     />

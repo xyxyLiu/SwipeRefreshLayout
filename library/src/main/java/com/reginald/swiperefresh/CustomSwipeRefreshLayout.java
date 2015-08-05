@@ -231,6 +231,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     /**
      * Simple constructor to use when creating a CustomSwipeRefreshLayout from code.
+     *
      * @param context
      */
     public CustomSwipeRefreshLayout(Context context) {
@@ -239,6 +240,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
 
     /**
      * Constructor that is called when inflating CustomSwipeRefreshLayout from XML.
+     *
      * @param context
      * @param attrs
      */
@@ -321,6 +323,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     }
 
     /**
+     * @param direction Negative to check scrolling left, positive to check scrolling right.
      * @return Whether it is possible for the child view of this layout to
      * scroll left or right. Override this if the child view is a custom view.
      */
@@ -328,13 +331,13 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
         boolean ret;
         event.offsetLocation(view.getScrollX() - view.getLeft(), view.getScrollY() - view.getTop());
         if (android.os.Build.VERSION.SDK_INT < 14) {
-            if (view instanceof ViewPager){
-                ret = ((ViewPager)view).canScrollHorizontally(direction);
+            if (view instanceof ViewPager) {
+                ret = ((ViewPager) view).canScrollHorizontally(direction);
             } else {
                 ret = view.getScrollX() * direction > 0;
             }
         } else {
-                ret = ViewCompat.canScrollHorizontally(view, direction) || ViewCompat.canScrollHorizontally(view, -1 * direction);
+            ret = ViewCompat.canScrollHorizontally(view, direction);
         }
 
         ret = ret || canChildrenScroolHorizontally(view, event, direction);
@@ -351,6 +354,8 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 View child = viewgroup.getChildAt(i);
                 Rect bounds = new Rect();
                 child.getHitRect(bounds);
+                if (DEBUG)
+                    Log.d(TAG, "child: " + child.getClass().getName() + " " + bounds.toShortString());
                 if (bounds.contains((int) event.getX(), (int) event.getY())) {
                     if (DEBUG)
                         Log.d(TAG, "in child " + child.getClass().getName());
@@ -483,6 +488,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
      * Set the four colors used in the progress animation. The first color will
      * also be the color of the bar that grows in response to a user swipe
      * gesture.
+     *
      * @param colorRes1 Color resource.
      * @param colorRes2 Color resource.
      * @param colorRes3 Color resource.
@@ -512,6 +518,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
     /**
      * Notify the widget that refresh state has changed. Do not call this when
      * refresh is triggered by a swipe gesture.
+     *
      * @param refreshing Whether or not the view should show refresh progress.
      */
     protected void setRefreshing(boolean refreshing) {
@@ -741,9 +748,9 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 int horizontalScrollDirection = ev.getX() > mDownEvent.getX() ? -1 : 1;
                 float xDiff = Math.abs(ev.getX() - mDownEvent.getX());
 
-                if (DEBUG){
-                    Log.d(TAG,"xDiff = " + xDiff + ", yDiff = " + yDiff + ", canViewScrollHorizontally(mTarget, event, 0) = " + canViewScrollHorizontally(mTarget, event, 0)
-                    + ", checkHorizontalMove = " + checkHorizontalMove + ", horizontalScrollDirection = " + horizontalScrollDirection);
+                if (DEBUG) {
+                    Log.d(TAG, "xDiff = " + xDiff + ", mTouchSlop= " + mTouchSlop + ", yDiff = " + yDiff + ", canViewScrollHorizontally(mTarget, event, 0) = " + canViewScrollHorizontally(mTarget, MotionEvent.obtain(event), horizontalScrollDirection)
+                            + ", checkHorizontalMove = " + checkHorizontalMove + ", horizontalScrollDirection = " + horizontalScrollDirection);
                 }
                 if (isHorizontalScroll) {
                     if (DEBUG)
