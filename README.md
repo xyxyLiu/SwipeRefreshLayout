@@ -11,6 +11,8 @@ Note that CustomSwipeRefreshLayout can only contain one child View.
 
 
 ### Demo
+[Demo apk](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.1/sample.apk)
+
 CustomSwipeRefreshLayout has different refresh mode as following:
 * pull/swipe mode mode
 * fixed/movable refreshing head mode
@@ -38,8 +40,12 @@ CustomSwipeRefreshLayout has different refresh mode as following:
 
 ### Usage
 #### Import
-Import CustomSwipeRefreshLayout project in your project with gradle
-- [swiperefreshlayout-1.0.aar](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.0/swiperefreshlayout-1.0.aar)
+Import CustomSwipeRefreshLayout project in your project with gradle:
+```
+compile 'com.reginald.swiperefresh:library:1.1.0'
+```
+
+or Download [here](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.1/library-1.1.0.aar)
 
 
 #### Xml config
