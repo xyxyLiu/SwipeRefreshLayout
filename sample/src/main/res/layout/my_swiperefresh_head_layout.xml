@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:gravity="bottom">
 
     <RelativeLayout
         android:id="@+id/default_header_content"
+        android:layout_height="50dp"
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:paddingLeft="10dp">
 
         <LinearLayout
@@ -33,38 +30,44 @@
             <!-- last update -->
 
             <TextView
+                android:layout_marginTop="2dp"
                 android:id="@+id/default_header_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:textColor="#999999"
                 android:textSize="10sp" />
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/default_image_view">
+            android:layout_toLeftOf="@+id/default_image_view"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
+
 
             <!-- arrow -->
 
             <ImageView
                 android:id="@+id/default_header_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/pulltorefresh" />
+                android:src="@drawable/arrow" />
 
             <!-- progressbar -->
 
             <ProgressBar
                 android:id="@+id/default_header_progressbar"
-                style="@android:style/Widget.ProgressBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:minHeight="28dp"
+                android:indeterminateDrawable="@drawable/my_refresh_progress_bar"
+                android:maxHeight="28dp"
+                android:maxWidth="28dp"
+                android:minWidth="28dp"
                 android:visibility="gone" />
+
         </FrameLayout>
 
     </RelativeLayout>

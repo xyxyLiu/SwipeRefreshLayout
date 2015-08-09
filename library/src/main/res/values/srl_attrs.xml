@@ -8,6 +8,8 @@
         </attr>
         <attr name="time_out_return_to_top" format="integer" />
         <attr name="time_out_refresh_complete" format="integer" />
+        <attr name="return_to_top_duration" format="integer" />
+        <attr name="return_to_header_duration" format="integer" />
         <attr name="keep_refresh_head" format="boolean" />
         <attr name="top_progress_bar_color_1" format="color|reference" />
         <attr name="top_progress_bar_color_2" format="color|reference" />

@@ -12,8 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 /**
  * Created by liu on 2014/9/15.
@@ -24,7 +27,7 @@ import java.util.Date;
  * You can also make your own head view layout which must implement
  * CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.
  */
-public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout {
+public class DefaultCustomHeadView extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
 
     private LinearLayout mContainer;
 
@@ -36,11 +39,9 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
     private Animation mRotateUpAnim;
     private Animation mRotateDownAnim;
     private final int ROTATE_ANIM_DURATION = 180;
-
-    private int mState = -1;
     private Animation.AnimationListener animationListener;
 
-    public DefaultCustomHeadViewLayout(Context context) {
+    public DefaultCustomHeadView(Context context) {
         super(context);
         setWillNotDraw(false);
         setupLayout();
@@ -75,16 +76,17 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
     }
 
     @Override
-    public void setState(int state) {
-        if (state == mState) {
+    public void onStateChange(State state, State lastState) {
+        int stateCode = state.getRefreshState();
+        int lastStateCode = lastState.getRefreshState();
+        if (stateCode == lastStateCode) {
             return;
         }
-        //Log.i("csr", "state = " + state);
-        if (state == CustomSwipeRefreshHeadview.STATE_COMPLETE) {
+        if (stateCode == CustomSwipeRefreshLayout.State.STATE_COMPLETE) {
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
             mProgressBar.setVisibility(View.INVISIBLE);
-        } else if (state == CustomSwipeRefreshHeadview.STATE_REFRESHING) {
+        } else if (stateCode == CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
             // show progress
             mImageView.clearAnimation();
             mImageView.setVisibility(View.INVISIBLE);
@@ -95,41 +97,36 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
             mProgressBar.setVisibility(View.INVISIBLE);
         }
 
-        switch (state) {
-            case CustomSwipeRefreshHeadview.STATE_NORMAL:
-                if (mState == CustomSwipeRefreshHeadview.STATE_READY) {
+        switch (stateCode) {
+            case CustomSwipeRefreshLayout.State.STATE_NORMAL:
+                if (lastStateCode == CustomSwipeRefreshLayout.State.STATE_READY) {
                     mImageView.startAnimation(mRotateDownAnim);
                 }
-                if (mState == CustomSwipeRefreshHeadview.STATE_REFRESHING) {
+                if (lastStateCode == CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
                     mImageView.clearAnimation();
                 }
                 mMainTextView.setText(R.string.csr_text_state_normal);
                 break;
-            case CustomSwipeRefreshHeadview.STATE_READY:
-
-                if (mState != CustomSwipeRefreshHeadview.STATE_READY) {
+            case CustomSwipeRefreshLayout.State.STATE_READY:
+                if (lastStateCode != CustomSwipeRefreshLayout.State.STATE_READY) {
                     mImageView.clearAnimation();
                     mImageView.startAnimation(mRotateUpAnim);
                     mMainTextView.setText(R.string.csr_text_state_ready);
                 }
                 break;
-            case CustomSwipeRefreshHeadview.STATE_REFRESHING:
+            case CustomSwipeRefreshLayout.State.STATE_REFRESHING:
                 mMainTextView.setText(R.string.csr_text_state_refresh);
                 updateData();
                 break;
 
-            case CustomSwipeRefreshHeadview.STATE_COMPLETE:
+            case CustomSwipeRefreshLayout.State.STATE_COMPLETE:
                 mMainTextView.setText(R.string.csr_text_state_complete);
                 updateData();
                 break;
             default:
         }
-
-        mState = state;
     }
 
-
-    @Override
     public void updateData() {
 
         String time = fetchData();
