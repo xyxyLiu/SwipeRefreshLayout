@@ -1,7 +1,6 @@
 package com.reginald.swiperefresh;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +12,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
 
 
 /**
@@ -28,7 +27,7 @@ import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
  * You can also make your own head view layout which must implement
  * CustomSwipeRefreshHeadview.CustomSwipeRefreshHeadLayout interface.
  */
-public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
+public class DefaultCustomHeadView extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
 
     private LinearLayout mContainer;
 
@@ -40,11 +39,9 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
     private Animation mRotateUpAnim;
     private Animation mRotateDownAnim;
     private final int ROTATE_ANIM_DURATION = 180;
-
-    private int mState = -1;
     private Animation.AnimationListener animationListener;
 
-    public DefaultCustomHeadViewLayout(Context context) {
+    public DefaultCustomHeadView(Context context) {
         super(context);
         setWillNotDraw(false);
         setupLayout();
@@ -79,9 +76,10 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
     }
 
     @Override
-    public void onStateChange(State state) {
+    public void onStateChange(State state, State lastState) {
         int stateCode = state.getRefreshState();
-        if (stateCode == mState) {
+        int lastStateCode = lastState.getRefreshState();
+        if (stateCode == lastStateCode) {
             return;
         }
         if (stateCode == CustomSwipeRefreshLayout.State.STATE_COMPLETE) {
@@ -101,17 +99,16 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
 
         switch (stateCode) {
             case CustomSwipeRefreshLayout.State.STATE_NORMAL:
-                if (mState == CustomSwipeRefreshLayout.State.STATE_READY) {
+                if (lastStateCode == CustomSwipeRefreshLayout.State.STATE_READY) {
                     mImageView.startAnimation(mRotateDownAnim);
                 }
-                if (mState == CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
+                if (lastStateCode == CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
                     mImageView.clearAnimation();
                 }
                 mMainTextView.setText(R.string.csr_text_state_normal);
                 break;
             case CustomSwipeRefreshLayout.State.STATE_READY:
-
-                if (mState != CustomSwipeRefreshLayout.State.STATE_READY) {
+                if (lastStateCode != CustomSwipeRefreshLayout.State.STATE_READY) {
                     mImageView.clearAnimation();
                     mImageView.startAnimation(mRotateUpAnim);
                     mMainTextView.setText(R.string.csr_text_state_ready);
@@ -128,8 +125,6 @@ public class DefaultCustomHeadViewLayout extends LinearLayout implements CustomS
                 break;
             default:
         }
-
-        mState = stateCode;
     }
 
     public void updateData() {

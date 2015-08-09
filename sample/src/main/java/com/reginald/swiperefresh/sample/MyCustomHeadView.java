@@ -22,7 +22,7 @@ import com.reginald.swiperefresh.CustomSwipeRefreshLayout.State;
 
 public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefreshLayout.CustomSwipeRefreshHeadLayout {
 
-    private static final boolean DEBUG = BuildConfig.ENABLE_DEBUG;
+    private static final boolean DEBUG = false;
 
     private static final SparseArray<String> STATE_MAP = new SparseArray<>();
     private ViewGroup mContainer;
@@ -56,10 +56,11 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
     }
 
     @Override
-    public void onStateChange(State state) {
+    public void onStateChange(State state, State lastState) {
         if (DEBUG)
-            Log.d("csrh", "onStateChange state = " + state);
+            Log.d("csrh", "onStateChange state = " + state + ", lastState = " + lastState);
         int stateCode = state.getRefreshState();
+        int lastStateCode = lastState.getRefreshState();
         float percent = state.getPercent();
 
         switch (stateCode) {
@@ -72,14 +73,14 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
                     mMainTextView.setTextColor(Color.BLACK);
                 }
 
-                if (mState != CustomSwipeRefreshLayout.State.STATE_NORMAL) {
+                if (stateCode != lastStateCode) {
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     mMainTextView.setText("  pull to refresh    ");
                 }
                 break;
             case CustomSwipeRefreshLayout.State.STATE_READY:
-                if (mState != CustomSwipeRefreshLayout.State.STATE_READY) {
+                if (stateCode != lastStateCode) {
                     mImageView.setVisibility(View.VISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     setImageRotation(180);
@@ -88,7 +89,7 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
                 }
                 break;
             case CustomSwipeRefreshLayout.State.STATE_REFRESHING:
-                if (mState != CustomSwipeRefreshLayout.State.STATE_REFRESHING) {
+                if (stateCode != lastStateCode) {
                     mImageView.clearAnimation();
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.VISIBLE);
@@ -98,7 +99,7 @@ public class MyCustomHeadView extends LinearLayout implements CustomSwipeRefresh
                 break;
 
             case CustomSwipeRefreshLayout.State.STATE_COMPLETE:
-                if (mState != CustomSwipeRefreshLayout.State.STATE_COMPLETE) {
+                if (stateCode != lastStateCode) {
                     mImageView.setVisibility(View.INVISIBLE);
                     mProgressBar.setVisibility(View.INVISIBLE);
                     if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB) {

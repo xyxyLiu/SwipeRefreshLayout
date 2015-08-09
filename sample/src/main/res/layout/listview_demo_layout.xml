@@ -4,32 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/default_header_progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:minHeight="28dp"
-        android:indeterminateOnly="true"
-        android:indeterminate="true"
-        android:indeterminateDuration="500"
-        android:indeterminateDrawable="@drawable/my_refresh_progress_bar"
-        android:maxHeight="28dp"
-        android:maxWidth="28dp"
-        android:minWidth="28dp"
-        />
-
     <com.reginald.swiperefresh.CustomSwipeRefreshLayout xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
         android:id="@+id/swipelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="50dp"
-        swiperefresh:enable_top_progress_bar="false"
+        swiperefresh:enable_top_progress_bar="true"
         swiperefresh:keep_refresh_head="true"
         swiperefresh:refresh_mode="pull_mode"
         swiperefresh:time_out_refresh_complete="2000"
         swiperefresh:time_out_return_to_top="1000"
+        swiperefresh:return_to_header_duration="1000"
+        swiperefresh:return_to_top_duration="500"
         swiperefresh:top_progress_bar_color_1="@color/common_red"
         swiperefresh:top_progress_bar_color_2="#ee5522"
         swiperefresh:top_progress_bar_color_3="#ffa600"
@@ -39,7 +25,7 @@
 
         <ListView
             android:id="@+id/listview"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>

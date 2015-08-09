@@ -10,12 +10,16 @@ android {
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-        buildConfigField("boolean", "ENABLE_DEBUG", rootProject.ext.ENABLE_DEBUG)
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android {
+        lintOptions {
+            abortOnError false
         }
     }
 }
@@ -26,4 +30,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile project(':library')
+    //compile 'com.reginald.swiperefresh:library:1.1.0'
 }

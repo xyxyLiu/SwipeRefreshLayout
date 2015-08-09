@@ -17,12 +17,9 @@
 
 package com.reginald.swiperefresh.sample;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.webkit.WebView;
 
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 import com.reginald.swiperefresh.sample.dummydata.Cheeses;
@@ -36,18 +33,7 @@ import java.util.List;
 /**
  * One Sample activity that shows the features of CustomSwipeRefreshLayout
  */
-public class ScrollViewDemoActivity extends Activity {
-
-    public static final String TAG = "MainActivity";
-
-    private static final int LIST_ITEM_COUNT = 20;
-
-    /**
-     * The CustomSwipeRefreshLayout that detects swipe gestures and
-     * triggers callbacks in the app.
-     */
-    private CustomSwipeRefreshLayout mCustomSwipeRefreshLayout;
-
+public class ScrollViewDemoActivity extends BaseDemoActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +43,19 @@ public class ScrollViewDemoActivity extends Activity {
         setupViews();
     }
 
-    protected void setupViews(){
+    protected void setupViews() {
         setupCustomSwipeRefreshLayout();
+        WebView webView = (WebView) findViewById(R.id.webview);
+        StringBuilder html = new StringBuilder("<html><body>");
+        for (int i = 0; i < 20; i++)
+            html.append("It's a WebView   It's a WebView   It's a WebView ");
+        html.append("</body></html>");
+        webView.loadData(html.toString(), "text/html", null);
     }
 
     protected void setupCustomSwipeRefreshLayout() {
         mCustomSwipeRefreshLayout = (CustomSwipeRefreshLayout) findViewById(R.id.swipelayout);
+        // If no headview provided, use the default headview.
         //mCustomSwipeRefreshLayout.setCustomHeadview(new MyCustomHeadViewLayout(this));
 
         // YOU CAN MAKE CONFIGURATION USING THE FOLLOWING CODE
@@ -73,34 +66,41 @@ public class ScrollViewDemoActivity extends Activity {
         //mCustomSwipeRefreshLayout.enableTopProgressBar(true);
 
         // Keep the refreshing head movable(true stands for fixed) on the top
-        //mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
+        //mCustomSwipeRefreshLayout.setKeepTopRefreshingHead(true);
 
         // Timeout to return to original state when the swipe motion stay in the same position
-        //mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(200);
+        //mCustomSwipeRefreshLayout.setmReturnToOriginalTimeout(1000);
 
         // Timeout to show the refresh complete information on the refreshing head.
-        //mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(1000);
+        //mCustomSwipeRefreshLayout.setmRefreshCompleteTimeout(3000);
+
+        // Duration of the animation from the top of the content view to parent top.(e.g. when refresh complete)
+        //mCustomSwipeRefreshLayout.setReturnToTopDuration(500);
+
+        // Duration of the animation from the top of the content view to the height of header.(e.g. when content view is released)
+        //mCustomSwipeRefreshLayout.setReturnToHeaderDuration(800);
 
         // Set progress bar colors( Or use setProgressBarColorRes(int colorRes1,int colorRes2,int colorRes3,int colorRes4) for color resources)
         //mCustomSwipeRefreshLayout.setProgressBarColor(
         //        0x77ff6600, 0x99ffee33,
         //        0x66ee5522, 0xddffcc11);
 
-        // Set the height of Progress bar
-        //mCustomSwipeRefreshLayout.setProgressBarHeight(3);
+        // Set the height of Progress bar, in dp.
+        //mCustomSwipeRefreshLayout.setProgressBarHeight(2);
 
         // Set the resistance factor
-        //mCustomSwipeRefreshLayout.setResistanceFactor(0.5f);
+        //mCustomSwipeRefreshLayout.setResistanceFactor(0.7f);
 
-        // Set the trigger distance.
+        // Set the trigger distance. in dp.
         // (pull -> release distance for PULL mode or swipe refresh distance for SWIPE mode)
-        //mCustomSwipeRefreshLayout.setTriggerDistance(120);
+        //mCustomSwipeRefreshLayout.setTriggerDistance(160);
 
         // set refresh checker to check whether to trigger refresh
 //        mCustomSwipeRefreshLayout.setRefreshCheckHandler(new CustomSwipeRefreshLayout.RefreshCheckHandler() {
 //            @Override
 //            public boolean canRefresh() {
-//                // i.e. return false when nothing can be refreshed
+//                // return false when you don't want to trigger refresh
+//                // e.g. return false when network is disabled.
 //            }
 //        });
 
@@ -115,7 +115,6 @@ public class ScrollViewDemoActivity extends Activity {
     }
 
 
-
     private void onRefreshComplete(List<String> result) {
 
         // to notify CustomSwipeRefreshLayout that the refreshing is completed
@@ -126,10 +125,11 @@ public class ScrollViewDemoActivity extends Activity {
         new DummyBackgroundTask().execute(0);
     }
 
-    private class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {
+    public class DummyBackgroundTask extends AsyncTask<Integer, Void, List<String>> {
 
-        static final int TASK_DURATION = 3 * 1000; // 3 seconds
-        int viewId;
+        public static final int TASK_DURATION = 3 * 1000; // 3 seconds
+        public static final int LIST_ITEM_COUNT = 20;
+
         @Override
         protected List<String> doInBackground(Integer... params) {
             // Sleep for a small amount of time to simulate a background-task
@@ -151,61 +151,6 @@ public class ScrollViewDemoActivity extends Activity {
             onRefreshComplete(result);
         }
 
-    }
-
-
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-
-        menu.clear();
-        menu.add(0, 1, 0, "swipe mode");
-        menu.add(0, 2, 0, "pull mode");
-        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
-            menu.getItem(0).setEnabled(true);
-            menu.getItem(1).setEnabled(false);
-        } else {
-            menu.getItem(0).setEnabled(false);
-            menu.getItem(1).setEnabled(true);
-        }
-
-//        if (mCustomSwipeRefreshLayout.getRefreshMode() == CustomSwipeRefreshLayout.REFRESH_MODE_PULL) {
-            menu.add(1, 3, 0, "fixed refresh head");
-            menu.add(1, 4, 0, "movable refresh head");
-            if (mCustomSwipeRefreshLayout.isEnableTopRefreshingHead()) {
-                menu.getItem(2).setEnabled(false);
-                menu.getItem(3).setEnabled(true);
-            } else {
-                menu.getItem(2).setEnabled(true);
-                menu.getItem(3).setEnabled(false);
-            }
-//        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        String text = "";
-        switch (item.getItemId()) {
-            case 1:
-                mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_SWIPE);
-                text = "swipe refresh mode";
-                break;
-            case 2:
-                mCustomSwipeRefreshLayout.setRefreshMode(CustomSwipeRefreshLayout.REFRESH_MODE_PULL);
-                text = "pull refresh mode";
-                break;
-            case 3:
-                mCustomSwipeRefreshLayout.enableTopRefreshingHead(true);
-                text = "fixed refreshing head";
-                break;
-            case 4:
-                mCustomSwipeRefreshLayout.enableTopRefreshingHead(false);
-                text = "movable refreshing head";
-                break;
-        }
-        Toast.makeText(ScrollViewDemoActivity.this, text, Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
     }
 
 }

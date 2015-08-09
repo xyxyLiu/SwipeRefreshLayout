@@ -16,13 +16,9 @@ import android.widget.Button;
  */
 public class MainActivity extends Activity {
 
-    public static final String TAG = "MainActivity";
-
     private Button but1;
     private Button but2;
     private Button but3;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
