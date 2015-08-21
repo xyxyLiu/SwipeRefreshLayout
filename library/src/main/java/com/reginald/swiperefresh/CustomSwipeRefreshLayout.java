@@ -37,7 +37,7 @@ import android.widget.AbsListView;
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
     public static final String TAG = "csrl";
 
     public static final int REFRESH_MODE_SWIPE = 1;
