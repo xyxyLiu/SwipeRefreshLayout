@@ -771,9 +771,7 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mCheckValidMotionFlag = true;
             checkHorizontalMove = true;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
-            float yDiff = curY - mDownEvent.getY();
-            if (yDiff < 0)
-                yDiff = -yDiff;
+            float yDiff = Math.abs(curY - mDownEvent.getY());
 
             if (enableHorizontalScroll) {
 
@@ -807,14 +805,15 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 return false;
             }
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
+            float yDiff = Math.abs(curY - mDownEvent.getY());
             if (enableHorizontalScroll && isHorizontalScroll) {
                 if (DEBUG)
                     Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
                 isHorizontalScroll = false;
                 mPrevY = ev.getY();
                 return false;
-            } else if (curY - mDownEvent.getY() < mTouchSlop){
-                mPrevY = ev.getY();
+            } else if (yDiff < mTouchSlop) {
+                mPrevY = curY;
                 return false;
             }
         }
