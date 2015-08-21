@@ -37,7 +37,7 @@ import android.widget.AbsListView;
  */
 public class CustomSwipeRefreshLayout extends ViewGroup {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
     public static final String TAG = "csrl";
 
     public static final int REFRESH_MODE_SWIPE = 1;
@@ -811,6 +811,10 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 if (DEBUG)
                     Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
                 isHorizontalScroll = false;
+                mPrevY = ev.getY();
+                return false;
+            } else if (curY - mDownEvent.getY() < mTouchSlop){
+                mPrevY = ev.getY();
                 return false;
             }
         }
