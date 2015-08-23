@@ -42,10 +42,10 @@ CustomSwipeRefreshLayout has different refresh mode as following:
 #### Import
 Import CustomSwipeRefreshLayout project in your project with gradle:
 ```
-compile 'com.reginald.swiperefresh:library:1.1.0'
+compile 'com.reginald.swiperefresh:library:1.1.1'
 ```
 
-or Download [here](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.1/library-1.1.0.aar)
+or Download [here](https://github.com/xyxyLiu/SwipeRefreshLayout/releases/download/1.1/library-1.1.1.aar)
 
 
 #### Xml config
