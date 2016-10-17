@@ -46,7 +46,7 @@ publishing {
             groupId = 'com.reginald.swiperefresh'
             // Use short version for published artifact (#.#.#)
             version = project.version
-            artifactId project.getName()
+            artifactId project.getName() + "-LEGOLife"
             artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
             artifact androidSourcesJar
             artifact androidJavadocJar
