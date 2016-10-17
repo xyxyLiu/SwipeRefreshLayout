@@ -1,0 +1,7 @@
+<resources>
+    <string name="csr_text_state_normal">Swipe  to  refresh </string>
+    <string name="csr_text_state_ready">Release to refresh </string>
+    <string name="csr_text_state_refresh">Refreshing  ...   </string>
+    <string name="csr_text_state_complete">Refreshing complete </string>
+    <string name="csr_text_last_refresh">last update:  </string>
+</resources>

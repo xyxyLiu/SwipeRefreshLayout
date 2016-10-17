@@ -1,0 +1,141 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+version = '1.1.0'
+group = 'com.reginald.swiperefresh' // Maven Group ID for the artifact
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.2.1'
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '24.0.2'
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
+def siteUrl = 'https://github.com/xyxyLiu/SwipeRefreshLayout'
+def gitUrl = 'https://github.com/xyxyLiu/SwipeRefreshLayout.git'
+
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            version = project.version
+            artifactId project.getName()
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            artifact androidSourcesJar
+            artifact androidJavadocJar
+
+            pom.withXml {
+
+                asNode().children().last() + {
+                    groupId 'com.reginald.swiperefresh'
+                    artifactId 'library'
+
+                    // Add your description here
+                    name 'SwipeRefreshLayout'
+                    description 'A Custom Swipe Refresh Layout on Android.'
+                    url siteUrl
+
+                    // Set your license
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'xyLiu'
+                            name 'xyLiu'
+                            email 'tonyreginald@gmail.com'
+                        }
+                        developer {
+                            id 'dk8niram'
+                            name 'Niels Raabjerg Mathiasen'
+                            email 'niels.raabjerg.mathiasen@LEGO.com'
+                        }
+                    }
+                    scm {
+                        connection gitUrl
+                        developerConnection gitUrl
+                        url siteUrl
+                    }
+                }
+
+                def dependencies = asNode().appendNode('dependencies')
+                configurations.getByName("_releaseCompile").getResolvedConfiguration().getFirstLevelModuleDependencies().each {
+                    def dependency = dependencies.appendNode('dependency')
+                    dependency.appendNode('groupId', it.moduleGroup)
+                    dependency.appendNode('artifactId', it.moduleName)
+                    dependency.appendNode('version', it.moduleVersion)
+                }
+            }
+
+            // Publish artifact to local directory
+            repositories {
+                maven {
+                    url "file:/${project.projectDir}/artifacts"
+                }
+            }
+        }
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+//This add output of unit tests when running 'gradle test'
+tasks.matching { it instanceof Test }.all {
+    testLogging.events = ["failed", "passed", "skipped"];
+}
+
+//Used when generating Javadocs
+afterEvaluate {
+    androidJavadocs.classpath += files(android.libraryVariants.collect { variant ->
+        variant.javaCompile.classpath.files
+    })
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocJar
+}

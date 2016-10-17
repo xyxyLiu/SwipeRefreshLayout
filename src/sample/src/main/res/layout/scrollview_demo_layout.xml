@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.reginald.swiperefresh.CustomSwipeRefreshLayout xmlns:swiperefresh="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        swiperefresh:enable_top_progress_bar="true"
+        swiperefresh:keep_refresh_head="true"
+        swiperefresh:refresh_mode="swipe_mode"
+        swiperefresh:time_out_refresh_complete="2000"
+        swiperefresh:time_out_return_to_top="1000"
+        swiperefresh:top_progress_bar_color_1="@color/common_red"
+        swiperefresh:top_progress_bar_color_2="#ee5522"
+        swiperefresh:top_progress_bar_color_3="#ffa600"
+        swiperefresh:top_progress_bar_color_4="@color/common_yellow">
+
+        <!-- Attention: you can add ONLY one view in CustomSwipeRefreshLayout either in xml or java code -->
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="a ScrollView below"
+                android:textColor="#223333"
+                android:textSize="25sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/view_border">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/text_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView 1 in ScrollView"
+                            android:textColor="#aa4422"
+                            android:textSize="80sp" />
+
+                        <TextView
+                            android:id="@+id/text_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_1"
+                            android:layout_marginTop="10dp"
+                            android:text="TextView 2 in ScrollView"
+                            android:textColor="#2244aa"
+                            android:textSize="80sp" />
+
+                        <TextView
+                            android:id="@+id/text_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_2"
+                            android:text="TextView 3 in ScrollView"
+                            android:textColor="#44aa22"
+                            android:textSize="80sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_3"
+                            android:text="TextView 4 in ScrollView"
+                            android:textColor="#a424dd"
+                            android:textSize="80sp" />
+                    </RelativeLayout>
+                </HorizontalScrollView>
+            </ScrollView>
+
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                />
+        </LinearLayout>
+
+    </com.reginald.swiperefresh.CustomSwipeRefreshLayout>
+
+
+</LinearLayout>
