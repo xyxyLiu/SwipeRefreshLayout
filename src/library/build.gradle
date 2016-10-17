@@ -23,7 +23,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName = "${project.version}-build0"
     }
     buildTypes {
         release {
@@ -40,10 +40,11 @@ android {
 def siteUrl = 'https://github.com/xyxyLiu/SwipeRefreshLayout'
 def gitUrl = 'https://github.com/xyxyLiu/SwipeRefreshLayout.git'
 
-
 publishing {
     publications {
         aar(MavenPublication) {
+            groupId = 'com.reginald.swiperefresh'
+            // Use short version for published artifact (#.#.#)
             version = project.version
             artifactId project.getName()
             artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
@@ -51,23 +52,11 @@ publishing {
             artifact androidJavadocJar
 
             pom.withXml {
-
                 asNode().children().last() + {
-                    groupId 'com.reginald.swiperefresh'
-                    artifactId 'library'
-
-                    // Add your description here
+                    resolveStrategy = DELEGATE_FIRST
+                    url siteUrl
                     name 'SwipeRefreshLayout'
                     description 'A Custom Swipe Refresh Layout on Android.'
-                    url siteUrl
-
-                    // Set your license
-                    licenses {
-                        license {
-                            name 'The Apache Software License, Version 2.0'
-                            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        }
-                    }
                     developers {
                         developer {
                             id 'xyLiu'
@@ -96,7 +85,7 @@ publishing {
                 }
             }
 
-            // Publish artifact to local directory
+
             repositories {
                 maven {
                     url "file:/${project.projectDir}/artifacts"
