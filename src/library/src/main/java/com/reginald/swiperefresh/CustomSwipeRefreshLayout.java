@@ -807,16 +807,18 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
                 }
             }
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
-            float yDiff = Math.abs(curY - mDownEvent.getY());
-            if (enableHorizontalScroll && isHorizontalScroll) {
-                if (DEBUG)
-                    Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
-                isHorizontalScroll = false;
-                mPrevY = ev.getY();
-                return false;
-            } else if (yDiff < mTouchSlop) {
-                mPrevY = curY;
-                return false;
+            if (mDownEvent != null) {
+                float yDiff = Math.abs(curY - mDownEvent.getY());
+                if (enableHorizontalScroll && isHorizontalScroll) {
+                    if (DEBUG)
+                        Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
+                    isHorizontalScroll = false;
+                    mPrevY = ev.getY();
+                    return false;
+                } else if (yDiff < mTouchSlop) {
+                    mPrevY = curY;
+                    return false;
+                }
             }
         }
 
