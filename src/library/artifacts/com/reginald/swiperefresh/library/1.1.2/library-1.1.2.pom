@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.reginald.swiperefresh</groupId>
+  <artifactId>library</artifactId>
+  <version>1.1.2</version>
+  <packaging>aar</packaging>
+  <url>https://github.com/xyxyLiu/SwipeRefreshLayout</url>
+  <name>SwipeRefreshLayout</name>
+  <description>A Custom Swipe Refresh Layout on Android.</description>
+  <developers>
+    <developer>
+      <id>xyLiu</id>
+      <name>xyLiu</name>
+      <email>tonyreginald@gmail.com</email>
+    </developer>
+    <developer>
+      <id>dk8niram</id>
+      <name>Niels Raabjerg Mathiasen</name>
+      <email>niels.raabjerg.mathiasen@LEGO.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://github.com/xyxyLiu/SwipeRefreshLayout.git</connection>
+    <developerConnection>https://github.com/xyxyLiu/SwipeRefreshLayout.git</developerConnection>
+    <url>https://github.com/xyxyLiu/SwipeRefreshLayout</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>com.android.support</groupId>
+      <artifactId>appcompat-v7</artifactId>
+      <version>24.2.1</version>
+    </dependency>
+  </dependencies>
+</project>

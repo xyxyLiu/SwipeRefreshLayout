@@ -771,50 +771,54 @@ public class CustomSwipeRefreshLayout extends ViewGroup {
             mCheckValidMotionFlag = true;
             checkHorizontalMove = true;
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
-            float yDiff = Math.abs(curY - mDownEvent.getY());
+            if (mDownEvent != null) {
+                float yDiff = Math.abs(curY - mDownEvent.getY());
 
-            if (enableHorizontalScroll) {
+                if (enableHorizontalScroll) {
 
-                MotionEvent event = MotionEvent.obtain(ev);
-                int horizontalScrollDirection = ev.getX() > mDownEvent.getX() ? -1 : 1;
-                float xDiff = Math.abs(ev.getX() - mDownEvent.getX());
-                if (isHorizontalScroll) {
-                    if (DEBUG)
-                        Log.d(TAG, "onInterceptTouchEvent(): in horizontal scroll");
+                    MotionEvent event = MotionEvent.obtain(ev);
+                    int horizontalScrollDirection = ev.getX() > mDownEvent.getX() ? -1 : 1;
+                    float xDiff = Math.abs(ev.getX() - mDownEvent.getX());
+                    if (isHorizontalScroll) {
+                        if (DEBUG)
+                            Log.d(TAG, "onInterceptTouchEvent(): in horizontal scroll");
+                        mPrevY = curY;
+                        checkHorizontalMove = false;
+                        return false;
+                    } else if (xDiff <= mTouchSlop) {
+                        checkHorizontalMove = true;
+                        //return false;
+                    } else if (canViewScrollHorizontally(mTarget, event, horizontalScrollDirection) &&
+                            checkHorizontalMove && xDiff > 2 * yDiff) {
+                        if (DEBUG)
+                            Log.d(TAG, "onInterceptTouchEvent(): start horizontal scroll");
+                        mPrevY = curY;
+                        isHorizontalScroll = true;
+                        checkHorizontalMove = false;
+                        return false;
+                    } else {
+                        checkHorizontalMove = false;
+                    }
+                }
+
+                if (yDiff < mTouchSlop) {
                     mPrevY = curY;
-                    checkHorizontalMove = false;
                     return false;
-                } else if (xDiff <= mTouchSlop) {
-                    checkHorizontalMove = true;
-                    //return false;
-                } else if (canViewScrollHorizontally(mTarget, event, horizontalScrollDirection) &&
-                        checkHorizontalMove && xDiff > 2 * yDiff) {
-                    if (DEBUG)
-                        Log.d(TAG, "onInterceptTouchEvent(): start horizontal scroll");
-                    mPrevY = curY;
-                    isHorizontalScroll = true;
-                    checkHorizontalMove = false;
-                    return false;
-                } else {
-                    checkHorizontalMove = false;
                 }
             }
-
-            if (yDiff < mTouchSlop) {
-                mPrevY = curY;
-                return false;
-            }
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
-            float yDiff = Math.abs(curY - mDownEvent.getY());
-            if (enableHorizontalScroll && isHorizontalScroll) {
-                if (DEBUG)
-                    Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
-                isHorizontalScroll = false;
-                mPrevY = ev.getY();
-                return false;
-            } else if (yDiff < mTouchSlop) {
-                mPrevY = curY;
-                return false;
+            if (mDownEvent != null) {
+                float yDiff = Math.abs(curY - mDownEvent.getY());
+                if (enableHorizontalScroll && isHorizontalScroll) {
+                    if (DEBUG)
+                        Log.d(TAG, "onInterceptTouchEvent(): finish horizontal scroll");
+                    isHorizontalScroll = false;
+                    mPrevY = ev.getY();
+                    return false;
+                } else if (yDiff < mTouchSlop) {
+                    mPrevY = curY;
+                    return false;
+                }
             }
         }
 
