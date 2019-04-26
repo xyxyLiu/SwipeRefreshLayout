@@ -33,7 +33,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.reginald.swiperefresh.CustomSwipeRefreshLayout;
 import com.reginald.swiperefresh.sample.dummydata.Cheeses;
 
@@ -85,10 +84,6 @@ public class ViewPagerDemoActivity extends BaseDemoActivity {
         setupViewPagerViews();
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(new ViewPagerAdapter(viewPagerTitles, viewPagerViews));
-
-        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        tabs.setViewPager(mViewPager);
-        tabs.setAllCaps(false);
     }
 
     protected void setupCustomSwipeRefreshLayout() {
