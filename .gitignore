@@ -8,6 +8,9 @@ local.properties
 /captures
 
 # Gradle files
+gradle/
+gradlew
+gradlew.bat
 .gradle/
 build/
 
