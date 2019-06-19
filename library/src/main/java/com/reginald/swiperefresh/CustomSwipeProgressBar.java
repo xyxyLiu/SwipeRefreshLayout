@@ -8,10 +8,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
+
+import static android.graphics.Canvas.ALL_SAVE_FLAG;
 
 
 /**
@@ -155,7 +157,7 @@ final class CustomSwipeProgressBar {
                 // Radius of the circle is half of the screen.
                 float clearRadius = width / 2 * INTERPOLATOR.getInterpolation(pct);
                 mClipRect.set(cx - clearRadius, mBounds.top, cx + clearRadius, mBounds.bottom);
-                canvas.saveLayerAlpha(mClipRect, 0, 0);
+                canvas.saveLayerAlpha(mClipRect, 0, ALL_SAVE_FLAG);
                 // Only draw the trigger if there is a space in the center of
                 // this refreshing view that needs to be filled in by the
                 // trigger. If the progress view is just still animating, let it
